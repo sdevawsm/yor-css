@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<UPDATED_CODE><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="../packages/yor-containers/dist/yor-containers.css">
   <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
   <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
+  <!-- Módulo de cores -->
+  <link rel="stylesheet" href="../packages/yor-colors/dist/yor-colors.css">
   
   <!-- Tema Material -->
   <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
@@ -41,7 +43,7 @@
           <h3 class="h3 mb-3">Como usar:</h3>
           <div class="card card--outlined p-4 mb-4">
             <code class="text-sm">
-              &lt;link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"&gt;
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css">
             </code>
           </div>
         </div>
@@ -79,6 +81,275 @@
     </div>
   </div>
 
+  <!-- Colors Module Documentation -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🎨 Yor Colors</h2>
+        <p class="text-sm">Utilitários de cores para backgrounds, textos e bordas</p>
+      </div>
+      <div class="card__body">
+        
+        <div class="mb-6">
+          <h3 class="h3 mb-3">📦 Como importar:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <!-- Tokens (obrigatório) --><br>
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"><br><br>
+              
+              <!-- Módulo de cores --><br>
+              <link rel="stylesheet" href="packages/yor-colors/dist/yor-colors.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">🎨 Background Colors:</h3>
+          <div class="row">
+            <div class="col col-2">
+              <div class="bg-primary text-white p-3 text-center rounded mb-2">
+                <small>.bg-primary</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-secondary text-white p-3 text-center rounded mb-2">
+                <small>.bg-secondary</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-success text-white p-3 text-center rounded mb-2">
+                <small>.bg-success</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-warning text-black p-3 text-center rounded mb-2">
+                <small>.bg-warning</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-error text-white p-3 text-center rounded mb-2">
+                <small>.bg-error</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-info text-white p-3 text-center rounded mb-2">
+                <small>.bg-info</small>
+              </div>
+            </div>
+          </div>
+          
+          <h4 class="h4 mb-3 mt-4">Variantes claras:</h4>
+          <div class="row">
+            <div class="col col-2">
+              <div class="bg-primary-light text-primary p-3 text-center rounded mb-2">
+                <small>.bg-primary-light</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-success-light text-success p-3 text-center rounded mb-2">
+                <small>.bg-success-light</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-warning-light text-warning p-3 text-center rounded mb-2">
+                <small>.bg-warning-light</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-error-light text-error p-3 text-center rounded mb-2">
+                <small>.bg-error-light</small>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="h4 mb-3 mt-4">Escala de cinzas:</h4>
+          <div class="row">
+            <div class="col col-2">
+              <div class="bg-gray-100 text-gray-800 p-2 text-center rounded mb-1">
+                <small>.bg-gray-100</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-gray-200 text-gray-800 p-2 text-center rounded mb-1">
+                <small>.bg-gray-200</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-gray-300 text-gray-800 p-2 text-center rounded mb-1">
+                <small>.bg-gray-300</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-gray-400 text-white p-2 text-center rounded mb-1">
+                <small>.bg-gray-400</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-gray-600 text-white p-2 text-center rounded mb-1">
+                <small>.bg-gray-600</small>
+              </div>
+            </div>
+            <div class="col col-2">
+              <div class="bg-gray-800 text-white p-2 text-center rounded mb-1">
+                <small>.bg-gray-800</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">📝 Text Colors:</h3>
+          <div class="card card--outlined p-4">
+            <p class="text-primary mb-2">Este texto usa .text-primary</p>
+            <p class="text-secondary mb-2">Este texto usa .text-secondary</p>
+            <p class="text-success mb-2">Este texto usa .text-success</p>
+            <p class="text-warning mb-2">Este texto usa .text-warning</p>
+            <p class="text-error mb-2">Este texto usa .text-error</p>
+            <p class="text-info mb-2">Este texto usa .text-info</p>
+            <p class="text-muted mb-2">Este texto usa .text-muted</p>
+            <p class="text-gray-600">Este texto usa .text-gray-600</p>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">🔲 Border Colors:</h3>
+          <div class="row">
+            <div class="col col-3">
+              <div class="border border-primary p-3 text-center rounded mb-2">
+                .border-primary
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="border border-success p-3 text-center rounded mb-2">
+                .border-success
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="border border-warning p-3 text-center rounded mb-2">
+                .border-warning
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="border border-error p-3 text-center rounded mb-2">
+                .border-error
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">✨ Estados Interativos:</h3>
+          <div class="row">
+            <div class="col col-4">
+              <button class="btn btn--outline hover-bg-primary hover-text-white p-3 w-full mb-2">
+                Hover Background (.hover-bg-primary)
+              </button>
+            </div>
+            <div class="col col-4">
+              <button class="btn btn--outline hover-text-success p-3 w-full mb-2">
+                Hover Text (.hover-text-success)
+              </button>
+            </div>
+            <div class="col col-4">
+              <input type="text" class="border border-gray-300 focus-border-primary p-2 w-full rounded" placeholder="Focus border (.focus-border-primary)">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">💻 Exemplos de Código:</h3>
+          
+          <h4 class="h4 mb-2">Alertas coloridos:</h4>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <div class="bg-success-light text-success border border-success p-4 rounded"><br>
+                ✅ Operação realizada com sucesso!<br>
+              </div><br><br>
+              
+              <div class="bg-warning-light text-warning border border-warning p-4 rounded"><br>
+                ⚠️ Atenção: Verifique os dados inseridos.<br>
+              </div><br><br>
+              
+              <div class="bg-error-light text-error border border-error p-4 rounded"><br>
+                ❌ Erro: Não foi possível processar a solicitação.<br>
+              </div>
+            </code>
+          </div>
+
+          <div class="mb-4">
+            <div class="bg-success-light text-success border border-success p-4 rounded mb-2">
+              ✅ Operação realizada com sucesso!
+            </div>
+            <div class="bg-warning-light text-warning border border-warning p-4 rounded mb-2">
+              ⚠️ Atenção: Verifique os dados inseridos.
+            </div>
+            <div class="bg-error-light text-error border border-error p-4 rounded">
+              ❌ Erro: Não foi possível processar a solicitação.
+            </div>
+          </div>
+
+          <h4 class="h4 mb-2">Botões com hover:</h4>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <button class="btn btn--outline hover-bg-primary hover-text-white"><br>
+                Hover Primary<br>
+              </button><br><br>
+              
+              <button class="btn btn--outline hover-bg-success hover-text-white"><br>
+                Hover Success<br>
+              </button>
+            </code>
+          </div>
+
+          <div class="mb-4">
+            <button class="btn btn--outline hover-bg-primary hover-text-white mr-2">
+              Hover Primary
+            </button>
+            <button class="btn btn--outline hover-bg-success hover-text-white">
+              Hover Success
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">📱 Classes Responsivas:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <!-- Muda cor conforme o tamanho da tela --><br>
+              <div class="bg-gray-100 md-bg-primary lg-bg-success p-4"><br>
+                Cinza no mobile, azul no tablet, verde no desktop<br>
+              </div><br><br>
+              
+              <p class="text-gray-600 sm-text-primary md-text-success"><br>
+                Texto que muda de cor responsivamente<br>
+              </p>
+            </code>
+          </div>
+          
+          <div class="mt-4">
+            <div class="bg-gray-100 md-bg-primary lg-bg-success text-white p-4 rounded mb-2">
+              Cinza no mobile, azul no tablet, verde no desktop
+            </div>
+            <p class="text-gray-600 sm-text-primary md-text-success">
+              Texto que muda de cor responsivamente
+            </p>
+          </div>
+        </div>
+
+        <div class="card card--filled p-4">
+          <h4 class="h4 mb-3">🎯 Dicas de Uso:</h4>
+          <ul class="text-sm">
+            <li class="mb-2">• <strong>Combine cores:</strong> Use <code>.bg-success</code> com <code>.text-white</code> para melhor contraste</li>
+            <li class="mb-2">• <strong>Variantes claras:</strong> Use <code>.bg-success-light</code> + <code>.text-success</code> para alertas sutis</li>
+            <li class="mb-2">• <strong>Estados hover:</strong> Adicione <code>.hover-bg-primary</code> em botões para interatividade</li>
+            <li class="mb-2">• <strong>Bordas coloridas:</strong> Combine <code>.border</code> + <code>.border-primary</code> para destacar elementos</li>
+            <li>• <strong>Acessibilidade:</strong> Sempre teste o contraste entre texto e fundo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Buttons Module -->
   <div class="container mb-8">
     <div class="card mb-6">
@@ -91,7 +362,7 @@
           <h3 class="h3 mb-3">Como usar:</h3>
           <div class="card card--outlined p-4 mb-4">
             <code class="text-sm">
-              &lt; rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css"&gt;
+              < rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css">
             </code>
           </div>
         </div>
@@ -106,10 +377,10 @@
           </div>
           <div class="card card--outlined p-4">
             <code class="text-sm">
-              &lt;button class="btn btn--primary mb-2"&gt;Primary&lt;/button&gt;<br>
-              &lt;button class="btn btn--secondary mb-2"&gt;Secondary&lt;/button&gt;<br>
-              &lt;button class="btn btn--outline mb-2"&gt;Outline&lt;/button&gt;<br>
-              &lt;button class="btn btn--ghost mb-2"&gt;Ghost&lt;/button&gt;
+              <button class="btn btn--primary mb-2">Primary</button><br>
+              <button class="btn btn--secondary mb-2">Secondary</button><br>
+              <button class="btn btn--outline mb-2">Outline</button><br>
+              <button class="btn btn--ghost mb-2">Ghost</button>
             </code>
           </div>
 
@@ -125,10 +396,10 @@
           </div>
           <div class="card card--outlined p-4">
             <code class="text-sm">
-              &lt;button class="btn btn--primary btn--sm"&gt;Small&lt;/button&gt;&lt;br&gt;<br>
-              &lt;button class="btn btn--primary"&gt;Default&lt;/button&gt;&lt;br&gt;<br>
-              &lt;button class="btn btn--primary btn--lg"&gt;Large&lt;/button&gt;&lt;br&gt;<br>
-              &lt;button class="btn btn--primary btn--xl"&gt;Extra Large&lt;/button&gt;<br>
+              <button class="btn btn--primary btn--sm">Small</button><br><br>
+              <button class="btn btn--primary">Default</button><br><br>
+              <button class="btn btn--primary btn--lg">Large</button><br><br>
+              <button class="btn btn--primary btn--xl">Extra Large</button><br>
             </code>
           </div>
         </div>
@@ -142,9 +413,9 @@
           </div>
           <div class="card card--outlined p-4">
             <code class="text-sm">
-              &lt;button class="btn btn--primary btn--block"&gt;Full Width&lt;/button&gt;<br>
-              &lt;button class="btn btn--primary btn--rounded"&gt;Rounded&lt;/button&gt;<br>
-              &lt;button class="btn btn--primary btn--square"&gt;Square&lt;/button&gt;
+              <button class="btn btn--primary btn--block">Full Width</button><br>
+              <button class="btn btn--primary btn--rounded">Rounded</button><br>
+              <button class="btn btn--primary btn--square">Square</button>
             </code>
           </div>
         </div>
@@ -164,7 +435,7 @@
           <h3 class="h3 mb-3">Como usar:</h3>
           <div class="card card--outlined p-4 mb-4">
             <code class="text-sm">
-              &lt;link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css"&gt;
+              <link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css">
             </code>
           </div>
         </div>
@@ -188,17 +459,17 @@
             <div class="col col-6 mt-2">
               <div class="card card--outlined p-4">
                  <code class="text-sm">
-                  &lt;div class="card"&gt;<br>
-                    &lt;div class="card__header"&gt;<br>
-                      &lt;h4&gt;Card Header&lt;/h4&gt;<br>
-                    &lt;/div&gt;<br>
-                    &lt;div class="card__body"&gt;<br>
-                      &lt;p&gt;Conteúdo...&lt;/p&gt;<br>
-                    &lt;/div&gt;
-                    &lt;div class="card__footer"&gt;<br>
-                      &lt;button&gt;Action&lt;/button&gt;<br>
-                    &lt;/div&gt;
-                  &lt;/div&gt;
+                  <div class="card"><br>
+                    <div class="card__header"><br>
+                      <h4>Card Header</h4><br>
+                    </div><br>
+                    <div class="card__body"><br>
+                      <p>Conteúdo...</p><br>
+                    </div>
+                    <div class="card__footer"><br>
+                      <button>Action</button><br>
+                    </div>
+                  </div>
                   </code>
               </div>
             </div>
@@ -266,7 +537,7 @@
           <h3 class="h3 mb-3">Como usar:</h3>
           <div class="card card--outlined p-4 mb-4">
             <code class="text-sm">
-              &lt;link rel="stylesheet" href="packages/yor-containers/dist/yor-containers.css"&gt;
+              <link rel="stylesheet" href="packages/yor-containers/dist/yor-containers.css">
             </code>
           </div>
         </div>
@@ -877,264 +1148,4 @@
   <!-- Footer -->
   <div class="container mb-8">
     <div class="card card--elevated text-center p-6">
-      <h3 class="h3 mb-3">🎉 Pronto para usar o Yor CSS!</h3>
-      <p class="text-base mb-4">
-        Agora você conhece todos os módulos e como usá-los. 
-        Comece com o que precisa e expanda conforme necessário.
-      </p>
-      <div class="mb-4">
-        <button class="btn btn--primary mr-2">Começar Projeto</button>
-        <button class="btn btn--outline">Ver Exemplos</button>
-      </div>
-      <p class="text-sm">
-        <strong>Lembre-se:</strong> Tokens → Componentes → Tema → CSS Customizado
-      </p>
-    </div>
-  </div>
-
-  <!-- JavaScript para troca de temas -->
-  <script>
-    // Função para trocar tema (demonstração)
-    function changeTheme(themeName) {
-      console.log(`🎨 Trocando para tema: ${themeName}`);
-      
-      const themeLink = document.getElementById('theme-css') || 
-                       document.querySelector('link[href*="theme"]');
-      
-      if (themeLink) {
-        const newHref = `../themes/${themeName}/dist/${themeName}-theme.css`;
-        console.log(`🔗 Carregando: ${newHref}`);
-        
-        themeLink.onload = function() {
-          console.log(`✅ Tema ${themeName} carregado!`);
-          
-          // Feedback visual
-          const notification = document.createElement('div');
-          notification.innerHTML = `
-            <div style="position: fixed; top: 20px; right: 20px; 
-                        background: var(--color-primary); color: white; 
-                        padding: 12px 20px; border-radius: 8px; 
-                        box-shadow: var(--shadow-lg); z-index: 9999;
-                        font-size: 14px; font-weight: 500;">
-              ✅ Tema ${themeName} aplicado!
-            </div>
-          `;
-          
-          document.body.appendChild(notification);
-          
-          setTimeout(() => {
-            document.body.removeChild(notification);
-          }, 3000);
-        };
-        
-        themeLink.onerror = function() {
-          console.error(`❌ Erro ao carregar tema: ${themeName}`);
-          alert(`Erro: Tema ${themeName} não encontrado!\nVerifique se o arquivo existe: ${newHref}`);
-        };
-        
-        themeLink.href = newHref;
-      } else {
-        console.error('❌ Link do tema não encontrado!');
-        alert('Erro: Não foi possível encontrar o link do tema no HTML');
-      }
-    }
-    
-    // Log de inicialização
-    console.log('📖 Yor CSS Usage Guide carregado!');
-    console.log('🎨 Use changeTheme("material"|"fluent"|"cupertino") para trocar temas');
-    
-    // Verificar se todos os módulos foram carregados
-    document.addEventListener('DOMContentLoaded', function() {
-      const requiredStyles = [
-        'yor-buttons',
-        'yor-cards',
-        'yor-containers',
-        'yor-spacing',
-        'yor-typography'
-      ];
-      
-      console.log('🔍 Verificando módulos carregados...');
-      
-      requiredStyles.forEach(module => {
-        const link = document.querySelector(`link[href*="${module}"]`);
-        if (link) {
-          console.log(`✅ ${module}: Carregado`);
-        } else {
-          console.warn(`⚠️ ${module}: Não encontrado`);
-        }
-      });
-      
-      // Verificar tema atual
-      const themeLink = document.querySelector('link[href*="theme"]');
-      if (themeLink) {
-        const themeName = themeLink.href.match(/themes\/(\w+)\//)?.[1] || 'desconhecido';
-        console.log(`🎨 Tema atual: ${themeName}`);
-      }
-      
-      console.log('✅ Verificação completa!');
-    });
-    
-    // Função para copiar código dos exemplos
-    function copyCode(element) {
-      const code = element.textContent;
-      navigator.clipboard.writeText(code).then(() => {
-        // Feedback visual
-        const originalText = element.innerHTML;
-        element.innerHTML = '📋 Copiado!';
-        element.style.background = 'var(--color-success)';
-        element.style.color = 'white';
-        
-        setTimeout(() => {
-          element.innerHTML = originalText;
-          element.style.background = '';
-          element.style.color = '';
-        }, 2000);
-      }).catch(err => {
-        console.error('Erro ao copiar:', err);
-        alert('Erro ao copiar código. Use Ctrl+C manualmente.');
-      });
-    }
-    
-    // Adicionar funcionalidade de cópia aos blocos de código
-    document.addEventListener('DOMContentLoaded', function() {
-      const codeBlocks = document.querySelectorAll('code');
-      
-      codeBlocks.forEach(code => {
-        // Adicionar cursor pointer e título
-        code.style.cursor = 'pointer';
-        code.title = 'Clique para copiar';
-        
-        // Adicionar evento de clique
-        code.addEventListener('click', function() {
-          copyCode(this);
-        });
-        
-        // Adicionar hover effect
-        code.addEventListener('mouseenter', function() {
-          this.style.background = 'var(--color-primary-light, #e3f2fd)';
-        });
-        
-        code.addEventListener('mouseleave', function() {
-          this.style.background = '';
-        });
-      });
-    });
-    
-    // Função para demonstrar componentes interativos
-    function demonstrateInteractivity() {
-      console.log('🎭 Demonstrando interatividade dos componentes...');
-      
-      // Animar botões
-      const buttons = document.querySelectorAll('.btn');
-      buttons.forEach((btn, index) => {
-        setTimeout(() => {
-          btn.style.transform = 'scale(1.05)';
-          btn.style.transition = 'transform 0.2s ease';
-          
-          setTimeout(() => {
-            btn.style.transform = 'scale(1)';
-          }, 200);
-        }, index * 100);
-      });
-      
-      // Destacar cards
-      const cards = document.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.style.boxShadow = 'var(--shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1))';
-          card.style.transition = 'box-shadow 0.3s ease';
-          
-          setTimeout(() => {
-            card.style.boxShadow = '';
-          }, 500);
-        }, index * 50);
-      });
-    }
-    
-    // Adicionar botão de demonstração (Easter egg)
-    document.addEventListener('DOMContentLoaded', function() {
-      // Adicionar botão secreto no footer
-      const footer = document.querySelector('.container:last-child .card');
-      if (footer) {
-        const demoButton = document.createElement('button');
-        demoButton.className = 'btn btn--ghost btn--sm mt-4';
-        demoButton.textContent = '✨ Demonstrar Interatividade';
-        demoButton.onclick = demonstrateInteractivity;
-        
-        footer.querySelector('.card').appendChild(demoButton);
-      }
-    });
-    
-    // Função para validar estrutura HTML
-    function validateStructure() {
-      console.log('🔍 Validando estrutura HTML...');
-      
-      const issues = [];
-      
-      // Verificar se cards têm estrutura correta
-      const cards = document.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        const hasHeader = card.querySelector('.card__header');
-        const hasBody = card.querySelector('.card__body');
-        const hasFooter = card.querySelector('.card__footer');
-        
-        if (!hasBody && !hasHeader && !hasFooter) {
-          issues.push(`Card ${index + 1}: Sem estrutura interna definida`);
-        }
-      });
-      
-      // Verificar se containers têm rows e cols corretas
-      const rows = document.querySelectorAll('.row');
-      rows.forEach((row, index) => {
-        const cols = row.querySelectorAll('.col');
-        if (cols.length === 0) {
-          issues.push(`Row ${index + 1}: Sem colunas`);
-        }
-      });
-      
-      // Verificar se botões têm classes base
-      const buttons = document.querySelectorAll('button');
-      buttons.forEach((btn, index) => {
-        if (!btn.classList.contains('btn')) {
-          issues.push(`Button ${index + 1}: Sem classe .btn`);
-        }
-      });
-      
-      if (issues.length === 0) {
-        console.log('✅ Estrutura HTML válida!');
-      } else {
-        console.warn('⚠️ Problemas encontrados:', issues);
-      }
-      
-      return issues;
-    }
-    
-    // Executar validação após carregamento
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(validateStructure, 2000);
-    });
-    
-    // Adicionar informações de debug no console
-    console.log(`
-    🎨 Yor CSS Usage Guide
-    =====================
-    
-    Comandos disponíveis:
-    • changeTheme('material'|'fluent'|'cupertino') - Trocar tema
-    • demonstrateInteractivity() - Animar componentes
-    • validateStructure() - Validar HTML
-    
-    Módulos carregados nesta página:
-    • yor-tokens (obrigatório)
-    • yor-buttons
-    • yor-cards  
-    • yor-containers
-    • yor-spacing
-    • yor-typography
-    • material-theme (padrão)
-    
-    Dica: Clique nos blocos de código para copiar!
-    `);
-  </script>
-</body>
-</html>
+      <
