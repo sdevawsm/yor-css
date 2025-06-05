@@ -1,0 +1,10 @@
+{
+  "name": "@yor-css/tokens",
+  "version": "1.0.0",
+  "description": "Yor CSS - Design tokens for theming",
+  "main": "dist/yor-tokens.css",
+  "sass": "src/yor-tokens.scss",
+  "scripts": {
+    "build": "sass src/yor-tokens.scss dist/yor-tokens.css --style=compressed"
+  }
+}

@@ -1,0 +1,104 @@
+// ===== GOOGLE MATERIAL DESIGN THEME =====
+
+:root {
+  // === MATERIAL COLORS ===
+  --yor-color-primary: #1976d2;
+  --yor-color-primary-hover: #1565c0;
+  --yor-color-primary-active: #0d47a1;
+  --yor-color-primary-light: #e3f2fd;
+  --yor-color-primary-dark: #0d47a1;
+
+  --yor-color-secondary: #757575;
+  --yor-color-secondary-hover: #616161;
+  --yor-color-secondary-active: #424242;
+  --yor-color-secondary-light: #fafafa;
+  --yor-color-secondary-dark: #212121;
+
+  --yor-color-surface: #ffffff;
+  --yor-color-surface-variant: #f5f5f5;
+  --yor-color-background: #fafafa;
+  --yor-color-on-surface: #212121;
+  --yor-color-on-primary: #ffffff;
+
+  // === MATERIAL TYPOGRAPHY ===
+  --yor-font-family-sans: 'Roboto', system-ui, sans-serif;
+  --yor-font-weight-normal: 400;
+  --yor-font-weight-medium: 500;
+  --yor-font-weight-semibold: 600;
+  --yor-font-weight-bold: 700;
+
+  // === MATERIAL BORDERS ===
+  --yor-border-radius-sm: 4px;
+  --yor-border-radius-md: 8px;
+  --yor-border-radius-lg: 12px;
+  --yor-border-radius-xl: 16px;
+  
+  --yor-border-color: #e0e0e0;
+
+  // === MATERIAL SHADOWS (Elevation) ===
+  --yor-shadow-sm: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  --yor-shadow-md: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  --yor-shadow-lg: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+  --yor-shadow-xl: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);
+
+  // === MATERIAL ANIMATIONS ===
+  --yor-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --yor-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --yor-transition-slow: 375ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --yor-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --yor-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --yor-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// === MATERIAL SPECIFIC OVERRIDES ===
+.yor-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.0892857143em;
+  font-weight: var(--yor-font-weight-medium);
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
+  }
+  
+  &--primary {
+    box-shadow: var(--yor-shadow-sm);
+    
+    &:hover {
+      box-shadow: var(--yor-shadow-md);
+    }
+    
+    &:active {
+      box-shadow: var(--yor-shadow-lg);
+    }
+  }
+  
+  // Material Floating Action Button
+  &--fab {
+    border-radius: var(--yor-border-radius-full);
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    box-shadow: var(--yor-shadow-md);
+    
+    &:hover {
+      box-shadow: var(--yor-shadow-lg);
+    }
+  }
+}
+
+.yor-card {
+  // Material cards sempre têm elevação
+  box-shadow: var(--yor-shadow-sm);
+  border: none;
+  
+  &--elevated {
+    box-shadow: var(--yor-shadow-md);
+    
+    &:hover {
+      box-shadow: var(--yor-shadow-lg);
+      transform: none; // Material não usa transform
+    }
+  }
+}

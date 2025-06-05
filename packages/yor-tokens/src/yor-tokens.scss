@@ -1,0 +1,81 @@
+// ===== YOR DESIGN TOKENS =====
+// Tokens que podem ser sobrescritos por temas
+
+:root {
+  // === SPACING TOKENS ===
+  --yor-space-0: 0;
+  --yor-space-1: 0.25rem;
+  --yor-space-2: 0.5rem;
+  --yor-space-3: 0.75rem;
+  --yor-space-4: 1rem;
+  --yor-space-5: 1.25rem;
+  --yor-space-6: 1.5rem;
+  --yor-space-8: 2rem;
+  --yor-space-10: 2.5rem;
+  --yor-space-12: 3rem;
+  --yor-space-16: 4rem;
+
+  // === COLOR TOKENS ===
+  --yor-color-primary: #3b82f6;
+  --yor-color-primary-hover: #2563eb;
+  --yor-color-primary-active: #1d4ed8;
+  --yor-color-primary-light: #dbeafe;
+  --yor-color-primary-dark: #1e40af;
+
+  --yor-color-secondary: #6b7280;
+  --yor-color-secondary-hover: #4b5563;
+  --yor-color-secondary-active: #374151;
+  --yor-color-secondary-light: #f3f4f6;
+  --yor-color-secondary-dark: #1f2937;
+
+  --yor-color-surface: #ffffff;
+  --yor-color-surface-variant: #f8fafc;
+  --yor-color-background: #ffffff;
+  --yor-color-on-surface: #1e293b;
+  --yor-color-on-primary: #ffffff;
+
+  // === BORDER TOKENS ===
+  --yor-border-radius-sm: 0.125rem;
+  --yor-border-radius-md: 0.375rem;
+  --yor-border-radius-lg: 0.5rem;
+  --yor-border-radius-xl: 0.75rem;
+  --yor-border-radius-full: 9999px;
+
+  --yor-border-width: 1px;
+  --yor-border-color: #e2e8f0;
+
+  // === SHADOW TOKENS ===
+  --yor-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --yor-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --yor-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --yor-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  // === TYPOGRAPHY TOKENS ===
+  --yor-font-family-sans: system-ui, -apple-system, sans-serif;
+  --yor-font-family-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+  
+  --yor-font-size-xs: 0.75rem;
+  --yor-font-size-sm: 0.875rem;
+  --yor-font-size-base: 1rem;
+  --yor-font-size-lg: 1.125rem;
+  --yor-font-size-xl: 1.25rem;
+  --yor-font-size-2xl: 1.5rem;
+
+  --yor-font-weight-normal: 400;
+  --yor-font-weight-medium: 500;
+  --yor-font-weight-semibold: 600;
+  --yor-font-weight-bold: 700;
+
+  --yor-line-height-tight: 1.25;
+  --yor-line-height-normal: 1.5;
+  --yor-line-height-relaxed: 1.75;
+
+  // === ANIMATION TOKENS ===
+  --yor-transition-fast: 150ms ease-in-out;
+  --yor-transition-normal: 250ms ease-in-out;
+  --yor-transition-slow: 350ms ease-in-out;
+
+  --yor-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --yor-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --yor-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}

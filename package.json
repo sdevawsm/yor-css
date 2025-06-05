@@ -1,0 +1,25 @@
+{
+  "name": "yor-css",
+  "version": "1.0.0",
+  "description": "Modular CSS library with theming support",
+  "scripts": {
+    "build": "npm run build:packages && npm run build:themes",
+    "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers",
+    "build:themes": "npm run build:fluent && npm run build:material && npm run build:cupertino",
+    
+    "build:tokens": "sass packages/yor-tokens/src/yor-tokens.scss packages/yor-tokens/dist/yor-tokens.css --style=compressed",
+    "build:buttons": "sass packages/yor-buttons/src/yor-buttons.scss packages/yor-buttons/dist/yor-buttons.css --style=compressed",
+    "build:cards": "sass packages/yor-cards/src/yor-cards.scss packages/yor-cards/dist/yor-cards.css --style=compressed",
+    "build:containers": "sass packages/yor-containers/src/yor-containers.scss packages/yor-containers/dist/yor-containers.css --style=compressed",
+    
+    "build:fluent": "sass themes/fluent/fluent-theme.scss themes/fluent/dist/fluent-theme.css --style=compressed",
+    "build:material": "sass themes/material/material-theme.scss themes/material/dist/material-theme.css --style=compressed",
+    "build:cupertino": "sass themes/cupertino/cupertino-theme.scss themes/cupertino/dist/cupertino-theme.css --style=compressed",
+    
+    "watch": "sass --watch packages:packages --watch themes:themes --style=compressed",
+    "dev": "npm run watch"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+}

@@ -1,0 +1,71 @@
+// ===== YOR CARDS - Token Based =====
+
+.yor-card {
+  background-color: var(--yor-color-surface);
+  border: var(--yor-border-width) solid var(--yor-border-color);
+  border-radius: var(--yor-border-radius-lg);
+  box-shadow: var(--yor-shadow-sm);
+  overflow: hidden;
+  transition: all var(--yor-transition-normal);
+
+  &__header {
+    padding: var(--yor-space-4) var(--yor-space-6);
+    border-bottom: var(--yor-border-width) solid var(--yor-border-color);
+    background-color: var(--yor-color-surface-variant);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__body {
+    padding: var(--yor-space-6);
+    color: var(--yor-color-on-surface);
+  }
+
+  &__footer {
+    padding: var(--yor-space-4) var(--yor-space-6);
+    border-top: var(--yor-border-width) solid var(--yor-border-color);
+    background-color: var(--yor-color-surface-variant);
+    
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  // === VARIANTS ===
+  &--elevated {
+    box-shadow: var(--yor-shadow-md);
+    border: none;
+    
+    &:hover {
+      box-shadow: var(--yor-shadow-lg);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--outlined {
+    box-shadow: none;
+    border: calc(var(--yor-border-width) * 2) solid var(--yor-border-color);
+  }
+
+  &--filled {
+    background-color: var(--yor-color-surface-variant);
+    border: none;
+    box-shadow: none;
+  }
+
+  // === INTERACTIVE ===
+  &--clickable {
+    cursor: pointer;
+    
+    &:hover {
+      box-shadow: var(--yor-shadow-md);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}

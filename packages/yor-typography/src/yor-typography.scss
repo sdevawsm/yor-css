@@ -1,0 +1,56 @@
+// ===== YOR TYPOGRAPHY - Token Based =====
+
+// Base typography
+body {
+  font-family: var(--yor-font-family-sans);
+  font-size: var(--yor-font-size-base);
+  line-height: var(--yor-line-height-normal);
+  color: var(--yor-color-on-surface);
+}
+
+// Headings
+.yor-h1, h1 {
+  font-size: var(--yor-font-size-2xl);
+  font-weight: var(--yor-font-weight-bold);
+  line-height: var(--yor-line-height-tight);
+  margin-bottom: var(--yor-space-4);
+}
+
+.yor-h2, h2 {
+  font-size: var(--yor-font-size-xl);
+  font-weight: var(--yor-font-weight-semibold);
+  line-height: var(--yor-line-height-tight);
+  margin-bottom: var(--yor-space-3);
+}
+
+.yor-h3, h3 {
+  font-size: var(--yor-font-size-lg);
+  font-weight: var(--yor-font-weight-semibold);
+  line-height: var(--yor-line-height-normal);
+  margin-bottom: var(--yor-space-3);
+}
+
+// Text utilities
+.yor-text-xs { font-size: var(--yor-font-size-xs); }
+.yor-text-sm { font-size: var(--yor-font-size-sm); }
+.yor-text-base { font-size: var(--yor-font-size-base); }
+.yor-text-lg { font-size: var(--yor-font-size-lg); }
+.yor-text-xl { font-size: var(--yor-font-size-xl); }
+.yor-text-2xl { font-size: var(--yor-font-size-2xl); }
+
+// Font weights
+.yor-font-normal { font-weight: var(--yor-font-weight-normal); }
+.yor-font-medium { font-weight: var(--yor-font-weight-medium); }
+.yor-font-semibold { font-weight: var(--yor-font-weight-semibold); }
+.yor-font-bold { font-weight: var(--yor-font-weight-bold); }
+
+// Line heights
+.yor-leading-tight { line-height: var(--yor-line-height-tight); }
+.yor-leading-normal { line-height: var(--yor-line-height-normal); }
+.yor-leading-relaxed { line-height: var(--yor-line-height-relaxed); }
+
+// Text alignment
+.yor-text-left { text-align: left; }
+.yor-text-center { text-align: center; }
+.yor-text-right { text-align: right; }
+.yor-text-justify { text-align: justify; }
