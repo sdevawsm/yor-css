@@ -1,17 +1,17 @@
-// ===== YOR CARDS - Token Based =====
+// ===== CARDS - Refatorado (sem prefixo yor-) =====
 
-.yor-card {
-  background-color: var(--yor-color-surface);
-  border: var(--yor-border-width) solid var(--yor-border-color);
-  border-radius: var(--yor-border-radius-lg);
-  box-shadow: var(--yor-shadow-sm);
+.card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: all var(--yor-transition-normal);
+  transition: all var(--transition-normal);
 
   &__header {
-    padding: var(--yor-space-4) var(--yor-space-6);
-    border-bottom: var(--yor-border-width) solid var(--yor-border-color);
-    background-color: var(--yor-color-surface-variant);
+    padding: var(--space-4) var(--space-6);
+    border-bottom: var(--border-width) solid var(--border-color);
+    background-color: var(--color-surface-variant);
     
     &:last-child {
       border-bottom: none;
@@ -19,14 +19,14 @@
   }
 
   &__body {
-    padding: var(--yor-space-6);
-    color: var(--yor-color-on-surface);
+    padding: var(--space-6);
+    color: var(--color-on-surface);
   }
 
   &__footer {
-    padding: var(--yor-space-4) var(--yor-space-6);
-    border-top: var(--yor-border-width) solid var(--yor-border-color);
-    background-color: var(--yor-color-surface-variant);
+    padding: var(--space-4) var(--space-6);
+    border-top: var(--border-width) solid var(--border-color);
+    background-color: var(--color-surface-variant);
     
     &:first-child {
       border-top: none;
@@ -35,22 +35,22 @@
 
   // === VARIANTS ===
   &--elevated {
-    box-shadow: var(--yor-shadow-md);
+    box-shadow: var(--shadow-md);
     border: none;
     
     &:hover {
-      box-shadow: var(--yor-shadow-lg);
+      box-shadow: var(--shadow-lg);
       transform: translateY(-2px);
     }
   }
 
   &--outlined {
     box-shadow: none;
-    border: calc(var(--yor-border-width) * 2) solid var(--yor-border-color);
+    border: calc(var(--border-width) * 2) solid var(--border-color);
   }
 
   &--filled {
-    background-color: var(--yor-color-surface-variant);
+    background-color: var(--color-surface-variant);
     border: none;
     box-shadow: none;
   }
@@ -60,7 +60,7 @@
     cursor: pointer;
     
     &:hover {
-      box-shadow: var(--yor-shadow-md);
+      box-shadow: var(--shadow-md);
       transform: translateY(-1px);
     }
     

@@ -1,1 +1,68 @@
-:root{--yor-color-primary: #007aff;--yor-color-primary-hover: #0056cc;--yor-color-primary-active: #004499;--yor-color-primary-light: #e6f2ff;--yor-color-primary-dark: #004499;--yor-color-secondary: #8e8e93;--yor-color-secondary-hover: #6d6d70;--yor-color-secondary-active: #48484a;--yor-color-secondary-light: #f2f2f7;--yor-color-secondary-dark: #1c1c1e;--yor-color-surface: #ffffff;--yor-color-surface-variant: #f2f2f7;--yor-color-background: #f2f2f7;--yor-color-on-surface: #1c1c1e;--yor-color-on-primary: #ffffff;--yor-font-family-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;--yor-font-weight-normal: 400;--yor-font-weight-medium: 500;--yor-font-weight-semibold: 600;--yor-font-weight-bold: 700;--yor-border-radius-sm: 6px;--yor-border-radius-md: 10px;--yor-border-radius-lg: 14px;--yor-border-radius-xl: 20px;--yor-border-color: rgba(60, 60, 67, 0.12);--yor-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);--yor-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);--yor-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);--yor-shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.2);--yor-transition-fast: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);--yor-transition-normal: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);--yor-transition-slow: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);--yor-ease-in: cubic-bezier(0.42, 0, 1, 1);--yor-ease-out: cubic-bezier(0, 0, 0.58, 1);--yor-ease-in-out: cubic-bezier(0.25, 0.46, 0.45, 0.94)}.yor-btn{font-weight:var(--yor-font-weight-semibold);border-radius:var(--yor-border-radius-lg)}.yor-btn:focus-visible{outline:3px solid rgba(0,122,255,.4);outline-offset:0}.yor-btn--primary{background:linear-gradient(180deg, #007aff 0%, #0056cc 100%);border:none}.yor-btn--primary:hover{background:linear-gradient(180deg, #0056cc 0%, #004499 100%)}.yor-btn--primary:active{transform:scale(0.98)}.yor-btn--secondary{background-color:rgba(142,142,147,.12);color:var(--yor-color-primary);border:none}.yor-btn--secondary:hover{background-color:rgba(142,142,147,.2)}.yor-card{border-radius:var(--yor-border-radius-xl);border:1px solid var(--yor-border-color);backdrop-filter:blur(20px)}.yor-card--elevated{background-color:hsla(0,0%,100%,.8)}.yor-card--elevated:hover{background-color:hsla(0,0%,100%,.9);transform:translateY(-2px)}/*# sourceMappingURL=cupertino-theme.css.map */
+:root {
+  --color-primary: #007aff;
+  --color-primary-hover: #0056cc;
+  --color-primary-active: #004499;
+  --color-primary-light: #e6f2ff;
+  --color-primary-dark: #004499;
+  --color-secondary: #8e8e93;
+  --color-secondary-hover: #6d6d70;
+  --color-secondary-active: #48484a;
+  --color-secondary-light: #f2f2f7;
+  --color-secondary-dark: #1c1c1e;
+  --color-surface: #ffffff;
+  --color-surface-variant: #f2f2f7;
+  --color-background: #f2f2f7;
+  --color-on-surface: #1c1c1e;
+  --color-on-primary: #ffffff;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --border-color: rgba(60, 60, 67, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --transition-fast: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-normal: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn {
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-lg);
+}
+.btn:focus-visible {
+  outline: 3px solid rgba(0, 122, 255, 0.4);
+  outline-offset: 0;
+}
+.btn--primary {
+  background: linear-gradient(180deg, #007aff 0%, #0056cc 100%);
+  border: none;
+}
+.btn--primary:active {
+  transform: scale(0.98);
+}
+.btn--secondary {
+  background-color: rgba(142, 142, 147, 0.12);
+  color: var(--color-primary);
+  border: none;
+}
+
+.card {
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+}
+.card--elevated {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.card--elevated:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/*# sourceMappingURL=cupertino-theme.css.map */

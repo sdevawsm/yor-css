@@ -1,42 +1,42 @@
-// ===== YOR SPACING - Token Based =====
+// ===== SPACING - Refatorado (sem prefixo yor-) =====
 
 // Gerar classes de margin usando tokens
 @for $i from 0 through 16 {
-  .yor-m-#{$i} { margin: var(--yor-space-#{$i}); }
-  .yor-mt-#{$i} { margin-top: var(--yor-space-#{$i}); }
-  .yor-mr-#{$i} { margin-right: var(--yor-space-#{$i}); }
-  .yor-mb-#{$i} { margin-bottom: var(--yor-space-#{$i}); }
-  .yor-ml-#{$i} { margin-left: var(--yor-space-#{$i}); }
-  .yor-mx-#{$i} { 
-    margin-left: var(--yor-space-#{$i}); 
-    margin-right: var(--yor-space-#{$i}); 
+  .m-#{$i} { margin: var(--space-#{$i}); }
+  .mt-#{$i} { margin-top: var(--space-#{$i}); }
+  .mr-#{$i} { margin-right: var(--space-#{$i}); }
+  .mb-#{$i} { margin-bottom: var(--space-#{$i}); }
+  .ml-#{$i} { margin-left: var(--space-#{$i}); }
+  .mx-#{$i} { 
+    margin-left: var(--space-#{$i}); 
+    margin-right: var(--space-#{$i}); 
   }
-  .yor-my-#{$i} { 
-    margin-top: var(--yor-space-#{$i}); 
-    margin-bottom: var(--yor-space-#{$i}); 
+  .my-#{$i} { 
+    margin-top: var(--space-#{$i}); 
+    margin-bottom: var(--space-#{$i}); 
   }
 }
 
 // Gerar classes de padding usando tokens
 @for $i from 0 through 16 {
-  .yor-p-#{$i} { padding: var(--yor-space-#{$i}); }
-  .yor-pt-#{$i} { padding-top: var(--yor-space-#{$i}); }
-  .yor-pr-#{$i} { padding-right: var(--yor-space-#{$i}); }
-  .yor-pb-#{$i} { padding-bottom: var(--yor-space-#{$i}); }
-  .yor-pl-#{$i} { padding-left: var(--yor-space-#{$i}); }
-  .yor-px-#{$i} { 
-    padding-left: var(--yor-space-#{$i}); 
-    padding-right: var(--yor-space-#{$i}); 
+  .p-#{$i} { padding: var(--space-#{$i}); }
+  .pt-#{$i} { padding-top: var(--space-#{$i}); }
+  .pr-#{$i} { padding-right: var(--space-#{$i}); }
+  .pb-#{$i} { padding-bottom: var(--space-#{$i}); }
+  .pl-#{$i} { padding-left: var(--space-#{$i}); }
+  .px-#{$i} { 
+    padding-left: var(--space-#{$i}); 
+    padding-right: var(--space-#{$i}); 
   }
-  .yor-py-#{$i} { 
-    padding-top: var(--yor-space-#{$i}); 
-    padding-bottom: var(--yor-space-#{$i}); 
+  .py-#{$i} { 
+    padding-top: var(--space-#{$i}); 
+    padding-bottom: var(--space-#{$i}); 
   }
 }
 
 // Classes de gap para flexbox/grid
 @for $i from 0 through 16 {
-  .yor-gap-#{$i} { gap: var(--yor-space-#{$i}); }
-  .yor-gap-x-#{$i} { column-gap: var(--yor-space-#{$i}); }
-  .yor-gap-y-#{$i} { row-gap: var(--yor-space-#{$i}); }
+  .gap-#{$i} { gap: var(--space-#{$i}); }
+  .gap-x-#{$i} { column-gap: var(--space-#{$i}); }
+  .gap-y-#{$i} { row-gap: var(--space-#{$i}); }
 }

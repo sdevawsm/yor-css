@@ -1,0 +1,14 @@
+// ===== YOR CSS - BUILD COMPLETO REFATORADO =====
+
+// 1. Tokens base (obrigatório)
+@import '../packages/yor-tokens/src/yor-tokens';
+
+// 2. Componentes
+@import '../packages/yor-buttons/src/yor-buttons';
+@import '../packages/yor-cards/src/yor-cards';
+@import '../packages/yor-containers/src/yor-containers';
+@import '../packages/yor-spacing/src/yor-spacing';
+@import '../packages/yor-typography/src/yor-typography';
+
+// 3. Tema padrão (opcional - pode ser sobrescrito)
+// @import '../themes/material/material-theme';

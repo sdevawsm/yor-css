@@ -1,56 +1,56 @@
-// ===== YOR TYPOGRAPHY - Token Based =====
+// ===== TYPOGRAPHY - Refatorado (sem prefixo yor-) =====
 
 // Base typography
 body {
-  font-family: var(--yor-font-family-sans);
-  font-size: var(--yor-font-size-base);
-  line-height: var(--yor-line-height-normal);
-  color: var(--yor-color-on-surface);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-on-surface);
 }
 
 // Headings
-.yor-h1, h1 {
-  font-size: var(--yor-font-size-2xl);
-  font-weight: var(--yor-font-weight-bold);
-  line-height: var(--yor-line-height-tight);
-  margin-bottom: var(--yor-space-4);
+.h1, h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
 }
 
-.yor-h2, h2 {
-  font-size: var(--yor-font-size-xl);
-  font-weight: var(--yor-font-weight-semibold);
-  line-height: var(--yor-line-height-tight);
-  margin-bottom: var(--yor-space-3);
+.h2, h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-3);
 }
 
-.yor-h3, h3 {
-  font-size: var(--yor-font-size-lg);
-  font-weight: var(--yor-font-weight-semibold);
-  line-height: var(--yor-line-height-normal);
-  margin-bottom: var(--yor-space-3);
+.h3, h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-3);
 }
 
 // Text utilities
-.yor-text-xs { font-size: var(--yor-font-size-xs); }
-.yor-text-sm { font-size: var(--yor-font-size-sm); }
-.yor-text-base { font-size: var(--yor-font-size-base); }
-.yor-text-lg { font-size: var(--yor-font-size-lg); }
-.yor-text-xl { font-size: var(--yor-font-size-xl); }
-.yor-text-2xl { font-size: var(--yor-font-size-2xl); }
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
 
 // Font weights
-.yor-font-normal { font-weight: var(--yor-font-weight-normal); }
-.yor-font-medium { font-weight: var(--yor-font-weight-medium); }
-.yor-font-semibold { font-weight: var(--yor-font-weight-semibold); }
-.yor-font-bold { font-weight: var(--yor-font-weight-bold); }
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
 
 // Line heights
-.yor-leading-tight { line-height: var(--yor-line-height-tight); }
-.yor-leading-normal { line-height: var(--yor-line-height-normal); }
-.yor-leading-relaxed { line-height: var(--yor-line-height-relaxed); }
+.leading-tight { line-height: var(--leading-tight); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
 
 // Text alignment
-.yor-text-left { text-align: left; }
-.yor-text-center { text-align: center; }
-.yor-text-right { text-align: right; }
-.yor-text-justify { text-align: justify; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor CSS - Classes Refatoradas</title>
+  
+  <!-- Tokens base -->
+  <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Componentes -->
+  <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
+  
+  <!-- Tema Material -->
+  <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card card--elevated">
+      <div class="card__header">
+        <h2 class="h2">Classes Refatoradas</h2>
+      </div>
+      <div class="card__body">
+        <p class="mb-4">Agora as classes são mais limpas e concisas!</p>
+        
+        <!-- Botões sem prefixo yor- -->
+        <div class="mb-4">
+          <button class="btn btn--primary mr-2">Primary</button>
+          <button class="btn btn--secondary mr-2">Secondary</button>
+          <button class="btn btn--outline mr-2">Outline</button>
+          <button class="btn btn--ghost">Ghost</button>
+        </div>
+        
+        <!-- Tamanhos -->
+        <div class="mb-4">
+          <button class="btn btn--primary btn--sm mr-2">Small</button>
+          <button class="btn btn--primary mr-2">Default</button>
+          <button class="btn btn--primary btn--lg mr-2">Large</button>
+          <button class="btn btn--primary btn--xl">Extra Large</button>
+        </div>
+        
+        <!-- Spacing utilities -->
+        <div class="p-4 bg-gray-100 rounded">
+          <p class="text-sm text-center">
+            Usando classes: <code>.container</code>, <code>.card</code>, <code>.btn</code>, <code>.p-4</code>, <code>.mb-4</code>, etc.
+          </p>
+        </div>
+      </div>
+      <div class="card__footer">
+        <button class="btn btn--primary btn--block">Botão Full Width</button>
+      </div>
+    </div>
+    
+    <!-- Grid System -->
+    <div class="row mt-6">
+      <div class="col col-4">
+        <div class="card">
+          <div class="card__body">
+            <h3 class="h3">Card 1</h3>
+            <p class="text-sm">Coluna 4/12</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="card">
+          <div class="card__body">
+            <h3 class="h3">Card 2</h3>
+            <p class="text-sm">Coluna 4/12</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="card">
+          <div class="card__body">
+            <h3 class="h3">Card 3</h3>
+            <p class="text-sm">Coluna 4/12</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para trocar temas -->
+  <script>
+    function changeTheme(theme) {
+
+        console.log('Tema alterado para:', theme);
+      const themeLink = document.getElementById('theme-css');
+      if (themeLink) {
+        themeLink.href = `../themes/${theme}/dist/${theme}-theme.css`;
+      }
+    }
+  </script>
+  
+  <!-- Controles de tema -->
+  <div class="container mt-6">
+    <div class="card">
+      <div class="card__header">
+        <h3 class="h3">Trocar Tema</h3>
+      </div>
+      <div class="card__body">
+        <button class="btn btn--outline mr-2" onclick="changeTheme('material')">Material</button>
+        <button class="btn btn--outline mr-2" onclick="changeTheme('fluent')">Fluent</button>
+        <button class="btn btn--outline" onclick="changeTheme('cupertino')">Cupertino</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

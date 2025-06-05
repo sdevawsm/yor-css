@@ -1,1 +1,57 @@
-.yor-card{background-color:var(--yor-color-surface);border:var(--yor-border-width) solid var(--yor-border-color);border-radius:var(--yor-border-radius-lg);box-shadow:var(--yor-shadow-sm);overflow:hidden;transition:all var(--yor-transition-normal)}.yor-card__header{padding:var(--yor-space-4) var(--yor-space-6);border-bottom:var(--yor-border-width) solid var(--yor-border-color);background-color:var(--yor-color-surface-variant)}.yor-card__header:last-child{border-bottom:none}.yor-card__body{padding:var(--yor-space-6);color:var(--yor-color-on-surface)}.yor-card__footer{padding:var(--yor-space-4) var(--yor-space-6);border-top:var(--yor-border-width) solid var(--yor-border-color);background-color:var(--yor-color-surface-variant)}.yor-card__footer:first-child{border-top:none}.yor-card--elevated{box-shadow:var(--yor-shadow-md);border:none}.yor-card--elevated:hover{box-shadow:var(--yor-shadow-lg);transform:translateY(-2px)}.yor-card--outlined{box-shadow:none;border:calc(var(--yor-border-width)*2) solid var(--yor-border-color)}.yor-card--filled{background-color:var(--yor-color-surface-variant);border:none;box-shadow:none}.yor-card--clickable{cursor:pointer}.yor-card--clickable:hover{box-shadow:var(--yor-shadow-md);transform:translateY(-1px)}.yor-card--clickable:active{transform:translateY(0)}/*# sourceMappingURL=yor-cards.css.map */
+.card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+.card__header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: var(--border-width) solid var(--border-color);
+  background-color: var(--color-surface-variant);
+}
+.card__header:last-child {
+  border-bottom: none;
+}
+.card__body {
+  padding: var(--space-6);
+  color: var(--color-on-surface);
+}
+.card__footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: var(--border-width) solid var(--border-color);
+  background-color: var(--color-surface-variant);
+}
+.card__footer:first-child {
+  border-top: none;
+}
+.card--elevated {
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+.card--elevated:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.card--outlined {
+  box-shadow: none;
+  border: calc(var(--border-width) * 2) solid var(--border-color);
+}
+.card--filled {
+  background-color: var(--color-surface-variant);
+  border: none;
+  box-shadow: none;
+}
+.card--clickable {
+  cursor: pointer;
+}
+.card--clickable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.card--clickable:active {
+  transform: translateY(0);
+}
+
+/*# sourceMappingURL=yor-cards.css.map */
