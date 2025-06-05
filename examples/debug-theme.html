@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug - Troca de Temas</title>
+  
+  <!-- Tokens base -->
+  <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Componentes -->
+  <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
+  
+  <!-- Link do tema com ID específico -->
+  <link rel="stylesheet" href="../themes/material/dist/material-theme.css" id="theme-css">
+</head>
+<body>
+  <div class="container" style="max-width: 800px; margin: 2rem auto; padding: 1rem;">
+    
+    <!-- Debug info -->
+    <div class="card mb-4" style="background: #f0f0f0; padding: 1rem; margin-bottom: 1rem;">
+      <h3>🔍 Debug Info</h3>
+      <p>Tema atual: <span id="current-theme">material</span></p>
+      <p>Link href: <span id="current-href">../themes/material/dist/material-theme.css</span></p>
+    </div>
+
+    <!-- Controles de tema -->
+    <div class="card mb-4" style="border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem;">
+      <h3>🎨 Trocar Tema</h3>
+      <button class="btn btn--outline mr-2" onclick="changeTheme('material')">Material</button>
+      <button class="btn btn--outline mr-2" onclick="changeTheme('fluent')">Fluent</button>
+      <button class="btn btn--outline mr-2" onclick="changeTheme('cupertino')">Cupertino</button>
+      <button class="btn btn--outline" onclick="resetTheme()">Reset</button>
+    </div>
+    
+    <!-- Componentes para testar -->
+    <div class="card" style="border: 1px solid #ddd; padding: 1rem;">
+      <h2>Teste de Componentes</h2>
+      <p>Estes componentes devem mudar de aparência com os temas:</p>
+      
+      <div style="margin: 1rem 0;">
+        <button class="btn btn--primary mr-2">Primary</button>
+        <button class="btn btn--secondary mr-2">Secondary</button>
+        <button class="btn btn--outline">Outline</button>
+      </div>
+      
+      <div class="card card--elevated" style="margin: 1rem 0; padding: 1rem;">
+        <h3>Card Elevado</h3>
+        <p>Este card deve ter sombra diferente em cada tema.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Função de debug melhorada
+    function changeTheme(theme) {
+      console.log(`🎨 Tentando trocar para tema: ${theme}`);
+      
+      const themeLink = document.getElementById('theme-css');
+      console.log('📎 Link element encontrado:', themeLink);
+      
+      if (themeLink) {
+        const oldHref = themeLink.href;
+        const newHref = `../themes/${theme}/dist/${theme}-theme.css`;
+        
+        console.log('🔗 Href antigo:', oldHref);
+        console.log('🔗 Href novo:', newHref);
+        
+        // Atualizar href
+        themeLink.href = newHref;
+        
+        // Forçar reload do CSS
+        themeLink.onload = function() {
+          console.log('✅ Tema carregado com sucesso!');
+          updateDebugInfo(theme, newHref);
+        };
+        
+        themeLink.onerror = function() {
+          console.error('❌ Erro ao carregar tema:', newHref);
+          alert(`Erro: Não foi possível carregar o tema ${theme}`);
+        };
+        
+        // Atualizar debug info imediatamente
+        updateDebugInfo(theme, newHref);
+        
+      } else {
+        console.error('❌ Elemento #theme-css não encontrado!');
+        alert('Erro: Link do tema não encontrado no HTML');
+      }
+    }
+    
+    function updateDebugInfo(theme, href) {
+      const currentThemeSpan = document.getElementById('current-theme');
+      const currentHrefSpan = document.getElementById('current-href');
+      
+      if (currentThemeSpan) currentThemeSpan.textContent = theme;
+      if (currentHrefSpan) currentHrefSpan.textContent = href;
+    }
+    
+    function resetTheme() {
+      console.log('🔄 Resetando tema...');
+      changeTheme('material');
+    }
+    
+    // Debug inicial
+    console.log('🚀 Página carregada. Verificando elementos...');
+    console.log('📎 Theme link:', document.getElementById('theme-css'));
+    
+    // Verificar se os arquivos CSS existem
+    function checkThemeFiles() {
+      const themes = ['material', 'fluent', 'cupertino'];
+      
+      themes.forEach(theme => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `../themes/${theme}/dist/${theme}-theme.css`;
+        
+        link.onload = () => console.log(`✅ ${theme} theme file exists`);
+        link.onerror = () => console.error(`❌ ${theme} theme file NOT found`);
+        
+        // Não adicionar ao DOM, só testar
+        document.head.appendChild(link);
+        setTimeout(() => document.head.removeChild(link), 100);
+      });
+    }
+    
+    // Executar verificação após 1 segundo
+    setTimeout(checkThemeFiles, 1000);
+  </script>
+</body>
+</html>

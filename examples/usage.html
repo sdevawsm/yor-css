@@ -3,33 +3,1138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yor CSS - Temas</title>
+  <title>Yor CSS - Guia de Uso</title>
   
   <!-- Tokens base (sempre necessário) -->
   <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
   
-  <!-- Componentes que você quer usar -->
+  <!-- Componentes -->
   <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
   <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
   <link rel="stylesheet" href="../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
   
-  <!-- Tema escolhido (sobrescreve os tokens) -->
-  <!-- <link rel="stylesheet" href="../themes/material/material-theme.css"> -->
-  <link rel="stylesheet" href="../themes/fluent/fluent-theme.css">
-  <!-- <link rel="stylesheet" href="../themes/cupertino/dist/cupertino-theme.css"> -->
+  <!-- Tema Material -->
+  <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
 </head>
 <body>
-  <div class="yor-container">
-    <div class="yor-card">
-      <div class="yor-card__header">
-        <h2>Material Design Theme</h2>
-      </div>
-      <div class="yor-card__body">
-        <p>Este card está usando o tema Material Design</p>
-        <button class="yor-btn yor-btn--primary">Primary Button</button>
-        <button class="yor-btn yor-btn--secondary">Secondary Button</button>
+  <!-- Header -->
+  <div class="container mt-6">
+    <div class="card card--elevated mb-6">
+      <div class="card__body text-center p-6">
+        <h1 class="h1 mb-3">Yor CSS - Guia de Uso</h1>
+        <p class="text-lg">Sistema de Design Modular - Como usar cada módulo</p>
       </div>
     </div>
   </div>
+
+  <!-- Tokens Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">📦 Módulo: Tokens</h2>
+        <p class="text-sm">Base obrigatória - Define variáveis CSS para cores, espaçamentos, tipografia, etc.</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              &lt;link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"&gt;
+            </code>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Tokens disponíveis:</h3>
+          <div class="row">
+            <div class="col col-6">
+              <div class="card card--filled p-4">
+                <h4 class="h4 mb-2">Cores</h4>
+                <ul class="text-sm">
+                  <li>--color-primary</li>
+                  <li>--color-secondary</li>
+                  <li>--color-success</li>
+                  <li>--color-warning</li>
+                  <li>--color-error</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col col-6">
+              <div class="card card--filled p-4">
+                <h4 class="h4 mb-2">Espaçamentos</h4>
+                <ul class="text-sm">
+                  <li>--space-1 (4px)</li>
+                  <li>--space-2 (8px)</li>
+                  <li>--space-4 (16px)</li>
+                  <li>--space-6 (24px)</li>
+                  <li>--space-8 (32px)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🔘 Módulo: Buttons</h2>
+        <p class="text-sm">Componentes de botão com diferentes variantes e tamanhos</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              &lt; rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css"&gt;
+            </code>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Variantes:</h3>
+          <div class="mb-4">
+            <button class="btn btn--primary mr-2">Primary</button>
+            <button class="btn btn--secondary mr-2">Secondary</button>
+            <button class="btn btn--outline mr-2">Outline</button>
+            <button class="btn btn--ghost">Ghost</button>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              &lt;button class="btn btn--primary mb-2"&gt;Primary&lt;/button&gt;<br>
+              &lt;button class="btn btn--secondary mb-2"&gt;Secondary&lt;/button&gt;<br>
+              &lt;button class="btn btn--outline mb-2"&gt;Outline&lt;/button&gt;<br>
+              &lt;button class="btn btn--ghost mb-2"&gt;Ghost&lt;/button&gt;
+            </code>
+          </div>
+
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Tamanhos:</h3>
+          <div class="mb-4">
+            <button class="btn btn--primary btn--sm mr-2">Small</button>
+            <button class="btn btn--primary mr-2">Default</button>
+            <button class="btn btn--primary btn--lg mr-2">Large</button>
+            <button class="btn btn--primary btn--xl">Extra Large</button>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              &lt;button class="btn btn--primary btn--sm"&gt;Small&lt;/button&gt;&lt;br&gt;<br>
+              &lt;button class="btn btn--primary"&gt;Default&lt;/button&gt;&lt;br&gt;<br>
+              &lt;button class="btn btn--primary btn--lg"&gt;Large&lt;/button&gt;&lt;br&gt;<br>
+              &lt;button class="btn btn--primary btn--xl"&gt;Extra Large&lt;/button&gt;<br>
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Modificadores:</h3>
+          <div class="mb-4">
+            <button class="btn btn--primary btn--block mb-2">Full Width</button>
+            <button class="btn btn--primary btn--rounded mr-2">Rounded</button>
+            <button class="btn btn--primary btn--square">Square</button>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              &lt;button class="btn btn--primary btn--block"&gt;Full Width&lt;/button&gt;<br>
+              &lt;button class="btn btn--primary btn--rounded"&gt;Rounded&lt;/button&gt;<br>
+              &lt;button class="btn btn--primary btn--square"&gt;Square&lt;/button&gt;
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🃏 Módulo: Cards</h2>
+        <p class="text-sm">Componentes de card com header, body, footer e diferentes estilos</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              &lt;link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css"&gt;
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Estrutura básica:</h3>
+          <div class="row mb-4">
+            <div class="col col-6">
+              <div class="card">
+                <div class="card__header">
+                  <h4 class="h4">Card Header</h4>
+                </div>
+                <div class="card__body">
+                  <p class="text-sm">Este é o corpo do card com conteúdo principal.</p>
+                </div>
+                <div class="card__footer">
+                  <button class="btn btn--primary btn--sm">Action</button>
+                </div>
+              </div>
+            </div>
+            <div class="col col-6 mt-2">
+              <div class="card card--outlined p-4">
+                 <code class="text-sm">
+                  &lt;div class="card"&gt;<br>
+                    &lt;div class="card__header"&gt;<br>
+                      &lt;h4&gt;Card Header&lt;/h4&gt;<br>
+                    &lt;/div&gt;<br>
+                    &lt;div class="card__body"&gt;<br>
+                      &lt;p&gt;Conteúdo...&lt;/p&gt;<br>
+                    &lt;/div&gt;
+                    &lt;div class="card__footer"&gt;<br>
+                      &lt;button&gt;Action&lt;/button&gt;<br>
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Variantes:</h3>
+          <div class="row mb-4">
+            <div class="col col-3">
+              <div class="card card--elevated">
+                <div class="card__body text-center">
+                  <h4 class="h4 mb-2">Elevated</h4>
+                  <p class="text-sm">Com sombra</p>
+                </div>
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="card card--outlined">
+                <div class="card__body text-center">
+                  <h4 class="h4 mb-2">Outlined</h4>
+                  <p class="text-sm">Com borda</p>
+                </div>
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="card card--filled">
+                <div class="card__body text-center">
+                  <h4 class="h4 mb-2">Filled</h4>
+                  <p class="text-sm">Com fundo</p>
+                </div>
+              </div>
+            </div>
+            <div class="col col-3">
+              <div class="card card--clickable">
+                <div class="card__body text-center">
+                  <h4 class="h4 mb-2">Clickable</h4>
+                  <p class="text-sm">Interativo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <div class="card card--elevated">Clique para copiar</div><br>
+              <div class="card card--outlined">Clique para copiar</div><br>
+              <div class="card card--filled">Clique para copiar</div><br>
+              <div class="card card--clickable">Clique para copiar</div>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Containers Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">📦 Módulo: Containers</h2>
+        <p class="text-sm">Sistema de layout com containers responsivos e grid system</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              &lt;link rel="stylesheet" href="packages/yor-containers/dist/yor-containers.css"&gt;
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Containers:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <div class="container">Container responsivo</div><br>
+              <div class="container container--fluid">Container fluido</div><br>
+              <div class="container container--sm">Container pequeno</div><br>
+              <div class="container container--lg">Container grande</div>
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Grid System:</h3>
+          <div class="card card--filled p-4 mb-4">
+            <div class="row">
+              <div class="col col-4">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-4</small>
+                </div>
+              </div>
+              <div class="col col-4">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-4</small>
+                </div>
+              </div>
+              <div class="col col-4">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-4</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <div class="row"><br>
+                <div class="col col-4">33.33%</div><br>
+                <div class="col col-4">33.33%</div><br>
+                <div class="col col-4">33.33%</div><br>
+              </div>
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Colunas disponíveis:</h3>
+          <div class="card card--filled p-4 mb-4">
+            <div class="row mb-2">
+              <div class="col col-12">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-12 (100%)</small>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col col-6">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-6 (50%)</small>
+                </div>
+              </div>
+              <div class="col col-6">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-6 (50%)</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-3">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-3</small>
+                </div>
+              </div>
+              <div class="col col-3">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-3</small>
+                </div>
+              </div>
+              <div class="col col-3">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-3</small>
+                </div>
+              </div>
+              <div class="col col-3">
+                <div class="card card--outlined p-2 text-center">
+                  <small>col-3</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spacing Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">📏 Módulo: Spacing</h2>
+        <p class="text-sm">Utilitários para margin e padding usando tokens de espaçamento</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <link rel="stylesheet" href="packages/yor-spacing/dist/yor-spacing.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Classes de Margin:</h3>
+          <div class="row">
+            <div class="col col-6">
+              <div class="card card--filled p-4">
+                <h4 class="h4 mb-3">Todas as direções:</h4>
+                <ul class="text-sm">
+                  <li><code>.m-0</code> - margin: 0</li>
+                  <li><code>.m-1</code> - margin: 4px</li>
+                  <li><code>.m-2</code> - margin: 8px</li>
+                  <li><code>.m-4</code> - margin: 16px</li>
+                  <li><code>.m-6</code> - margin: 24px</li>
+                  <li><code>.m-8</code> - margin: 32px</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col col-6">
+              <div class="card card--filled p-4">
+                <h4 class="h4 mb-3">Direções específicas:</h4>
+                <ul class="text-sm">
+                  <li><code>.mt-4</code> - margin-top</li>
+                  <li><code>.mr-4</code> - margin-right</li>
+                  <li><code>.mb-4</code> - margin-bottom</li>
+                  <li><code>.ml-4</code> - margin-left</li>
+                  <li><code>.mx-4</code> - margin horizontal</li>
+                  <li><code>.my-4</code> - margin vertical</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Exemplo visual:</h3>
+          <div class="card card--outlined p-4">
+            <div class="card card--filled p-2 mb-4">
+              <span class="text-sm">Elemento com .mb-4</span>
+            </div>
+            <div class="card card--filled p-2 mt-6">
+              <span class="text-sm">Elemento com .mt-6</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Classes de Padding:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              .p-0, .p-1, .p-2, .p-4, .p-6, .p-8<br>
+              .pt-4, .pr-4, .pb-4, .pl-4<br>
+              .px-4 (horizontal), .py-4 (vertical)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography Module -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">📝 Módulo: Typography</h2>
+        <p class="text-sm">Sistema tipográfico com headings, textos e utilitários</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-4">
+          <h3 class="h3 mb-3">Como usar:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <link rel="stylesheet" href="packages/yor-typography/dist/yor-typography.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Headings:</h3>
+          <div class="card card--filled p-4 mb-4">
+            <h1 class="h1">Heading 1 (.h1)</h1>
+            <h2 class="h2">Heading 2 (.h2)</h2>
+            <h3 class="h3">Heading 3 (.h3)</h3>
+            <h4 class="h4">Heading 4 (.h4)</h4>
+            <h5 class="h5">Heading 5 (.h5)</h5>
+            <h6 class="h6">Heading 6 (.h6)</h6>
+          </div>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <h1 class="h1">Heading 1</h1><br>
+              <h2 class="h2">Heading 2</h2><br>
+              <h3 class="h3">Heading 3</h3><br>
+              <p class="h4">Qualquer elemento pode usar .h4</p>
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Tamanhos de texto:</h3>
+          <div class="card card--filled p-4 mb-4">
+            <p class="text-xs">Extra small text (.text-xs)</p>
+            <p class="text-sm">Small text (.text-sm)</p>
+            <p class="text-base">Base text (.text-base)</p>
+            <p class="text-lg">Large text (.text-lg)</p>
+            <p class="text-xl">Extra large text (.text-xl)</p>
+            <p class="text-2xl">2X large text (.text-2xl)</p>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Utilitários tipográficos:</h3>
+          <div class="card card--filled p-4 mb-4">
+            <p class="font-light">Texto light (.font-light)</p>
+            <p class="font-normal">Texto normal (.font-normal)</p>
+            <p class="font-medium">Texto medium (.font-medium)</p>
+            <p class="font-semibold">Texto semibold (.font-semibold)</p>
+            <p class="font-bold">Texto bold (.font-bold)</p>
+            <p class="text-center">Texto centralizado (.text-center)</p>
+            <p class="text-right">Texto à direita (.text-right)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Themes Section -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🎨 Sistema de Temas</h2>
+        <p class="text-sm">Como aplicar diferentes temas ao seu projeto</p>
+      </div>
+      <div class="card__body">
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Temas disponíveis:</h3>
+          <div class="row">
+            <div class="col col-4">
+              <div class="card card--outlined p-4 text-center">
+                <h4 class="h4 mb-2">Material</h4>
+                <p class="text-sm mb-3">Google Material Design</p>
+                <div class="card card--outlined p-2">
+                  <code class="text-xs">
+                    themes/material/dist/<br>material-theme.css
+                  </code>
+                </div>
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="card card--outlined p-4 text-center">
+                <h4 class="h4 mb-2">Fluent</h4>
+                <p class="text-sm mb-3">Microsoft Fluent Design</p>
+                <div class="card card--outlined p-2">
+                  <code class="text-xs">
+                    themes/fluent/dist/<br>fluent-theme.css
+                  </code>
+                </div>
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="card card--outlined p-4 text-center">
+                <h4 class="h4 mb-2">Cupertino</h4>
+                <p class="text-sm mb-3">Apple Design Language</p>
+                <div class="card card--outlined p-2">
+                  <code class="text-xs">
+                    themes/cupertino/dist/<br>cupertino-theme.css
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Como usar temas:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <!-- 1. Sempre incluir tokens primeiro --><br>
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"><br><br>
+              
+              <!-- 2. Incluir componentes necessários --><br>
+              <link rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css"><br>
+              <link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css"><br><br>
+              
+              <!-- 3. Escolher um tema (sobrescreve os tokens) --><br>
+              <link rel="stylesheet" href="themes/material/dist/material-theme.css">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Examples -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">💡 Exemplos de Uso Completo</h2>
+        <p class="text-sm">Diferentes formas de usar o Yor CSS em seus projetos</p>
+      </div>
+      <div class="card__body">
+        
+        <div class="mb-6">
+          <h3 class="h3 mb-3">1. Uso Mínimo (apenas tokens + botões):</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"><br>
+              <link rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css"><br>
+              <link rel="stylesheet" href="themes/material/dist/material-theme.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">2. Uso Completo (todos os módulos):</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <!-- Base --><br>
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"><br><br>
+              
+              <!-- Componentes --><br>
+              <link rel="stylesheet" href="packages/yor-buttons/dist/yor-buttons.css"><br>
+              <link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css"><br>
+              <link rel="stylesheet" href="packages/yor-containers/dist/yor-containers.css"><br>
+              <link rel="stylesheet" href="packages/yor-spacing/dist/yor-spacing.css"><br>
+              <link rel="stylesheet" href="packages/yor-typography/dist/yor-typography.css"><br><br>
+              
+              <!-- Tema --><br>
+              <link rel="stylesheet" href="themes/fluent/dist/fluent-theme.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">3. Uso Seletivo (apenas o que precisa):</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              <!-- Para um projeto que só usa cards e tipografia --><br>
+              <link rel="stylesheet" href="packages/yor-tokens/dist/yor-tokens.css"><br>
+              <link rel="stylesheet" href="packages/yor-cards/dist/yor-cards.css"><br>
+              <link rel="stylesheet" href="packages/yor-typography/dist/yor-typography.css"><br>
+              <link rel="stylesheet" href="themes/cupertino/dist/cupertino-theme.css">
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">4. Troca dinâmica de temas:</h3>
+          <div class="card card--outlined p-4 mb-4">
+            <code class="text-sm">
+              <!-- HTML --><br>
+              <link rel="stylesheet" href="themes/material/dist/material-theme.css" id="theme-css"><br><br>
+              
+              <!-- JavaScript --><br>
+              function changeTheme(themeName) {<br>
+                const themeLink = document.getElementById('theme-css');<br>
+                themeLink.href = `themes/${themeName}/dist/${themeName}-theme.css`;<br>
+              }
+            </code>
+          </div>
+          <div class="text-center">
+            <button class="btn btn--outline btn--sm mr-2" onclick="changeTheme('material')">Material</button>
+            <button class="btn btn--outline btn--sm mr-2" onclick="changeTheme('fluent')">Fluent</button>
+            <button class="btn btn--outline btn--sm" onclick="changeTheme('cupertino')">Cupertino</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Best Practices -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">✅ Melhores Práticas</h2>
+        <p class="text-sm">Dicas para usar o Yor CSS de forma eficiente</p>
+      </div>
+      <div class="card__body">
+        
+        <div class="mb-6">
+          <h3 class="h3 mb-3">📋 Ordem de importação:</h3>
+          <div class="card card--filled p-4">
+            <ol class="text-sm">
+              <li class="mb-2"><strong>1. Tokens</strong> - Sempre primeiro (obrigatório)</li>
+              <li class="mb-2"><strong>2. Componentes</strong> - Na ordem que preferir</li>
+              <li class="mb-2"><strong>3. Tema</strong> - Sempre por último</li>
+              <li class="mb-2"><strong>4. CSS customizado</strong> - Após o tema (se necessário)</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">🎯 Performance:</h3>
+          <div class="row">
+            <div class="col col-6">
+              <div class="card card--outlined p-4">
+                <h4 class="h4 mb-2 text-green-600">✅ Faça</h4>
+                <ul class="text-sm">
+                  <li>• Use apenas módulos necessários</li>
+                  <li>• Combine arquivos CSS em produção</li>
+                  <li>• Use CDN para arquivos estáticos</li>
+                  <li>• Minifique os arquivos CSS</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col col-6">
+              <div class="card card--outlined p-4">
+                <h4 class="h4 mb-2 text-red-600">❌ Evite</h4>
+                <ul class="text-sm">
+                  <li>• Importar todos os módulos se não usar</li>
+                  <li>• Sobrescrever muitas variáveis CSS</li>
+                  <li>• Misturar múltiplos temas</li>
+                  <li>• Ignorar a ordem de importação</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">🔧 Customização:</h3>
+          <div class="card card--outlined p-4">
+            <h4 class="h4 mb-3">Para customizar cores ou espaçamentos:</h4>
+            <code class="text-sm">
+              /* Seu CSS customizado - após o tema */<br>
+              :root {<br>
+                --color-primary: #your-color !important;<br>
+                --space-custom: 20px;<br>
+              }<br><br>
+              
+              /* Ou crie variantes específicas */<br>
+              .btn--custom {<br>
+                background-color: var(--color-primary);<br>
+                border-radius: var(--radius-lg);<br>
+              }
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build Instructions -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🔨 Como Fazer Build</h2>
+        <p class="text-sm">Instruções para desenvolvedores que querem modificar o Yor CSS</p>
+      </div>
+      <div class="card__body">
+        
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Comandos disponíveis:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              # Build completo<br>
+              npm run build<br><br>
+              
+              # Build apenas packages<br>
+              npm run build:packages<br><br>
+              
+              # Build apenas temas<br>
+              npm run build:themes<br><br>
+              
+              # Build específico<br>
+              npm run build:tokens<br>
+              npm run build:buttons<br>
+              npm run build:cards
+            </code>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Estrutura de arquivos:</h3>
+          <div class="card card--outlined p-4">
+            <code class="text-sm">
+              yor-css/<br>
+              ├── packages/<br>
+              │   ├── yor-tokens/src/ → dist/<br>
+              │   ├── yor-buttons/src/ → dist/<br>
+              │   └── yor-cards/src/ → dist/<br>
+              ├── themes/<br>
+              │   ├── material/src/ → dist/<br>
+              │   ├── fluent/src/ → dist/<br>
+              │   └── cupertino/src/ → dist/<br>
+              └── examples/<br>
+                  ├── usage.html<br>
+                  └── refactored-usage.html
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Reference -->
+  <div class="container mb-8">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">📚 Referência Rápida</h2>
+        <p class="text-sm">Cheat sheet com as classes mais usadas</p>
+      </div>
+      <div class="card__body">
+        
+        <div class="row">
+          <div class="col col-3">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Botões</h4>
+              <ul class="text-xs">
+                <li>.btn</li>
+                <li>.btn--primary</li>
+                <li>.btn--secondary</li>
+                <li>.btn--outline</li>
+                <li>.btn--ghost</li>
+                <li>.btn--sm/lg/xl</li>
+                <li>.btn--block</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col col-3">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Cards</h4>
+              <ul class="text-xs">
+                <li>.card</li>
+                <li>.card__header</li>
+                <li>.card__body</li>
+                <li>.card__footer</li>
+                <li>.card--elevated</li>
+                <li>.card--outlined</li>
+                <li>.card--filled</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col col-3">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Layout</h4>
+              <ul class="text-xs">
+                <li>.container</li>
+                <li>.row</li>
+                <li>.col</li>
+                <li>.col-1 até .col-12</li>
+                <li>.container--fluid</li>
+                <li>.container--sm/lg</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col col-3">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Spacing</h4>
+              <ul class="text-xs">
+                <li>.m-0/1/2/4/6/8</li>
+                <li>.p-0/1/2/4/6/8</li>
+                <li>.mt/mr/mb/ml-*</li>
+                <li>.pt/pr/pb/pl-*</li>
+                <li>.mx/my-*</li>
+                <li>.px/py-*</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col col-6">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Tipografia</h4>
+              <ul class="text-xs">
+                <li>.h1, .h2, .h3, .h4, .h5, .h6</li>
+                <li>.text-xs/sm/base/lg/xl/2xl</li>
+                <li>.font-light/normal/medium/semibold/bold</li>
+                <li>.text-left/center/right</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col col-6">
+            <div class="card card--filled p-4">
+              <h4 class="h4 mb-3">Utilitários</h4>
+              <ul class="text-xs">
+                <li>.rounded</li>
+                <li>.shadow-sm/md/lg</li>
+                <li>.bg-primary/secondary</li>
+                <li>.text-primary/secondary</li>
+                <li>.border</li>
+                <li>.hidden/block</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="container mb-8">
+    <div class="card card--elevated text-center p-6">
+      <h3 class="h3 mb-3">🎉 Pronto para usar o Yor CSS!</h3>
+      <p class="text-base mb-4">
+        Agora você conhece todos os módulos e como usá-los. 
+        Comece com o que precisa e expanda conforme necessário.
+      </p>
+      <div class="mb-4">
+        <button class="btn btn--primary mr-2">Começar Projeto</button>
+        <button class="btn btn--outline">Ver Exemplos</button>
+      </div>
+      <p class="text-sm">
+        <strong>Lembre-se:</strong> Tokens → Componentes → Tema → CSS Customizado
+      </p>
+    </div>
+  </div>
+
+  <!-- JavaScript para troca de temas -->
+  <script>
+    // Função para trocar tema (demonstração)
+    function changeTheme(themeName) {
+      console.log(`🎨 Trocando para tema: ${themeName}`);
+      
+      const themeLink = document.getElementById('theme-css') || 
+                       document.querySelector('link[href*="theme"]');
+      
+      if (themeLink) {
+        const newHref = `../themes/${themeName}/dist/${themeName}-theme.css`;
+        console.log(`🔗 Carregando: ${newHref}`);
+        
+        themeLink.onload = function() {
+          console.log(`✅ Tema ${themeName} carregado!`);
+          
+          // Feedback visual
+          const notification = document.createElement('div');
+          notification.innerHTML = `
+            <div style="position: fixed; top: 20px; right: 20px; 
+                        background: var(--color-primary); color: white; 
+                        padding: 12px 20px; border-radius: 8px; 
+                        box-shadow: var(--shadow-lg); z-index: 9999;
+                        font-size: 14px; font-weight: 500;">
+              ✅ Tema ${themeName} aplicado!
+            </div>
+          `;
+          
+          document.body.appendChild(notification);
+          
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 3000);
+        };
+        
+        themeLink.onerror = function() {
+          console.error(`❌ Erro ao carregar tema: ${themeName}`);
+          alert(`Erro: Tema ${themeName} não encontrado!\nVerifique se o arquivo existe: ${newHref}`);
+        };
+        
+        themeLink.href = newHref;
+      } else {
+        console.error('❌ Link do tema não encontrado!');
+        alert('Erro: Não foi possível encontrar o link do tema no HTML');
+      }
+    }
+    
+    // Log de inicialização
+    console.log('📖 Yor CSS Usage Guide carregado!');
+    console.log('🎨 Use changeTheme("material"|"fluent"|"cupertino") para trocar temas');
+    
+    // Verificar se todos os módulos foram carregados
+    document.addEventListener('DOMContentLoaded', function() {
+      const requiredStyles = [
+        'yor-buttons',
+        'yor-cards',
+        'yor-containers',
+        'yor-spacing',
+        'yor-typography'
+      ];
+      
+      console.log('🔍 Verificando módulos carregados...');
+      
+      requiredStyles.forEach(module => {
+        const link = document.querySelector(`link[href*="${module}"]`);
+        if (link) {
+          console.log(`✅ ${module}: Carregado`);
+        } else {
+          console.warn(`⚠️ ${module}: Não encontrado`);
+        }
+      });
+      
+      // Verificar tema atual
+      const themeLink = document.querySelector('link[href*="theme"]');
+      if (themeLink) {
+        const themeName = themeLink.href.match(/themes\/(\w+)\//)?.[1] || 'desconhecido';
+        console.log(`🎨 Tema atual: ${themeName}`);
+      }
+      
+      console.log('✅ Verificação completa!');
+    });
+    
+    // Função para copiar código dos exemplos
+    function copyCode(element) {
+      const code = element.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        // Feedback visual
+        const originalText = element.innerHTML;
+        element.innerHTML = '📋 Copiado!';
+        element.style.background = 'var(--color-success)';
+        element.style.color = 'white';
+        
+        setTimeout(() => {
+          element.innerHTML = originalText;
+          element.style.background = '';
+          element.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Erro ao copiar:', err);
+        alert('Erro ao copiar código. Use Ctrl+C manualmente.');
+      });
+    }
+    
+    // Adicionar funcionalidade de cópia aos blocos de código
+    document.addEventListener('DOMContentLoaded', function() {
+      const codeBlocks = document.querySelectorAll('code');
+      
+      codeBlocks.forEach(code => {
+        // Adicionar cursor pointer e título
+        code.style.cursor = 'pointer';
+        code.title = 'Clique para copiar';
+        
+        // Adicionar evento de clique
+        code.addEventListener('click', function() {
+          copyCode(this);
+        });
+        
+        // Adicionar hover effect
+        code.addEventListener('mouseenter', function() {
+          this.style.background = 'var(--color-primary-light, #e3f2fd)';
+        });
+        
+        code.addEventListener('mouseleave', function() {
+          this.style.background = '';
+        });
+      });
+    });
+    
+    // Função para demonstrar componentes interativos
+    function demonstrateInteractivity() {
+      console.log('🎭 Demonstrando interatividade dos componentes...');
+      
+      // Animar botões
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach((btn, index) => {
+        setTimeout(() => {
+          btn.style.transform = 'scale(1.05)';
+          btn.style.transition = 'transform 0.2s ease';
+          
+          setTimeout(() => {
+            btn.style.transform = 'scale(1)';
+          }, 200);
+        }, index * 100);
+      });
+      
+      // Destacar cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.boxShadow = 'var(--shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1))';
+          card.style.transition = 'box-shadow 0.3s ease';
+          
+          setTimeout(() => {
+            card.style.boxShadow = '';
+          }, 500);
+        }, index * 50);
+      });
+    }
+    
+    // Adicionar botão de demonstração (Easter egg)
+    document.addEventListener('DOMContentLoaded', function() {
+      // Adicionar botão secreto no footer
+      const footer = document.querySelector('.container:last-child .card');
+      if (footer) {
+        const demoButton = document.createElement('button');
+        demoButton.className = 'btn btn--ghost btn--sm mt-4';
+        demoButton.textContent = '✨ Demonstrar Interatividade';
+        demoButton.onclick = demonstrateInteractivity;
+        
+        footer.querySelector('.card').appendChild(demoButton);
+      }
+    });
+    
+    // Função para validar estrutura HTML
+    function validateStructure() {
+      console.log('🔍 Validando estrutura HTML...');
+      
+      const issues = [];
+      
+      // Verificar se cards têm estrutura correta
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        const hasHeader = card.querySelector('.card__header');
+        const hasBody = card.querySelector('.card__body');
+        const hasFooter = card.querySelector('.card__footer');
+        
+        if (!hasBody && !hasHeader && !hasFooter) {
+          issues.push(`Card ${index + 1}: Sem estrutura interna definida`);
+        }
+      });
+      
+      // Verificar se containers têm rows e cols corretas
+      const rows = document.querySelectorAll('.row');
+      rows.forEach((row, index) => {
+        const cols = row.querySelectorAll('.col');
+        if (cols.length === 0) {
+          issues.push(`Row ${index + 1}: Sem colunas`);
+        }
+      });
+      
+      // Verificar se botões têm classes base
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach((btn, index) => {
+        if (!btn.classList.contains('btn')) {
+          issues.push(`Button ${index + 1}: Sem classe .btn`);
+        }
+      });
+      
+      if (issues.length === 0) {
+        console.log('✅ Estrutura HTML válida!');
+      } else {
+        console.warn('⚠️ Problemas encontrados:', issues);
+      }
+      
+      return issues;
+    }
+    
+    // Executar validação após carregamento
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(validateStructure, 2000);
+    });
+    
+    // Adicionar informações de debug no console
+    console.log(`
+    🎨 Yor CSS Usage Guide
+    =====================
+    
+    Comandos disponíveis:
+    • changeTheme('material'|'fluent'|'cupertino') - Trocar tema
+    • demonstrateInteractivity() - Animar componentes
+    • validateStructure() - Validar HTML
+    
+    Módulos carregados nesta página:
+    • yor-tokens (obrigatório)
+    • yor-buttons
+    • yor-cards  
+    • yor-containers
+    • yor-spacing
+    • yor-typography
+    • material-theme (padrão)
+    
+    Dica: Clique nos blocos de código para copiar!
+    `);
+  </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yor CSS - Classes Refatoradas</title>
+  <title>Yor CSS - Teste de Temas</title>
   
   <!-- Tokens base -->
   <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
@@ -15,99 +15,309 @@
   <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
   <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
   
-  <!-- Tema Material -->
-  <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
+  <!-- Tema inicial (Material) -->
+  <link rel="stylesheet" href="../themes/material/dist/material-theme.css" id="theme-css">
 </head>
 <body>
-  <div class="container">
-    <div class="card card--elevated">
+  <!-- Debug Info Card -->
+  <div class="container mt-4">
+    <div class="card card--outlined mb-6">
       <div class="card__header">
-        <h2 class="h2">Classes Refatoradas</h2>
+        <h3 class="h3">🔍 Debug - Informações do Tema</h3>
       </div>
       <div class="card__body">
-        <p class="mb-4">Agora as classes são mais limpas e concisas!</p>
-        
-        <!-- Botões sem prefixo yor- -->
+        <div class="row">
+          <div class="col col-6">
+            <p class="text-sm"><strong>Tema Atual:</strong> <span id="current-theme" class="font-bold text-primary">material</span></p>
+          </div>
+          <div class="col col-6">
+            <p class="text-sm"><strong>Status:</strong> <span id="theme-status" class="font-bold">Carregado</span></p>
+          </div>
+        </div>
+        <p class="text-xs mt-2"><strong>Arquivo:</strong> <code id="current-href" class="text-xs">../themes/material/dist/material-theme.css</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Switcher -->
+  <div class="container">
+    <div class="card card--elevated mb-6">
+      <div class="card__header">
+        <h2 class="h2">🎨 Seletor de Temas</h2>
+        <p class="text-sm">Clique nos botões abaixo para trocar o tema e ver as mudanças em tempo real:</p>
+      </div>
+      <div class="card__body">
         <div class="mb-4">
-          <button class="btn btn--primary mr-2">Primary</button>
-          <button class="btn btn--secondary mr-2">Secondary</button>
-          <button class="btn btn--outline mr-2">Outline</button>
-          <button class="btn btn--ghost">Ghost</button>
+          <button class="btn btn--primary mr-3" onclick="changeTheme('material')" id="btn-material">
+            Material Design
+          </button>
+          <button class="btn btn--secondary mr-3" onclick="changeTheme('fluent')" id="btn-fluent">
+            Microsoft Fluent
+          </button>
+          <button class="btn btn--outline" onclick="changeTheme('cupertino')" id="btn-cupertino">
+            Apple Cupertino
+          </button>
         </div>
+        <button class="btn btn--ghost btn--sm" onclick="resetTheme()">
+          🔄 Reset para Material
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Component Showcase -->
+  <div class="container">
+    <div class="card mb-6">
+      <div class="card__header">
+        <h2 class="h2">🧪 Showcase de Componentes</h2>
+        <p class="text-sm">Estes componentes devem mudar de aparência conforme o tema selecionado:</p>
+      </div>
+      <div class="card__body">
         
-        <!-- Tamanhos -->
-        <div class="mb-4">
-          <button class="btn btn--primary btn--sm mr-2">Small</button>
-          <button class="btn btn--primary mr-2">Default</button>
-          <button class="btn btn--primary btn--lg mr-2">Large</button>
-          <button class="btn btn--primary btn--xl">Extra Large</button>
+        <!-- Buttons Section -->
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Botões</h3>
+          <div class="mb-4">
+            <button class="btn btn--primary mr-2">Primary</button>
+            <button class="btn btn--secondary mr-2">Secondary</button>
+            <button class="btn btn--outline mr-2">Outline</button>
+            <button class="btn btn--ghost">Ghost</button>
+          </div>
+          <div class="mb-4">
+            <button class="btn btn--primary btn--sm mr-2">Small</button>
+            <button class="btn btn--primary mr-2">Default</button>
+            <button class="btn btn--primary btn--lg mr-2">Large</button>
+            <button class="btn btn--primary btn--xl">Extra Large</button>
+          </div>
         </div>
-        
-        <!-- Spacing utilities -->
-        <div class="p-4 bg-gray-100 rounded">
-          <p class="text-sm text-center">
-            Usando classes: <code>.container</code>, <code>.card</code>, <code>.btn</code>, <code>.p-4</code>, <code>.mb-4</code>, etc.
-          </p>
+
+        <!-- Cards Section -->
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Cards</h3>
+          <div class="row">
+            <div class="col col-4">
+              <div class="card card--elevated">
+                <div class="card__body">
+                  <h4 class="h3 mb-2">Card Elevado</h4>
+                  <p class="text-sm">Este card tem sombra que muda conforme o tema.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="card card--outlined">
+                <div class="card__body">
+                  <h4 class="h3 mb-2">Card com Borda</h4>
+                  <p class="text-sm">Este card tem borda que se adapta ao tema.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="card card--filled">
+                <div class="card__body">
+                  <h4 class="h3 mb-2">Card Preenchido</h4>
+                  <p class="text-sm">Este card tem fundo que muda com o tema.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Typography Section -->
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Tipografia</h3>
+          <h1 class="h1">Heading 1 - Muda com o tema</h1>
+          <h2 class="h2">Heading 2 - Fonte e peso adaptáveis</h2>
+          <h3 class="h3">Heading 3 - Estilos temáticos</h3>
+          <p class="text-base mb-2">Parágrafo normal que se adapta às cores do tema selecionado.</p>
+          <p class="text-sm">Texto pequeno com cores secundárias do tema.</p>
+        </div>
+
+        <!-- Interactive Elements -->
+        <div class="mb-6">
+          <h3 class="h3 mb-3">Elementos Interativos</h3>
+          <div class="card card--outlined p-4">
+            <p class="mb-3">Teste os estados de hover e focus nos elementos abaixo:</p>
+            <div class="mb-3">
+              <button class="btn btn--primary mr-2">Hover me</button>
+              <button class="btn btn--outline mr-2">Focus me</button>
+              <button class="btn btn--ghost">Click me</button>
+            </div>
+            <div class="card card--clickable p-3">
+              <p class="text-sm mb-0">Este card é clicável - teste o hover!</p>
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="card__footer">
-        <button class="btn btn--primary btn--block">Botão Full Width</button>
-      </div>
-    </div>
-    
-    <!-- Grid System -->
-    <div class="row mt-6">
-      <div class="col col-4">
-        <div class="card">
-          <div class="card__body">
-            <h3 class="h3">Card 1</h3>
-            <p class="text-sm">Coluna 4/12</p>
-          </div>
-        </div>
-      </div>
-      <div class="col col-4">
-        <div class="card">
-          <div class="card__body">
-            <h3 class="h3">Card 2</h3>
-            <p class="text-sm">Coluna 4/12</p>
-          </div>
-        </div>
-      </div>
-      <div class="col col-4">
-        <div class="card">
-          <div class="card__body">
-            <h3 class="h3">Card 3</h3>
-            <p class="text-sm">Coluna 4/12</p>
-          </div>
-        </div>
+        <button class="btn btn--primary btn--block">
+          Botão Full Width - Muda com o tema
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Script para trocar temas -->
-  <script>
-    function changeTheme(theme) {
-
-        console.log('Tema alterado para:', theme);
-      const themeLink = document.getElementById('theme-css');
-      if (themeLink) {
-        themeLink.href = `../themes/${theme}/dist/${theme}-theme.css`;
-      }
-    }
-  </script>
-  
-  <!-- Controles de tema -->
-  <div class="container mt-6">
+  <!-- Theme Comparison -->
+  <div class="container mb-6">
     <div class="card">
       <div class="card__header">
-        <h3 class="h3">Trocar Tema</h3>
+        <h3 class="h3">📊 Comparação de Temas</h3>
       </div>
       <div class="card__body">
-        <button class="btn btn--outline mr-2" onclick="changeTheme('material')">Material</button>
-        <button class="btn btn--outline mr-2" onclick="changeTheme('fluent')">Fluent</button>
-        <button class="btn btn--outline" onclick="changeTheme('cupertino')">Cupertino</button>
+        <div class="row">
+          <div class="col col-4">
+            <div class="card card--outlined p-4 text-center">
+              <h4 class="h3 mb-2">Material</h4>
+              <p class="text-sm mb-3">Google's Material Design</p>
+              <ul class="text-xs text-left">
+                <li>• Sombras pronunciadas</li>
+                <li>• Cores vibrantes</li>
+                <li>• Bordas arredondadas</li>
+                <li>• Fonte Roboto</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col col-4">
+            <div class="card card--outlined p-4 text-center">
+              <h4 class="h3 mb-2">Fluent</h4>
+              <p class="text-sm mb-3">Microsoft's Fluent Design</p>
+              <ul class="text-xs text-left">
+                <li>• Sombras suaves</li>
+                <li>• Cores neutras</li>
+                <li>• Bordas sutis</li>
+                <li>• Fonte Segoe UI</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col col-4">
+            <div class="card card--outlined p-4 text-center">
+              <h4 class="h3 mb-2">Cupertino</h4>
+              <p class="text-sm mb-3">Apple's Design Language</p>
+              <ul class="text-xs text-left">
+                <li>• Sombras mínimas</li>
+                <li>• Cores do sistema</li>
+                <li>• Bordas arredondadas</li>
+                <li>• Fonte SF Pro</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- JavaScript para troca de temas -->
+  <script>
+    // Estado atual do tema
+    let currentTheme = 'material';
+    
+    // Função principal para trocar tema
+    function changeTheme(themeName) {
+      console.log(`🎨 Trocando para tema: ${themeName}`);
+      
+      // Atualizar status
+      updateStatus('Carregando...', 'loading');
+      
+      const themeLink = document.getElementById('theme-css');
+      
+      if (!themeLink) {
+        console.error('❌ Link do tema não encontrado!');
+        updateStatus('Erro: Link não encontrado', 'error');
+        return;
+      }
+      
+      const newHref = `../themes/${themeName}/dist/${themeName}-theme.css`;
+      console.log(`🔗 Carregando: ${newHref}`);
+      
+      // Configurar callbacks
+      themeLink.onload = function() {
+        console.log(`✅ Tema ${themeName} carregado com sucesso!`);
+        currentTheme = themeName;
+        updateUI(themeName, newHref);
+        updateStatus('Carregado', 'success');
+        updateActiveButton(themeName);
+      };
+      
+      themeLink.onerror = function() {
+        console.error(`❌ Erro ao carregar tema: ${themeName}`);
+        updateStatus(`Erro: ${themeName} não encontrado`, 'error');
+        alert(`Erro: Não foi possível carregar o tema ${themeName}\nVerifique se o arquivo existe: ${newHref}`);
+      };
+      
+      // Aplicar novo tema
+      themeLink.href = newHref;
+    }
+    
+    // Atualizar interface
+    function updateUI(theme, href) {
+      const themeSpan = document.getElementById('current-theme');
+      const hrefCode = document.getElementById('current-href');
+      
+      if (themeSpan) themeSpan.textContent = theme;
+      if (hrefCode) hrefCode.textContent = href;
+      
+      // Adicionar classe ao body para CSS específico se necessário
+      document.body.className = document.body.className.replace(/theme-\w+/g, '');
+      document.body.classList.add(`theme-${theme}`);
+    }
+    
+    // Atualizar status
+    function updateStatus(message, type) {
+      const statusSpan = document.getElementById('theme-status');
+      if (statusSpan) {
+        statusSpan.textContent = message;
+        statusSpan.className = `font-bold ${type === 'error' ? 'text-red-500' : type === 'loading' ? 'text-yellow-500' : 'text-green-500'}`;
+      }
+    }
+    
+    // Atualizar botão ativo
+    function updateActiveButton(activeTheme) {
+      // Remover estado ativo de todos os botões
+      ['material', 'fluent', 'cupertino'].forEach(theme => {
+        const btn = document.getElementById(`btn-${theme}`);
+        if (btn) {
+          btn.className = btn.className.replace(/btn--primary|btn--secondary|btn--outline/g, '');
+          btn.classList.add(theme === activeTheme ? 'btn--primary' : 'btn--outline');
+        }
+      });
+    }
+    
+    // Reset para tema padrão
+    function resetTheme() {
+      console.log('🔄 Resetando para tema Material...');
+      changeTheme('material');
+    }
+    
+    // Verificar arquivos de tema na inicialização
+    function checkThemeFiles() {
+      const themes = ['material', 'fluent', 'cupertino'];
+      
+      console.log('🔍 Verificando arquivos de tema...');
+      
+      themes.forEach(theme => {
+        const img = new Image();
+        img.onload = () => console.log(`✅ ${theme} theme: OK`);
+        img.onerror = () => console.warn(`⚠️ ${theme} theme: Arquivo pode não existir`);
+        img.src = `../themes/${theme}/dist/${theme}-theme.css`;
+      });
+    }
+    
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 Página carregada - Inicializando theme switcher...');
+      
+      // Verificar arquivos
+      setTimeout(checkThemeFiles, 1000);
+      
+      // Configurar botão ativo inicial
+      updateActiveButton('material');
+      
+      // Atualizar UI inicial
+      updateUI('material', '../themes/material/dist/material-theme.css');
+      updateStatus('Carregado', 'success');
+      
+      console.log('✅ Theme switcher inicializado!');
+    });
+  </script>
 </body>
 </html>
