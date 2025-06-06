@@ -8,7 +8,9 @@
   <!-- Tokens base (sempre necessário) -->
   <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
   
-  30
+  <!-- Theme Manager -->
+  <script src="../packages/yor-tokens/dist/theme.js"></script>
+  
   <!-- Componentes -->
   <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
   <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
@@ -28,6 +30,21 @@
       <div class="flex gap-2 mb-4">
         <span class="bg-primary text-white text-xs px-2 py-1 rounded">v1.0.0</span>
         <span class="bg-success text-white text-xs px-2 py-1 rounded">Stable</span>
+      </div>
+      
+      <!-- Controle de Tema -->
+      <div class="card card--outlined p-3 mb-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-medium">Tema</span>
+          <button onclick="toggleTheme()" class="btn btn--ghost btn--sm">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="changeTheme('light')" class="btn btn--outline btn--sm flex-1">Claro</button>
+          <button onclick="changeTheme('dark')" class="btn btn--outline btn--sm flex-1">Escuro</button>
+          <button onclick="changeTheme('system')" class="btn btn--outline btn--sm flex-1">Sistema</button>
+        </div>
       </div>
     </div>
     
@@ -1340,10 +1357,25 @@ function changeTheme(themeName) {
 
   <!-- JavaScript para troca de temas -->
   <script>
+    // Atualiza ícone do tema
+    function updateThemeIcon() {
+      const icon = document.querySelector('.theme-icon');
+      const currentTheme = window.yorTheme.getCurrentTheme();
+      icon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Atualiza ícone quando o tema muda
+    window.addEventListener('yor-theme-change', updateThemeIcon);
+    updateThemeIcon(); // Atualiza ícone inicial
+
     // Função para trocar tema (demonstração)
     function changeTheme(themeName) {
       console.log(`🎨 Trocando para tema: ${themeName}`);
       
+      // Atualiza tema claro/escuro
+      window.yorTheme.setTheme(themeName);
+      
+      // Atualiza tema visual (Material/Fluent/Cupertino)
       const themeLink = document.getElementById('theme-css') || 
                        document.querySelector('link[href*="theme"]');
       
@@ -1358,7 +1390,7 @@ function changeTheme(themeName) {
           const notification = document.createElement('div');
           notification.innerHTML = `
             <div style="position: fixed; top: 20px; right: 20px; 
-                        background: var(--color-primary); color: white; 
+                        background: var(--color-primary); color: var(--color-on-primary); 
                         padding: 12px 20px; border-radius: 8px; 
                         box-shadow: var(--shadow-lg); z-index: 9999;
                         font-size: 14px; font-weight: 500;">
