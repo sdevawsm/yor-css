@@ -1,5 +1,5 @@
 <UPDATED_CODE><!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,43 @@
   <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
   <link rel="stylesheet" href="../packages/yor-colors/dist/yor-colors.css">
   
-  <!-- Tema Material -->
+  <!-- Temas -->
   <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../themes/dark/dist/dark-theme.css">
+
+  <style>
+    /* Estilos para o botão de tema */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      padding: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-surface);
+      border: 1px solid var(--border-color);
+      color: var(--color-on-surface);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Transição suave ao mudar temas */
+    body {
+      transition: background-color var(--transition-normal),
+                  color var(--transition-normal);
+    }
+  </style>
 </head>
 <body>
+  <!-- Botão de alternância de tema -->
+  <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+    <span class="theme-icon">🌙</span>
+  </button>
+
   <!-- Navegação Lateral -->
   <div class="fixed top-0 left-0 h-full w-64 bg-gray-100 border-r border-gray-200 p-4 overflow-y-auto">
     <div class="mb-6">
@@ -1340,6 +1373,32 @@ function changeTheme(themeName) {
 
   <!-- JavaScript para troca de temas -->
   <script>
+    // Função para alternar o tema
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.querySelector('.theme-icon');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+      
+      // Salvar preferência no localStorage
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Inicializar tema baseado na preferência salva
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      const themeIcon = document.querySelector('.theme-icon');
+      
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+      
+      // Adicionar evento de clique ao botão
+      document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    });
+
     // Função para trocar tema (demonstração)
     function changeTheme(themeName) {
       console.log(`🎨 Trocando para tema: ${themeName}`);
@@ -1389,7 +1448,7 @@ function changeTheme(themeName) {
     console.log('📖 Yor CSS Usage Guide carregado!');
     console.log('🎨 Use changeTheme("material"|"fluent"|"cupertino") para trocar temas');
     
-    // Verificar se todos os
+    // Verificar se todos os links de navegação existem
     function copyCode(button) {
       const codeBlock = button.closest('.card').querySelector('code');
       const text = codeBlock.textContent;
