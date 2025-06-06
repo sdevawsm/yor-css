@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Spacing - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .spacing-preview {
+            background: var(--color-surface-variant);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .spacing-box {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+            text-align: center;
+            padding: var(--space-2);
+            border-radius: var(--radius-sm);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#margin" class="nav-link">Margin</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#margin-direcao" class="nav-link">Margin por Direção</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#margin-responsivo" class="nav-link">Margin Responsivo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#margin-auto" class="nav-link">Margin Auto</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#padding" class="nav-link">Padding</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#padding-direcao" class="nav-link">Padding por Direção</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#padding-responsivo" class="nav-link">Padding Responsivo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gap" class="nav-link">Gap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Spacing</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-spacing fornece um sistema consistente de espaçamento para criar layouts harmoniosos e responsivos.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> O sistema de espaçamento usa uma escala baseada em múltiplos de 4px para manter a consistência visual.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-spacing, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/spacing</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/spacing.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="margin">
+                    <h2>Margin</h2>
+                    
+                    <section id="margin-direcao">
+                        <h3>Margin por Direção</h3>
+                        <p>Controle as margens em diferentes direções usando as classes utilitárias.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Margin por Direção</div>
+                            <div class="spacing-preview">
+                                <div class="m-4 spacing-box">Margin 4</div>
+                                <div class="mt-4 spacing-box">Margin Top 4</div>
+                                <div class="mr-4 spacing-box">Margin Right 4</div>
+                                <div class="mb-4 spacing-box">Margin Bottom 4</div>
+                                <div class="ml-4 spacing-box">Margin Left 4</div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="m-4"&gt;Margin 4&lt;/div&gt;
+&lt;div class="mt-4"&gt;Margin Top 4&lt;/div&gt;
+&lt;div class="mr-4"&gt;Margin Right 4&lt;/div&gt;
+&lt;div class="mb-4"&gt;Margin Bottom 4&lt;/div&gt;
+&lt;div class="ml-4"&gt;Margin Left 4&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="margin-responsivo">
+                        <h3>Margin Responsivo</h3>
+                        <p>Margens que se adaptam a diferentes tamanhos de tela.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Margin Responsivo</div>
+                            <div class="spacing-preview">
+                                <div class="m-2 m-md-4 m-lg-6 spacing-box">
+                                    Margin Responsivo
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="m-2 m-md-4 m-lg-6"&gt;
+    Margin Responsivo
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="margin-auto">
+                        <h3>Margin Auto</h3>
+                        <p>Use margin auto para centralizar elementos horizontalmente.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Margin Auto</div>
+                            <div class="spacing-preview">
+                                <div class="mx-auto spacing-box" style="width: 200px;">
+                                    Margin Auto
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="mx-auto" style="width: 200px;"&gt;
+    Margin Auto
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="padding">
+                    <h2>Padding</h2>
+                    
+                    <section id="padding-direcao">
+                        <h3>Padding por Direção</h3>
+                        <p>Controle o preenchimento em diferentes direções usando as classes utilitárias.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Padding por Direção</div>
+                            <div class="spacing-preview">
+                                <div class="p-4 spacing-box">Padding 4</div>
+                                <div class="pt-4 spacing-box">Padding Top 4</div>
+                                <div class="pr-4 spacing-box">Padding Right 4</div>
+                                <div class="pb-4 spacing-box">Padding Bottom 4</div>
+                                <div class="pl-4 spacing-box">Padding Left 4</div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="p-4"&gt;Padding 4&lt;/div&gt;
+&lt;div class="pt-4"&gt;Padding Top 4&lt;/div&gt;
+&lt;div class="pr-4"&gt;Padding Right 4&lt;/div&gt;
+&lt;div class="pb-4"&gt;Padding Bottom 4&lt;/div&gt;
+&lt;div class="pl-4"&gt;Padding Left 4&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="padding-responsivo">
+                        <h3>Padding Responsivo</h3>
+                        <p>Padding que se adapta a diferentes tamanhos de tela.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Padding Responsivo</div>
+                            <div class="spacing-preview">
+                                <div class="p-2 p-md-4 p-lg-6 spacing-box">
+                                    Padding Responsivo
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="p-2 p-md-4 p-lg-6"&gt;
+    Padding Responsivo
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="gap">
+                    <h2>Gap</h2>
+                    <p>Controle o espaçamento entre elementos em layouts flexbox e grid.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Gap em Flexbox</div>
+                        <div class="spacing-preview">
+                            <div class="flex gap-4">
+                                <div class="spacing-box">Item 1</div>
+                                <div class="spacing-box">Item 2</div>
+                                <div class="spacing-box">Item 3</div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;div class="flex gap-4"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="example">
+                        <div class="example-title">Gap em Grid</div>
+                        <div class="spacing-preview">
+                            <div class="grid gap-4">
+                                <div class="spacing-box">Item 1</div>
+                                <div class="spacing-box">Item 2</div>
+                                <div class="spacing-box">Item 3</div>
+                                <div class="spacing-box">Item 4</div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;div class="grid gap-4"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+    &lt;div&gt;Item 4&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>O sistema de espaçamento segue as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Espaçamento adequado para leitura</li>
+                        <li>Suporte a zoom e redimensionamento</li>
+                        <li>Compatibilidade com leitores de tela</li>
+                        <li>Ordem de leitura lógica</li>
+                        <li>Contraste adequado entre elementos</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
