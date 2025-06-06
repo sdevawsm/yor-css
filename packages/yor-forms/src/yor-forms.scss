@@ -1,10 +1,22 @@
-// ===== FORMS - Refatorado (sem prefixo yor-) =====
+// ===== FORMS - Refatorado =====
 
-// Importações
-@forward 'inputs/index';
+// Inputs
+@forward 'inputs/inputs';
+
+// Checkboxes
 @forward 'checkboxes/checkboxes';
+
+// Radios
 @forward 'radios/radios';
+
+// Selects
 @forward 'selects/selects';
+
+// Textareas
 @forward 'textareas/textareas';
+
+// Form Groups
 @forward 'form-groups/form-groups';
+
+// Validation
 @forward 'validation/validation';

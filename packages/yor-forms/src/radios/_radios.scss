@@ -1,119 +1,119 @@
+// ===== RADIO BUTTONS =====
+
 .radio {
-  position: relative;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   user-select: none;
-
-  input {
+  
+  // Input oculto
+  &__input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
   }
-
+  
+  // Box do radio
   &__box {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border: var(--border-width) solid var(--border-color);
     border-radius: 50%;
     margin-right: var(--space-2);
     transition: all var(--transition-fast);
     background-color: var(--color-surface);
-
+    
+    // Dot
     &::after {
-      content: '';
+      content: "";
+      position: absolute;
+      display: none;
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background-color: var(--color-surface);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
     }
   }
-
+  
+  // Label
   &__label {
     font-size: var(--text-base);
     line-height: var(--leading-normal);
-    color: var(--color-text-body);
+    color: var(--color-text);
   }
-
+  
   // Estados
-  input:checked ~ &__box {
+  &:hover .radio__box {
     border-color: var(--color-primary);
+  }
+  
+  &__input:checked ~ .radio__box {
     background-color: var(--color-primary);
-
+    border-color: var(--color-primary);
+    
     &::after {
-      opacity: 1;
+      display: block;
     }
   }
-
-  input:disabled ~ &__box {
-    background-color: var(--color-gray-100);
-    border-color: var(--color-gray-300);
+  
+  &__input:focus ~ .radio__box {
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
+  
+  &__input:disabled ~ .radio__box {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-surface-variant);
+  }
+  
+  &__input:disabled ~ .radio__label {
+    opacity: 0.6;
     cursor: not-allowed;
   }
-
-  input:disabled ~ &__label {
-    color: var(--color-text-muted);
-    cursor: not-allowed;
-  }
-
-  // Variantes
-  &--error {
-    .radio__box {
-      border-color: var(--color-error);
-    }
-
-    input:checked ~ .radio__box {
-      background-color: var(--color-error);
+  
+  // Estados de erro
+  &.is-invalid .radio__box {
+    border-color: var(--color-error);
+    
+    &:hover {
       border-color: var(--color-error);
     }
   }
-
-  &--success {
-    .radio__box {
-      border-color: var(--color-success);
-    }
-
-    input:checked ~ .radio__box {
-      background-color: var(--color-success);
-      border-color: var(--color-success);
-    }
-  }
-
+  
   // Tamanhos
   &--sm {
     .radio__box {
-      width: 14px;
-      height: 14px;
-
+      width: 16px;
+      height: 16px;
+      
       &::after {
         width: 6px;
         height: 6px;
       }
     }
-
+    
     .radio__label {
       font-size: var(--text-sm);
     }
   }
-
+  
   &--lg {
     .radio__box {
-      width: 18px;
-      height: 18px;
-
+      width: 20px;
+      height: 20px;
+      
       &::after {
         width: 10px;
         height: 10px;
       }
     }
-
+    
     .radio__label {
       font-size: var(--text-lg);
     }

@@ -40,4 +40,92 @@
   &--warning {
     color: var(--color-warning);
   }
+}
+
+// ===== VALIDATION =====
+
+// Estados de validação
+.is-invalid {
+  border-color: var(--color-error) !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-error-light) !important;
+  }
+  
+  & + .validation-message {
+    color: var(--color-error);
+  }
+}
+
+.is-valid {
+  border-color: var(--color-success) !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-success-light) !important;
+  }
+  
+  & + .validation-message {
+    color: var(--color-success);
+  }
+}
+
+// Mensagens de validação
+.validation-message {
+  display: block;
+  font-size: var(--text-sm);
+  margin-top: var(--space-1);
+  
+  &--error {
+    color: var(--color-error);
+  }
+  
+  &--success {
+    color: var(--color-success);
+  }
+  
+  &--warning {
+    color: var(--color-warning);
+  }
+}
+
+// Indicadores de campo obrigatório
+.required-field {
+  &::after {
+    content: "*";
+    color: var(--color-error);
+    margin-left: var(--space-1);
+  }
+}
+
+// Feedback de validação
+.validation-feedback {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius);
+  
+  &--error {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+  }
+  
+  &--success {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+  }
+  
+  &--warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+  }
+  
+  &__icon {
+    flex-shrink: 0;
+  }
+  
+  &__message {
+    flex: 1;
+  }
 } 

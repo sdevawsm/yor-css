@@ -1,3 +1,93 @@
+// ===== FORM GROUPS =====
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  
+  // Label
+  &__label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text);
+    
+    &--required::after {
+      content: "*";
+      color: var(--color-error);
+      margin-left: var(--space-1);
+    }
+  }
+  
+  // Help text
+  &__help {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+  }
+  
+  // Error message
+  &__error {
+    font-size: var(--text-sm);
+    color: var(--color-error);
+    margin-top: var(--space-1);
+  }
+  
+  // Layout
+  &--horizontal {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+    
+    .form-group__label {
+      min-width: 120px;
+      margin-bottom: 0;
+    }
+    
+    .form-group__content {
+      flex: 1;
+    }
+  }
+  
+  // Tamanhos
+  &--sm {
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+    
+    .form-group__label {
+      font-size: var(--text-xs);
+    }
+  }
+  
+  &--lg {
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    
+    .form-group__label {
+      font-size: var(--text-base);
+    }
+  }
+  
+  // Estados
+  &.is-invalid {
+    .form-group__label {
+      color: var(--color-error);
+    }
+  }
+  
+  &.is-valid {
+    .form-group__label {
+      color: var(--color-success);
+    }
+  }
+  
+  // Desabilitado
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
 .form-group {
   margin-bottom: var(--space-4);
 }

@@ -1,9 +1,9 @@
-// ===== TEXTAREAS =====
+// ===== INPUTS =====
 
-.textarea {
+.input {
+  // Base
   display: block;
   width: 100%;
-  min-height: 100px;
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -12,7 +12,6 @@
   background-color: var(--color-surface);
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius);
-  resize: vertical;
   transition: all var(--transition-normal);
   
   // Estados
@@ -37,17 +36,47 @@
     color: var(--color-text-muted);
   }
   
+  // Tipos específicos
+  &[type="password"] {
+    font-family: monospace;
+  }
+  
+  &[type="number"] {
+    -moz-appearance: textfield;
+    
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  
+  &[type="search"] {
+    -webkit-appearance: none;
+    
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+  }
+  
+  &[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+  }
+  
   // Tamanhos
   &--sm {
     padding: var(--space-1) var(--space-2);
     font-size: var(--text-sm);
-    min-height: 80px;
   }
   
   &--lg {
     padding: var(--space-3) var(--space-4);
     font-size: var(--text-lg);
-    min-height: 120px;
   }
   
   // Variantes
@@ -79,29 +108,5 @@
     &:focus {
       box-shadow: 0 0 0 2px var(--color-success-light);
     }
-  }
-  
-  // Contador de caracteres
-  &--with-counter {
-    padding-bottom: calc(var(--space-2) + 1.5em);
-    position: relative;
-    
-    &::after {
-      content: attr(data-count) " / " attr(data-max);
-      position: absolute;
-      bottom: var(--space-2);
-      right: var(--space-3);
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-  }
-  
-  // Redimensionável
-  &--resizable {
-    resize: both;
-  }
-  
-  &--fixed {
-    resize: none;
   }
 } 
