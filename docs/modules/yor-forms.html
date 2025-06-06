@@ -5,253 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yor Forms - Documentação</title>
     
-    <!-- Tokens primeiro, pois outros módulos dependem dele -->
-    <link rel="stylesheet" href="../../packages/yor-tokens/dist/yor-tokens.css">
-    
-    <!-- Módulos CSS -->
-    <link rel="stylesheet" href="../../packages/yor-colors/dist/yor-colors.css">
-    <link rel="stylesheet" href="../../packages/yor-spacing/dist/yor-spacing.css">
-    <link rel="stylesheet" href="../../packages/yor-typography/dist/yor-typography.css">
-    <link rel="stylesheet" href="../../packages/yor-forms/dist/yor-forms.css">
-    <link rel="stylesheet" href="../../packages/yor-buttons/dist/yor-buttons.css">
-    <link rel="stylesheet" href="../../packages/yor-cards/dist/yor-cards.css">
-    <link rel="stylesheet" href="../../packages/yor-containers/dist/yor-containers.css">
-    <link rel="stylesheet" href="../../packages/yor-navigation/dist/yor-navigation.css">
-    <link rel="stylesheet" href="../../packages/yor-layout/dist/yor-layout.css">
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
     
     <!-- Temas -->
-    <link rel="stylesheet" href="../../themes/material/dist/material-theme.css">
-    <link rel="stylesheet" href="../../themes/fluent/dist/fluent-theme.css">
-    <link rel="stylesheet" href="../../themes/cupertino/dist/cupertino-theme.css">
-    <link rel="stylesheet" href="../../themes/dark/dist/dark-theme.css">
-    
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
     <style>
-        :root {
-            --sidebar-width: 300px;
-            --header-height: 60px;
-            --primary-color: #3490dc;
-            --secondary-color: #ffed4a;
-            --danger-color: #e3342f;
-            --text-color: #2d3748;
-            --text-muted: #718096;
-            --border-color: #e2e8f0;
-            --bg-color: #fff;
-            --bg-secondary: #f7fafc;
-            --code-bg: #f8fafc;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--text-color);
-            line-height: 1.5;
-        }
-        
         .layout {
-            display: flex;
+            display: grid;
+            grid-template-columns: 280px 1fr;
             min-height: 100vh;
         }
-        
+
         .sidebar {
-            width: var(--sidebar-width);
-            background: var(--bg-color);
-            border-right: 1px solid var(--border-color);
-            position: fixed;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
             height: 100vh;
             overflow-y: auto;
-            padding: 1rem;
-        }
-        
-        .main {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 2rem;
-        }
-        
-        .header {
-            height: var(--header-height);
-            background: var(--bg-color);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            padding: 0 2rem;
-            position: fixed;
+            position: sticky;
             top: 0;
-            right: 0;
-            left: var(--sidebar-width);
-            z-index: 100;
         }
-        
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
         .content {
-            margin-top: var(--header-height);
-            padding: 2rem;
-            max-width: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
         .nav {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .nav-item {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-2);
         }
-        
+
         .nav-link {
             display: block;
-            padding: 0.5rem 1rem;
-            color: var(--text-color);
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
             text-decoration: none;
-            border-radius: 0.25rem;
-            transition: all 0.2s;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
         }
-        
+
         .nav-link:hover {
-            background: var(--bg-secondary);
-            color: var(--primary-color);
+            background: var(--color-surface-variant);
         }
-        
+
         .nav-link.active {
-            background: var(--primary-color);
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-on-primary);
         }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            display: block;
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
         }
-        
-        .search {
-            margin-bottom: 2rem;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.1);
-        }
-        
-        .version {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            line-height: 1.25;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        code {
-            background: var(--code-bg);
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.875rem;
-        }
-        
-        pre {
-            background: var(--code-bg);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        
-        pre code {
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
             background: none;
-            padding: 0;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
         }
-        
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
         .example {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
         }
-        
+
         .example-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
         }
-        
+
         .example-code {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
         }
-        
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
         .alert {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
         }
-        
+
         .alert-info {
-            background: #ebf8ff;
-            border: 1px solid #bee3f8;
-            color: #2b6cb0;
+            background: var(--color-info-light);
+            color: var(--color-info-dark);
+            border: 1px solid var(--color-info);
         }
-        
+
         .alert-warning {
-            background: #fffaf0;
-            border: 1px solid #feebc8;
-            color: #c05621;
+            background: var(--color-warning-light);
+            color: var(--color-warning-dark);
+            border: 1px solid var(--color-warning);
         }
-        
-        .alert-danger {
-            background: #fff5f5;
-            border: 1px solid #fed7d7;
-            color: #c53030;
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
-<body>
+<body class="body">
     <div class="layout">
         <aside class="sidebar">
             <a href="/" class="logo">Yor CSS</a>
             <div class="version">v1.0.0</div>
             
             <div class="search">
-                <input type="search" class="search-input" placeholder="Buscar na documentação...">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
             </div>
             
             <nav>
@@ -314,11 +261,19 @@
                     <h2>Instalação</h2>
                     <p>Para instalar o módulo yor-forms, você pode usar npm:</p>
                     
-                    <pre><code>npm install @yor-css/forms</code></pre>
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/forms</code></pre>
+                        </div>
+                    </div>
                     
                     <p>Ou incluir via CDN:</p>
                     
-                    <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/forms.css"&gt;</code></pre>
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/forms.css"&gt;</code></pre>
+                        </div>
+                    </div>
                 </section>
                 
                 <section id="componentes">
@@ -510,5 +465,53 @@
             </div>
         </main>
     </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
 </body>
 </html> 

@@ -1,38 +1,139 @@
 // ===== PAGINATION =====
 
-.pagination {
+// Variáveis
+$pagination-sizes: (
+  'sm': (
+    'min-width': 2rem,
+    'height': 2rem,
+    'font-size': var(--font-size-sm)
+  ),
+  'md': (
+    'min-width': 2.5rem,
+    'height': 2.5rem,
+    'font-size': var(--font-size-base)
+  ),
+  'lg': (
+    'min-width': 3rem,
+    'height': 3rem,
+    'font-size': var(--font-size-lg)
+  )
+);
+
+// Mixins
+@mixin pagination-container {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   margin: var(--space-4) 0;
+  flex-wrap: wrap;
 }
 
-.page-item {
+@mixin pagination-item($size: 'md') {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.5rem;
-  height: 2.5rem;
+  min-width: map-get(map-get($pagination-sizes, $size), 'min-width');
+  height: map-get(map-get($pagination-sizes, $size), 'height');
   padding: 0 var(--space-2);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius);
   color: var(--color-text);
   background: var(--color-surface);
+  font-size: map-get(map-get($pagination-sizes, $size), 'font-size');
   transition: var(--transition-normal);
-
+  text-decoration: none;
+  
   &:hover:not(.disabled) {
     border-color: var(--color-primary);
     color: var(--color-primary);
   }
-
+  
   &.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-surface);
   }
-
+  
   &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+}
+
+@mixin pagination-style($style: 'default') {
+  @if $style == 'default' {
+    // Estilo padrão já definido no mixin pagination-item
+  } @else if $style == 'outline' {
+    background: transparent;
+    
+    &.active {
+      background: transparent;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  } @else if $style == 'minimal' {
+    border: none;
+    background: transparent;
+    
+    &.active {
+      background: transparent;
+      color: var(--color-primary);
+      font-weight: var(--font-medium);
+    }
+  }
+}
+
+// Classes
+.pagination {
+  @include pagination-container;
+  
+  &--sm {
+    .page-item {
+      @include pagination-item('sm');
+    }
+  }
+  
+  &--md {
+    .page-item {
+      @include pagination-item('md');
+    }
+  }
+  
+  &--lg {
+    .page-item {
+      @include pagination-item('lg');
+    }
+  }
+  
+  &--outline {
+    .page-item {
+      @include pagination-style('outline');
+    }
+  }
+  
+  &--minimal {
+    .page-item {
+      @include pagination-style('minimal');
+    }
+  }
+  
+  &--centered {
+    justify-content: center;
+  }
+  
+  &--right {
+    justify-content: flex-end;
+  }
+}
+
+.page-item {
+  @include pagination-item;
+  
+  &__icon {
+    font-size: 1.2em;
+  }
+  
+  &__ellipsis {
+    color: var(--color-text-muted);
   }
 } 

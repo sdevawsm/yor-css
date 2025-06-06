@@ -1,34 +1,141 @@
 // ===== BREADCRUMBS =====
 
-.breadcrumbs {
+// Variáveis
+$breadcrumb-separator: '/';
+$breadcrumb-truncate-width: 200px;
+$breadcrumb-icon-size: 1.2em;
+
+// Mixins
+@mixin breadcrumbs-container {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  flex-wrap: wrap;
+  padding: var(--space-2) 0;
 }
 
-.breadcrumb-item {
+@mixin breadcrumb-item {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-
+  
   &:not(:last-child)::after {
-    content: '/';
+    content: $breadcrumb-separator;
     color: var(--color-border);
+    margin-left: var(--space-2);
   }
-
+  
   a {
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: var(--transition-normal);
-
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    
     &:hover {
       color: var(--color-primary);
+      background-color: var(--color-surface-variant);
     }
   }
-
+  
   &.active {
     color: var(--color-text);
+    font-weight: var(--font-medium);
+  }
+}
+
+@mixin breadcrumb-truncate {
+  max-width: $breadcrumb-truncate-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin breadcrumb-icon {
+  font-size: $breadcrumb-icon-size;
+  vertical-align: middle;
+  color: var(--color-text-muted);
+}
+
+// Classes
+.breadcrumbs {
+  @include breadcrumbs-container;
+  
+  &--custom-separator {
+    .breadcrumb-item:not(:last-child)::after {
+      content: attr(data-separator);
+    }
+  }
+  
+  &--truncate {
+    .breadcrumb-item {
+      @include breadcrumb-truncate;
+    }
+  }
+  
+  &--responsive {
+    @media (max-width: 768px) {
+      .breadcrumb-item {
+        @include breadcrumb-truncate;
+      }
+    }
+  }
+  
+  &--with-icons {
+    .breadcrumb-item {
+      &__icon {
+        @include breadcrumb-icon;
+      }
+    }
+  }
+  
+  &--compact {
+    font-size: var(--font-size-xs);
+    gap: var(--space-1);
+    
+    .breadcrumb-item {
+      &:not(:last-child)::after {
+        margin-left: var(--space-1);
+      }
+      
+      a {
+        padding: var(--space-1);
+      }
+    }
+  }
+}
+
+.breadcrumb-item {
+  @include breadcrumb-item;
+  
+  &__icon {
+    @include breadcrumb-icon;
+  }
+  
+  &__home {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition-normal);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    
+    &:hover {
+      color: var(--color-primary);
+      background-color: var(--color-surface-variant);
+    }
+  }
+  
+  &__text {
+    font-weight: var(--font-medium);
+  }
+  
+  &__badge {
+    margin-left: var(--space-2);
+    padding: 0 var(--space-2);
+    background-color: var(--color-surface-variant);
+    border-radius: var(--radius-full);
+    font-size: 0.8em;
   }
 } 
