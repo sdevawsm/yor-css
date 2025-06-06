@@ -1,6 +1,6 @@
 // Variáveis
 $modal-z-index: var(--z-50);
-$modal-backdrop-bg: rgba(0, 0, 0, 0.5);
+$modal-backdrop-bg: var(--color-backdrop);
 $modal-padding: var(--space-6);
 $modal-border-radius: var(--radius-lg);
 $modal-box-shadow: var(--shadow-lg);
@@ -43,7 +43,7 @@ $modal-transition: var(--transition-normal);
     position: relative;
     width: 100%;
     max-width: $modal-max-width;
-    background-color: var(--color-white);
+    background-color: var(--color-surface);
     border-radius: $modal-border-radius;
     box-shadow: $modal-box-shadow;
     opacity: 0;
@@ -61,31 +61,32 @@ $modal-transition: var(--transition-normal);
     align-items: center;
     justify-content: space-between;
     padding: $modal-padding;
-    border-bottom: 1px solid var(--color-gray-200);
+    border-bottom: 1px solid var(--color-border);
   }
 
   &__title {
     margin: 0;
     font-size: var(--text-lg);
     font-weight: var(--font-semibold);
-    color: var(--color-gray-900);
+    color: var(--color-text-body);
   }
 
   &__close {
     background: none;
     border: none;
     padding: var(--space-2);
-    color: var(--color-gray-500);
+    color: var(--color-text-muted);
     cursor: pointer;
     transition: color $modal-transition ease;
 
     &:hover {
-      color: var(--color-gray-700);
+      color: var(--color-text-body);
     }
   }
 
   &__body {
     padding: $modal-padding;
+    color: var(--color-text-body);
   }
 
   &__footer {
@@ -94,7 +95,7 @@ $modal-transition: var(--transition-normal);
     justify-content: flex-end;
     gap: var(--space-3);
     padding: $modal-padding;
-    border-top: 1px solid var(--color-gray-200);
+    border-top: 1px solid var(--color-border);
   }
 }
 
@@ -169,5 +170,66 @@ $modal-transition: var(--transition-normal);
 .modal--static {
   .modal__backdrop {
     position: static;
+  }
+}
+
+// Temas
+[data-theme-system="material"] {
+  .modal {
+    &__content {
+      border-radius: var(--radius-md);
+    }
+
+    &__header {
+      padding: var(--space-4);
+    }
+
+    &__body {
+      padding: var(--space-4);
+    }
+
+    &__footer {
+      padding: var(--space-4);
+    }
+  }
+}
+
+[data-theme-system="fluent"] {
+  .modal {
+    &__content {
+      border-radius: var(--radius-sm);
+    }
+
+    &__header {
+      padding: var(--space-4);
+    }
+
+    &__body {
+      padding: var(--space-4);
+    }
+
+    &__footer {
+      padding: var(--space-4);
+    }
+  }
+}
+
+[data-theme-system="cupertino"] {
+  .modal {
+    &__content {
+      border-radius: var(--radius-lg);
+    }
+
+    &__header {
+      padding: var(--space-4);
+    }
+
+    &__body {
+      padding: var(--space-4);
+    }
+
+    &__footer {
+      padding: var(--space-4);
+    }
   }
 } 
