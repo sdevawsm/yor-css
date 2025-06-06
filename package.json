@@ -5,7 +5,7 @@
   "main": "dist/yor-css.css",
   "scripts": {
     "build": "npm run build:packages && npm run build:themes && npm run build:dist",
-    "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers && npm run build:spacing && npm run build:typography && npm run build:colors",
+    "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers && npm run build:spacing && npm run build:typography && npm run build:colors && npm run build:forms",
     "build:themes": "npm run build:material && npm run build:fluent && npm run build:cupertino && npm run build:dark",
     "build:dist": "npm run build:full && npm run build:minified",
     
@@ -31,11 +31,13 @@
     
     "build:dark": "sass themes/dark/src/dark-theme.scss themes/dark/dist/dark-theme.css --style=expanded && sass themes/dark/src/dark-theme.scss themes/dark/dist/dark-theme.min.css --style=compressed",
     
+    "build:forms": "sass packages/yor-forms/src/yor-forms.scss packages/yor-forms/dist/yor-forms.css --style=expanded && sass packages/yor-forms/src/yor-forms.scss packages/yor-forms/dist/yor-forms.min.css --style=compressed",
+    
     "build:full": "sass src/yor-css-full.scss dist/yor-css.css --style=expanded",
     "build:minified": "sass src/yor-css-full.scss dist/yor-css.min.css --style=compressed",
     
     "watch": "npm run watch:packages & npm run watch:themes",
-    "watch:packages": "sass --watch packages/yor-tokens/src:packages/yor-tokens/dist packages/yor-buttons/src:packages/yor-buttons/dist packages/yor-cards/src:packages/yor-cards/dist packages/yor-containers/src:packages/yor-containers/dist packages/yor-spacing/src:packages/yor-spacing/dist packages/yor-typography/src:packages/yor-typography/dist packages/yor-colors/src:packages/yor-colors/dist",
+    "watch:packages": "sass --watch packages/yor-tokens/src:packages/yor-tokens/dist packages/yor-buttons/src:packages/yor-buttons/dist packages/yor-cards/src:packages/yor-cards/dist packages/yor-containers/src:packages/yor-containers/dist packages/yor-spacing/src:packages/yor-spacing/dist packages/yor-typography/src:packages/yor-typography/dist packages/yor-colors/src:packages/yor-colors/dist packages/yor-forms/src:packages/yor-forms/dist",
     "watch:themes": "sass --watch themes/material:themes/material/dist themes/fluent:themes/fluent/dist themes/cupertino:themes/cupertino/dist themes/dark:themes/dark/dist",
     
     "dev": "npm run watch",
