@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Typography - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .typography-preview {
+            background: var(--color-surface-variant);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .typography-box {
+            background: var(--color-surface);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+        }
+
+        .typography-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .typography-item {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .typography-name {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-2);
+            color: var(--color-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#headings" class="nav-link">Headings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#paragrafos" class="nav-link">Parágrafos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#listas" class="nav-link">Listas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#texto" class="nav-link">Texto</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#texto-estilos" class="nav-link">Estilos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#texto-transformacoes" class="nav-link">Transformações</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#texto-alinhamento" class="nav-link">Alinhamento</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#links" class="nav-link">Links</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#codigo" class="nav-link">Código</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Typography</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-typography fornece um sistema completo de tipografia para criar interfaces consistentes e legíveis.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> O sistema de tipografia é baseado em uma escala modular que mantém a harmonia visual em toda a interface.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-typography, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/typography</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/typography.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="headings">
+                    <h2>Headings</h2>
+                    <p>Os headings são usados para criar uma hierarquia visual clara no conteúdo.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Headings</div>
+                        <div class="typography-preview">
+                            <h1>Heading 1</h1>
+                            <h2>Heading 2</h2>
+                            <h3>Heading 3</h3>
+                            <h4>Heading 4</h4>
+                            <h5>Heading 5</h5>
+                            <h6>Heading 6</h6>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="paragrafos">
+                    <h2>Parágrafos</h2>
+                    <p>Estilos para parágrafos e blocos de texto.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Parágrafos</div>
+                        <div class="typography-preview">
+                            <p>Este é um parágrafo padrão. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            
+                            <p class="lead">Este é um parágrafo de destaque (lead). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            
+                            <p class="small">Este é um parágrafo pequeno. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;p&gt;Este é um parágrafo padrão...&lt;/p&gt;
+&lt;p class="lead"&gt;Este é um parágrafo de destaque...&lt;/p&gt;
+&lt;p class="small"&gt;Este é um parágrafo pequeno...&lt;/p&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="listas">
+                    <h2>Listas</h2>
+                    <p>Estilos para listas ordenadas e não ordenadas.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Listas</div>
+                        <div class="typography-preview">
+                            <ul>
+                                <li>Item de lista não ordenada</li>
+                                <li>Item de lista não ordenada
+                                    <ul>
+                                        <li>Subitem de lista</li>
+                                        <li>Subitem de lista</li>
+                                    </ul>
+                                </li>
+                                <li>Item de lista não ordenada</li>
+                            </ul>
+                            
+                            <ol>
+                                <li>Item de lista ordenada</li>
+                                <li>Item de lista ordenada
+                                    <ol>
+                                        <li>Subitem de lista</li>
+                                        <li>Subitem de lista</li>
+                                    </ol>
+                                </li>
+                                <li>Item de lista ordenada</li>
+                            </ol>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;ul&gt;
+    &lt;li&gt;Item de lista não ordenada&lt;/li&gt;
+    &lt;li&gt;Item de lista não ordenada
+        &lt;ul&gt;
+            &lt;li&gt;Subitem de lista&lt;/li&gt;
+            &lt;li&gt;Subitem de lista&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Item de lista ordenada&lt;/li&gt;
+    &lt;li&gt;Item de lista ordenada
+        &lt;ol&gt;
+            &lt;li&gt;Subitem de lista&lt;/li&gt;
+            &lt;li&gt;Subitem de lista&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="texto">
+                    <h2>Texto</h2>
+                    
+                    <section id="texto-estilos">
+                        <h3>Estilos</h3>
+                        <p>Estilos de texto para diferentes propósitos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Estilos de Texto</div>
+                            <div class="typography-preview">
+                                <p><strong>Texto em negrito</strong></p>
+                                <p><em>Texto em itálico</em></p>
+                                <p><u>Texto sublinhado</u></p>
+                                <p><mark>Texto marcado</mark></p>
+                                <p><del>Texto deletado</del></p>
+                                <p><ins>Texto inserido</ins></p>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;p&gt;&lt;strong&gt;Texto em negrito&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Texto em itálico&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;Texto sublinhado&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Texto marcado&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Texto deletado&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;ins&gt;Texto inserido&lt;/ins&gt;&lt;/p&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="texto-transformacoes">
+                        <h3>Transformações</h3>
+                        <p>Classes para transformar o texto.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Transformações de Texto</div>
+                            <div class="typography-preview">
+                                <p class="text-uppercase">texto em maiúsculas</p>
+                                <p class="text-lowercase">TEXTO EM MINÚSCULAS</p>
+                                <p class="text-capitalize">texto capitalizado</p>
+                                <p class="text-truncate">Este é um texto muito longo que será truncado com reticências no final para não quebrar o layout da página.</p>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;p class="text-uppercase"&gt;texto em maiúsculas&lt;/p&gt;
+&lt;p class="text-lowercase"&gt;TEXTO EM MINÚSCULAS&lt;/p&gt;
+&lt;p class="text-capitalize"&gt;texto capitalizado&lt;/p&gt;
+&lt;p class="text-truncate"&gt;Texto longo...&lt;/p&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="texto-alinhamento">
+                        <h3>Alinhamento</h3>
+                        <p>Classes para alinhar o texto.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Alinhamento de Texto</div>
+                            <div class="typography-preview">
+                                <p class="text-left">Texto alinhado à esquerda</p>
+                                <p class="text-center">Texto centralizado</p>
+                                <p class="text-right">Texto alinhado à direita</p>
+                                <p class="text-justify">Texto justificado. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;p class="text-left"&gt;Texto alinhado à esquerda&lt;/p&gt;
+&lt;p class="text-center"&gt;Texto centralizado&lt;/p&gt;
+&lt;p class="text-right"&gt;Texto alinhado à direita&lt;/p&gt;
+&lt;p class="text-justify"&gt;Texto justificado...&lt;/p&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="links">
+                    <h2>Links</h2>
+                    <p>Estilos para links e estados de hover.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Links</div>
+                        <div class="typography-preview">
+                            <p><a href="#">Link padrão</a></p>
+                            <p><a href="#" class="link-primary">Link primário</a></p>
+                            <p><a href="#" class="link-secondary">Link secundário</a></p>
+                            <p><a href="#" class="link-muted">Link suave</a></p>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;a href="#"&gt;Link padrão&lt;/a&gt;
+&lt;a href="#" class="link-primary"&gt;Link primário&lt;/a&gt;
+&lt;a href="#" class="link-secondary"&gt;Link secundário&lt;/a&gt;
+&lt;a href="#" class="link-muted"&gt;Link suave&lt;/a&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="codigo">
+                    <h2>Código</h2>
+                    <p>Estilos para exibição de código.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Código</div>
+                        <div class="typography-preview">
+                            <p>Use <code>code</code> para código inline.</p>
+                            
+                            <pre><code>// Bloco de código
+function example() {
+    return "Hello, World!";
+}</code></pre>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;p&gt;Use &lt;code&gt;code&lt;/code&gt; para código inline.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+// Bloco de código
+function example() {
+    return "Hello, World!";
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>A tipografia segue as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Hierarquia clara de headings</li>
+                        <li>Contraste adequado entre texto e fundo</li>
+                        <li>Tamanhos de fonte legíveis</li>
+                        <li>Espaçamento adequado entre linhas</li>
+                        <li>Suporte a zoom e redimensionamento</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
