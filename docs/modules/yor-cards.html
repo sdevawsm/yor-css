@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Cards - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#componentes" class="nav-link">Componentes</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#cards-basicos" class="nav-link">Cards Básicos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cards-variantes" class="nav-link">Variantes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cards-interativos" class="nav-link">Cards Interativos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cards-grid" class="nav-link">Grid de Cards</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#animacoes" class="nav-link">Animações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Cards</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-cards fornece componentes de cards estilizados e flexíveis para exibição de conteúdo.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Os cards são totalmente responsivos e podem ser facilmente customizados para diferentes necessidades.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-cards, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/cards</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/cards.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="componentes">
+                    <h2>Componentes</h2>
+                    
+                    <section id="cards-basicos">
+                        <h3>Cards Básicos</h3>
+                        <p>Cards são usados para agrupar e exibir conteúdo relacionado.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Card Básico</div>
+                            <div class="card">
+                                <div class="card__header">
+                                    <h3 class="card__title">Título do Card</h3>
+                                </div>
+                                <div class="card__body">
+                                    <p>Conteúdo do card aqui. Este é um exemplo de card básico com título e corpo.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--primary">Ação</button>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card"&gt;
+    &lt;div class="card__header"&gt;
+        &lt;h3 class="card__title"&gt;Título do Card&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="card__body"&gt;
+        &lt;p&gt;Conteúdo do card aqui. Este é um exemplo de card básico com título e corpo.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card__footer"&gt;
+        &lt;button class="btn btn--primary"&gt;Ação&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cards-variantes">
+                        <h3>Variantes</h3>
+                        <p>Cards podem ter diferentes estilos e variantes para diferentes contextos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Cards com Imagem</div>
+                            <div class="card">
+                                <img src="https://via.placeholder.com/300x200" alt="Imagem do card" class="card__image">
+                                <div class="card__body">
+                                    <h3 class="card__title">Card com Imagem</h3>
+                                    <p>Este card inclui uma imagem no topo.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card"&gt;
+    &lt;img src="imagem.jpg" alt="Imagem do card" class="card__image"&gt;
+    &lt;div class="card__body"&gt;
+        &lt;h3 class="card__title"&gt;Card com Imagem&lt;/h3&gt;
+        &lt;p&gt;Este card inclui uma imagem no topo.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+
+                            <div class="example-title">Cards com Badge</div>
+                            <div class="card">
+                                <div class="card__header">
+                                    <span class="badge badge--primary">Novo</span>
+                                    <h3 class="card__title">Card com Badge</h3>
+                                </div>
+                                <div class="card__body">
+                                    <p>Este card inclui um badge no cabeçalho.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card"&gt;
+    &lt;div class="card__header"&gt;
+        &lt;span class="badge badge--primary"&gt;Novo&lt;/span&gt;
+        &lt;h3 class="card__title"&gt;Card com Badge&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="card__body"&gt;
+        &lt;p&gt;Este card inclui um badge no cabeçalho.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cards-interativos">
+                        <h3>Cards Interativos</h3>
+                        <p>Cards podem ser interativos e responder a eventos do usuário.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Card Clicável</div>
+                            <div class="card card--clickable">
+                                <div class="card__body">
+                                    <h3 class="card__title">Card Clicável</h3>
+                                    <p>Este card tem efeito hover e é clicável.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card card--clickable"&gt;
+    &lt;div class="card__body"&gt;
+        &lt;h3 class="card__title"&gt;Card Clicável&lt;/h3&gt;
+        &lt;p&gt;Este card tem efeito hover e é clicável.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+
+                            <div class="example-title">Card com Hover</div>
+                            <div class="card card--hover">
+                                <div class="card__body">
+                                    <h3 class="card__title">Card com Hover</h3>
+                                    <p>Este card tem efeitos de hover.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card card--hover"&gt;
+    &lt;div class="card__body"&gt;
+        &lt;h3 class="card__title"&gt;Card com Hover&lt;/h3&gt;
+        &lt;p&gt;Este card tem efeitos de hover.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cards-grid">
+                        <h3>Grid de Cards</h3>
+                        <p>Cards podem ser organizados em um grid responsivo.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Grid de Cards</div>
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card__body">
+                                        <h3 class="card__title">Card 1</h3>
+                                        <p>Conteúdo do card 1.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card__body">
+                                        <h3 class="card__title">Card 2</h3>
+                                        <p>Conteúdo do card 2.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card__body">
+                                        <h3 class="card__title">Card 3</h3>
+                                        <p>Conteúdo do card 3.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="card-grid"&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;h3 class="card__title"&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;Conteúdo do card 1.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;h3 class="card__title"&gt;Card 2&lt;/h3&gt;
+            &lt;p&gt;Conteúdo do card 2.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;h3 class="card__title"&gt;Card 3&lt;/h3&gt;
+            &lt;p&gt;Conteúdo do card 3.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="animacoes">
+                    <h2>Animações</h2>
+                    <p>O módulo yor-cards inclui animações suaves para melhorar a experiência do usuário:</p>
+                    
+                    <ul>
+                        <li>Hover com elevação suave</li>
+                        <li>Transições suaves para cards clicáveis</li>
+                        <li>Animações de entrada para grid de cards</li>
+                        <li>Efeitos de hover para cards interativos</li>
+                    </ul>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Todos os cards seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Estrutura semântica com roles apropriados</li>
+                        <li>Contraste adequado para texto e imagens</li>
+                        <li>Suporte a navegação por teclado</li>
+                        <li>Textos alternativos para imagens</li>
+                        <li>Foco visível para cards interativos</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
