@@ -5,7 +5,7 @@
   "main": "dist/yor-css.css",
   "scripts": {
     "build": "npm run build:packages && npm run build:themes && npm run build:dist",
-    "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers && npm run build:spacing && npm run build:typography",
+    "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers && npm run build:spacing && npm run build:typography && npm run build:colors",
     "build:themes": "npm run build:material && npm run build:fluent && npm run build:cupertino",
     "build:dist": "npm run build:full && npm run build:minified",
     
@@ -21,6 +21,8 @@
     
     "build:typography": "sass packages/yor-typography/src/yor-typography.scss packages/yor-typography/dist/yor-typography.css --style=expanded && sass packages/yor-typography/src/yor-typography.scss packages/yor-typography/dist/yor-typography.min.css --style=compressed",
     
+    "build:colors": "sass packages/yor-colors/src/yor-colors.scss packages/yor-colors/dist/yor-colors.css --style=expanded && sass packages/yor-colors/src/yor-colors.scss packages/yor-colors/dist/yor-colors.min.css --style=compressed",
+    
     "build:material": "sass themes/material/material-theme.scss themes/material/dist/material-theme.css --style=expanded && sass themes/material/material-theme.scss themes/material/dist/material-theme.min.css --style=compressed",
     
     "build:fluent": "sass themes/fluent/fluent-theme.scss themes/fluent/dist/fluent-theme.css --style=expanded && sass themes/fluent/fluent-theme.scss themes/fluent/dist/fluent-theme.min.css --style=compressed",
@@ -31,7 +33,7 @@
     "build:minified": "sass src/yor-css-full.scss dist/yor-css.min.css --style=compressed",
     
     "watch": "npm run watch:packages & npm run watch:themes",
-    "watch:packages": "sass --watch packages/yor-tokens/src:packages/yor-tokens/dist packages/yor-buttons/src:packages/yor-buttons/dist packages/yor-cards/src:packages/yor-cards/dist packages/yor-containers/src:packages/yor-containers/dist packages/yor-spacing/src:packages/yor-spacing/dist packages/yor-typography/src:packages/yor-typography/dist",
+    "watch:packages": "sass --watch packages/yor-tokens/src:packages/yor-tokens/dist packages/yor-buttons/src:packages/yor-buttons/dist packages/yor-cards/src:packages/yor-cards/dist packages/yor-containers/src:packages/yor-containers/dist packages/yor-spacing/src:packages/yor-spacing/dist packages/yor-typography/src:packages/yor-typography/dist packages/yor-colors/src:packages/yor-colors/dist",
     "watch:themes": "sass --watch themes/material:themes/material/dist themes/fluent:themes/fluent/dist themes/cupertino:themes/cupertino/dist",
     
     "dev": "npm run watch",
