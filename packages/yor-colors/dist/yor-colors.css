@@ -189,28 +189,28 @@
 
 /* Border Colors - Principais */
 .border-primary {
-  border-color: var(--color-primary) !important;
+  border-color: var(--border-color-primary, var(--color-primary)) !important;
 }
 
 .border-secondary {
-  border-color: var(--color-secondary) !important;
+  border-color: var(--border-color-secondary, var(--color-secondary)) !important;
 }
 
 /* Border Colors - Estados */
 .border-success {
-  border-color: var(--color-success) !important;
+  border-color: var(--border-color-success, var(--color-success)) !important;
 }
 
 .border-warning {
-  border-color: var(--color-warning) !important;
+  border-color: var(--border-color-warning, var(--color-warning)) !important;
 }
 
 .border-error {
-  border-color: var(--color-error) !important;
+  border-color: var(--border-color-error, var(--color-error)) !important;
 }
 
 .border-info {
-  border-color: var(--color-info, #2196f3) !important;
+  border-color: var(--border-color-info, var(--color-info, #2196f3)) !important;
 }
 
 /* Border Colors - Neutros */
@@ -232,7 +232,8 @@
 
 /* Border Utilities */
 .border {
-  border: 1px solid var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
 }
 
 .border-0 {
@@ -240,19 +241,44 @@
 }
 
 .border-t {
-  border-top: 1px solid var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
 }
 
 .border-r {
-  border-right: 1px solid var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+  border-right-width: 1px !important;
+  border-right-style: solid !important;
 }
 
 .border-b {
-  border-bottom: 1px solid var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
 }
 
 .border-l {
-  border-left: 1px solid var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+  border-left-width: 1px !important;
+  border-left-style: solid !important;
+}
+
+/* Border Colors - Default */
+.border-default {
+  border-color: var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+}
+
+.border-t-default {
+  border-top-color: var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+}
+
+.border-r-default {
+  border-right-color: var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+}
+
+.border-b-default {
+  border-bottom-color: var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
+}
+
+.border-l-default {
+  border-left-color: var(--color-border, var(--color-gray-300, #e0e0e0)) !important;
 }
 
 /* Hover States */
@@ -298,23 +324,23 @@
 
 /* Focus States */
 .focus\:border-primary:focus {
-  border-color: var(--color-primary) !important;
+  border-color: var(--border-color-primary, var(--color-primary)) !important;
 }
 
 .focus\:border-secondary:focus {
-  border-color: var(--color-secondary) !important;
+  border-color: var(--border-color-secondary, var(--color-secondary)) !important;
 }
 
 .focus\:border-success:focus {
-  border-color: var(--color-success) !important;
+  border-color: var(--border-color-success, var(--color-success)) !important;
 }
 
 .focus\:border-warning:focus {
-  border-color: var(--color-warning) !important;
+  border-color: var(--border-color-warning, var(--color-warning)) !important;
 }
 
 .focus\:border-error:focus {
-  border-color: var(--color-error) !important;
+  border-color: var(--border-color-error, var(--color-error)) !important;
 }
 
 /*# sourceMappingURL=yor-colors.css.map */
