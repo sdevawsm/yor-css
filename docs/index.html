@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yor CSS - Framework CSS Modular</title>
     <meta name="description" content="Yor CSS é um framework CSS modular e moderno para desenvolvimento web.">
+    
+    <!-- Tokens primeiro, pois outros módulos dependem dele -->
+    <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
+    
+    <!-- Estilos da documentação -->
     <link rel="stylesheet" href="assets/css/docs.css">
-    <!-- Adicione aqui os links para os módulos CSS que você está usando -->
+    
+    <!-- Módulos CSS -->
+    <link rel="stylesheet" href="../packages/yor-colors/dist/yor-colors.css">
+    <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
+    <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
     <link rel="stylesheet" href="../packages/yor-forms/dist/yor-forms.css">
     <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
     <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
     <link rel="stylesheet" href="../packages/yor-containers/dist/yor-containers.css">
-    <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
-    <link rel="stylesheet" href="../packages/yor-typography/dist/yor-typography.css">
-    <link rel="stylesheet" href="../packages/yor-colors/dist/yor-colors.css">
 </head>
 <body>
     <div class="yor-docs-layout">

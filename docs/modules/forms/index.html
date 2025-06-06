@@ -4,73 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forms - Yor CSS Framework</title>
+    
+    <!-- Tokens primeiro, pois outros módulos dependem dele -->
+    <link rel="stylesheet" href="../../../packages/yor-tokens/dist/yor-tokens.css">
+    
+    <!-- Estilos da documentação -->
     <link rel="stylesheet" href="../../assets/css/docs.css">
-    <link rel="stylesheet" href="../../../dist/yor-css.css">
+    
+    <!-- Módulos CSS necessários -->
+    <link rel="stylesheet" href="../../../packages/yor-colors/dist/yor-colors.css">
+    <link rel="stylesheet" href="../../../packages/yor-spacing/dist/yor-spacing.css">
+    <link rel="stylesheet" href="../../../packages/yor-typography/dist/yor-typography.css">
+    <link rel="stylesheet" href="../../../packages/yor-forms/dist/yor-forms.css">
+    <link rel="stylesheet" href="../../../packages/yor-buttons/dist/yor-buttons.css">
 </head>
-<body>
-    <div class="yor-docs">
-        <!-- Sidebar Navigation -->
-        <aside class="yor-docs-sidebar">
-            <div class="yor-docs-sidebar-header">
-                <h1>Yor CSS</h1>
-                <p>Framework CSS Modular</p>
-            </div>
-            <nav class="yor-docs-nav">
-                <div class="yor-docs-nav-section">
-                    <h2>Forms</h2>
-                    <ul>
-                        <li><a href="#overview" class="active">Visão Geral</a></li>
-                        <li><a href="#inputs">Inputs</a></li>
-                        <li><a href="#textarea">Textarea</a></li>
-                        <li><a href="#select">Select</a></li>
-                        <li><a href="#checkbox-radio">Checkbox & Radio</a></li>
-                        <li><a href="#form-group">Form Group</a></li>
-                        <li><a href="#validation">Validação</a></li>
-                        <li><a href="#sizes">Tamanhos</a></li>
-                        <li><a href="#layouts">Layouts</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </aside>
+<body class="yor-docs-layout">
+    <!-- Header -->
+    <header class="yor-docs-header">
+        <div class="yor-docs-header-content">
+            <a href="/" class="yor-docs-logo">Yor CSS</a>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="yor-docs-main">
-            <header class="yor-docs-header">
-                <div class="yor-docs-header-content">
-                    <h1>Forms</h1>
-                    <p>Componentes de formulário para melhorar a experiência de entrada de dados</p>
-                </div>
-            </header>
+    <!-- Sidebar -->
+    <aside class="yor-docs-sidebar">
+        <div class="yor-docs-sidebar-header">
+            <h1 class="yor-docs-sidebar-title">Yor CSS</h1>
+        </div>
+        <nav class="yor-docs-nav" aria-label="Navegação principal">
+            <ul>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/forms" class="yor-docs-nav-link active">Formulários</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/buttons" class="yor-docs-nav-link">Botões</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/cards" class="yor-docs-nav-link">Cards</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/containers" class="yor-docs-nav-link">Containers</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/spacing" class="yor-docs-nav-link">Espaçamento</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/typography" class="yor-docs-nav-link">Tipografia</a></li>
+                <li class="yor-docs-nav-item"><a href="/docs/modules/colors" class="yor-docs-nav-link">Cores</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-            <div class="yor-docs-content">
-                <!-- Overview -->
-                <section id="overview" class="yor-docs-section">
-                    <h2>Visão Geral</h2>
-                    <p>O módulo Forms fornece componentes estilizados e acessíveis para criar formulários modernos e responsivos. Todos os componentes são customizáveis através de variáveis SCSS e seguem as melhores práticas de acessibilidade.</p>
+    <!-- Main Content -->
+    <main class="yor-docs-main">
+        <div class="yor-docs-content">
+            <section class="yor-docs-section" id="introduction">
+                <h1 class="yor-docs-section-title">Forms</h1>
+                <p class="yor-docs-text-large yor-docs-mb-4">
+                    Componentes de formulário para melhorar a experiência de entrada de dados
+                </p>
+            </section>
 
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-header">
-                            <h3>Exemplo Básico</h3>
-                        </div>
-                        <div class="yor-docs-example-content">
-                            <form class="yor-form">
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="name">Nome</label>
-                                    <input type="text" class="yor-input" id="name" placeholder="Digite seu nome">
-                                </div>
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="email">Email</label>
-                                    <input type="email" class="yor-input" id="email" placeholder="Digite seu email">
-                                </div>
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="message">Mensagem</label>
-                                    <textarea class="yor-textarea" id="message" placeholder="Digite sua mensagem"></textarea>
-                                </div>
-                                <button type="submit" class="yor-btn yor-btn-primary">Enviar</button>
-                            </form>
-                        </div>
-                        <div class="yor-docs-example-code">
-                            <pre><code>&lt;form class="yor-form"&gt;
+            <!-- Overview -->
+            <section id="overview" class="yor-docs-section">
+                <h2 class="yor-docs-section-subtitle">Visão Geral</h2>
+                <p class="yor-docs-mb-4">
+                    O módulo Forms fornece componentes estilizados e acessíveis para criar formulários modernos e responsivos. 
+                    Todos os componentes são customizáveis através de variáveis CSS e seguem as melhores práticas de acessibilidade.
+                </p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-preview">
+                        <form class="yor-form">
+                            <div class="yor-form-group">
+                                <label class="yor-form-label" for="name">Nome</label>
+                                <input type="text" class="yor-input" id="name" placeholder="Digite seu nome">
+                            </div>
+                            <div class="yor-form-group">
+                                <label class="yor-form-label" for="email">Email</label>
+                                <input type="email" class="yor-input" id="email" placeholder="Digite seu email">
+                            </div>
+                            <div class="yor-form-group">
+                                <label class="yor-form-label" for="message">Mensagem</label>
+                                <textarea class="yor-textarea" id="message" placeholder="Digite sua mensagem"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="yor-docs-example-code">
+                        <pre><code>&lt;form class="yor-form"&gt;
   &lt;div class="yor-form-group"&gt;
     &lt;label class="yor-form-label" for="name"&gt;Nome&lt;/label&gt;
     &lt;input type="text" class="yor-input" id="name" placeholder="Digite seu nome"&gt;
@@ -83,251 +94,266 @@
     &lt;label class="yor-form-label" for="message"&gt;Mensagem&lt;/label&gt;
     &lt;textarea class="yor-textarea" id="message" placeholder="Digite sua mensagem"&gt;&lt;/textarea&gt;
   &lt;/div&gt;
-  &lt;button type="submit" class="yor-btn yor-btn-primary"&gt;Enviar&lt;/button&gt;
+  &lt;button type="submit" class="btn btn--primary"&gt;Enviar&lt;/button&gt;
 &lt;/form&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inputs -->
+            <section id="inputs" class="yor-docs-section">
+                <h2>Inputs</h2>
+                <p>O componente <code>.yor-input</code> fornece estilos base para todos os tipos de input HTML5.</p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-header">
+                        <h3>Tipos de Input</h3>
+                    </div>
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="text">Text</label>
+                            <input type="text" class="yor-input" id="text" placeholder="Digite algo...">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="email">Email</label>
+                            <input type="email" class="yor-input" id="email" placeholder="email@exemplo.com">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="password">Senha</label>
+                            <input type="password" class="yor-input" id="password" placeholder="Digite sua senha">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="number">Número</label>
+                            <input type="number" class="yor-input" id="number" placeholder="Digite um número">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="search">Busca</label>
+                            <input type="search" class="yor-input" id="search" placeholder="Buscar...">
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- Inputs -->
-                <section id="inputs" class="yor-docs-section">
-                    <h2>Inputs</h2>
-                    <p>O componente <code>.yor-input</code> fornece estilos base para todos os tipos de input HTML5.</p>
-
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-header">
-                            <h3>Tipos de Input</h3>
+                <h3>Estados</h3>
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="disabled">Disabled</label>
+                            <input type="text" class="yor-input" id="disabled" disabled placeholder="Input desabilitado">
                         </div>
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="text">Text</label>
-                                <input type="text" class="yor-input" id="text" placeholder="Digite algo...">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="error">Error</label>
+                            <input type="text" class="yor-input yor-input-error" id="error" placeholder="Input com erro">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Textarea -->
+            <section id="textarea" class="yor-docs-section">
+                <h2>Textarea</h2>
+                <p>O componente <code>.yor-textarea</code> fornece estilos para áreas de texto multilinha.</p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="textarea">Mensagem</label>
+                            <textarea class="yor-textarea" id="textarea" rows="4" placeholder="Digite sua mensagem..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Select -->
+            <section id="select" class="yor-docs-section">
+                <h2>Select</h2>
+                <p>O componente <code>.yor-select</code> fornece estilos para elementos select.</p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="select">Selecione uma opção</label>
+                            <select class="yor-select" id="select">
+                                <option value="">Escolha...</option>
+                                <option value="1">Opção 1</option>
+                                <option value="2">Opção 2</option>
+                                <option value="3">Opção 3</option>
+                            </select>
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="select-multiple">Select Múltiplo</label>
+                            <select class="yor-select" id="select-multiple" multiple>
+                                <option value="1">Opção 1</option>
+                                <option value="2">Opção 2</option>
+                                <option value="3">Opção 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Checkbox & Radio -->
+            <section id="checkbox-radio" class="yor-docs-section">
+                <h2>Checkbox & Radio</h2>
+                <p>Os componentes <code>.yor-checkbox</code> e <code>.yor-radio</code> fornecem estilos personalizados para checkboxes e radio buttons.</p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label">Checkboxes</label>
+                            <div class="yor-checkbox">
+                                <input type="checkbox" id="checkbox1">
+                                <span class="yor-checkbox-box"></span>
+                                <label class="yor-checkbox-label" for="checkbox1">Opção 1</label>
                             </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="email">Email</label>
-                                <input type="email" class="yor-input" id="email" placeholder="email@exemplo.com">
+                            <div class="yor-checkbox">
+                                <input type="checkbox" id="checkbox2">
+                                <span class="yor-checkbox-box"></span>
+                                <label class="yor-checkbox-label" for="checkbox2">Opção 2</label>
                             </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="password">Senha</label>
-                                <input type="password" class="yor-input" id="password" placeholder="Digite sua senha">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label">Radio Buttons</label>
+                            <div class="yor-radio">
+                                <input type="radio" name="radio" id="radio1">
+                                <span class="yor-radio-box"></span>
+                                <label class="yor-radio-label" for="radio1">Opção 1</label>
                             </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="number">Número</label>
-                                <input type="number" class="yor-input" id="number" placeholder="Digite um número">
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="search">Busca</label>
-                                <input type="search" class="yor-input" id="search" placeholder="Buscar...">
+                            <div class="yor-radio">
+                                <input type="radio" name="radio" id="radio2">
+                                <span class="yor-radio-box"></span>
+                                <label class="yor-radio-label" for="radio2">Opção 2</label>
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <h3>Estados</h3>
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="disabled">Disabled</label>
-                                <input type="text" class="yor-input" id="disabled" disabled placeholder="Input desabilitado">
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="error">Error</label>
-                                <input type="text" class="yor-input yor-input-error" id="error" placeholder="Input com erro">
-                            </div>
+            <!-- Form Group -->
+            <section id="form-group" class="yor-docs-section">
+                <h2>Form Group</h2>
+                <p>O componente <code>.yor-form-group</code> agrupa labels, inputs e mensagens de ajuda/erro.</p>
+
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="username">Username</label>
+                            <input type="text" class="yor-input" id="username" placeholder="Digite seu username">
+                            <div class="yor-form-help">Seu username deve ter entre 3 e 20 caracteres.</div>
+                        </div>
+                        <div class="yor-form-group yor-form-group-required">
+                            <label class="yor-form-label" for="email2">Email</label>
+                            <input type="email" class="yor-input" id="email2" placeholder="Digite seu email">
+                            <div class="yor-form-error">Por favor, digite um email válido.</div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- Textarea -->
-                <section id="textarea" class="yor-docs-section">
-                    <h2>Textarea</h2>
-                    <p>O componente <code>.yor-textarea</code> fornece estilos para áreas de texto multilinha.</p>
+            <!-- Validation -->
+            <section id="validation" class="yor-docs-section">
+                <h2>Validação</h2>
+                <p>Classes utilitárias para estados de validação de formulários.</p>
 
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="textarea">Mensagem</label>
-                                <textarea class="yor-textarea" id="textarea" rows="4" placeholder="Digite sua mensagem..."></textarea>
-                            </div>
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="valid">Input Válido</label>
+                            <input type="text" class="yor-input yor-form-valid" id="valid" value="Valor válido">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="invalid">Input Inválido</label>
+                            <input type="text" class="yor-input yor-form-invalid" id="invalid" value="Valor inválido">
+                            <div class="yor-form-error">Este campo é obrigatório.</div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- Select -->
-                <section id="select" class="yor-docs-section">
-                    <h2>Select</h2>
-                    <p>O componente <code>.yor-select</code> fornece estilos para elementos select.</p>
+            <!-- Sizes -->
+            <section id="sizes" class="yor-docs-section">
+                <h2>Tamanhos</h2>
+                <p>Classes utilitárias para diferentes tamanhos de inputs.</p>
 
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="select">Selecione uma opção</label>
-                                <select class="yor-select" id="select">
-                                    <option value="">Escolha...</option>
-                                    <option value="1">Opção 1</option>
-                                    <option value="2">Opção 2</option>
-                                    <option value="3">Opção 3</option>
-                                </select>
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="select-multiple">Select Múltiplo</label>
-                                <select class="yor-select" id="select-multiple" multiple>
-                                    <option value="1">Opção 1</option>
-                                    <option value="2">Opção 2</option>
-                                    <option value="3">Opção 3</option>
-                                </select>
-                            </div>
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="small">Input Pequeno</label>
+                            <input type="text" class="yor-input yor-form-sm" id="small" placeholder="Input pequeno">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="default">Input Padrão</label>
+                            <input type="text" class="yor-input" id="default" placeholder="Input padrão">
+                        </div>
+                        <div class="yor-form-group">
+                            <label class="yor-form-label" for="large">Input Grande</label>
+                            <input type="text" class="yor-input yor-form-lg" id="large" placeholder="Input grande">
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- Checkbox & Radio -->
-                <section id="checkbox-radio" class="yor-docs-section">
-                    <h2>Checkbox & Radio</h2>
-                    <p>Os componentes <code>.yor-checkbox</code> e <code>.yor-radio</code> fornecem estilos personalizados para checkboxes e radio buttons.</p>
+            <!-- Layouts -->
+            <section id="layouts" class="yor-docs-section">
+                <h2>Layouts</h2>
+                <p>Classes utilitárias para diferentes layouts de formulário.</p>
 
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
+                <h3>Formulário Inline</h3>
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <form class="yor-form yor-form-inline">
                             <div class="yor-form-group">
-                                <label class="yor-form-label">Checkboxes</label>
-                                <div class="yor-checkbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <span class="yor-checkbox-box"></span>
-                                    <label class="yor-checkbox-label" for="checkbox1">Opção 1</label>
+                                <label class="yor-form-label" for="inline-name">Nome</label>
+                                <input type="text" class="yor-input" id="inline-name" placeholder="Nome">
+                            </div>
+                            <div class="yor-form-group">
+                                <label class="yor-form-label" for="inline-email">Email</label>
+                                <input type="email" class="yor-input" id="inline-email" placeholder="Email">
+                            </div>
+                            <button type="submit" class="yor-btn yor-btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <h3>Formulário Horizontal</h3>
+                <div class="yor-docs-example">
+                    <div class="yor-docs-example-content">
+                        <form class="yor-form yor-form-horizontal">
+                            <div class="yor-form-group">
+                                <label class="yor-form-label" for="horizontal-name">Nome</label>
+                                <div>
+                                    <input type="text" class="yor-input" id="horizontal-name" placeholder="Nome">
+                                    <div class="yor-form-help">Seu nome completo.</div>
                                 </div>
-                                <div class="yor-checkbox">
-                                    <input type="checkbox" id="checkbox2">
-                                    <span class="yor-checkbox-box"></span>
-                                    <label class="yor-checkbox-label" for="checkbox2">Opção 2</label>
-                                </div>
                             </div>
                             <div class="yor-form-group">
-                                <label class="yor-form-label">Radio Buttons</label>
-                                <div class="yor-radio">
-                                    <input type="radio" name="radio" id="radio1">
-                                    <span class="yor-radio-box"></span>
-                                    <label class="yor-radio-label" for="radio1">Opção 1</label>
-                                </div>
-                                <div class="yor-radio">
-                                    <input type="radio" name="radio" id="radio2">
-                                    <span class="yor-radio-box"></span>
-                                    <label class="yor-radio-label" for="radio2">Opção 2</label>
+                                <label class="yor-form-label" for="horizontal-email">Email</label>
+                                <div>
+                                    <input type="email" class="yor-input" id="horizontal-email" placeholder="Email">
+                                    <div class="yor-form-help">Seu email principal.</div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </section>
+                </div>
+            </section>
+        </div>
 
-                <!-- Form Group -->
-                <section id="form-group" class="yor-docs-section">
-                    <h2>Form Group</h2>
-                    <p>O componente <code>.yor-form-group</code> agrupa labels, inputs e mensagens de ajuda/erro.</p>
-
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="username">Username</label>
-                                <input type="text" class="yor-input" id="username" placeholder="Digite seu username">
-                                <div class="yor-form-help">Seu username deve ter entre 3 e 20 caracteres.</div>
-                            </div>
-                            <div class="yor-form-group yor-form-group-required">
-                                <label class="yor-form-label" for="email2">Email</label>
-                                <input type="email" class="yor-input" id="email2" placeholder="Digite seu email">
-                                <div class="yor-form-error">Por favor, digite um email válido.</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Validation -->
-                <section id="validation" class="yor-docs-section">
-                    <h2>Validação</h2>
-                    <p>Classes utilitárias para estados de validação de formulários.</p>
-
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="valid">Input Válido</label>
-                                <input type="text" class="yor-input yor-form-valid" id="valid" value="Valor válido">
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="invalid">Input Inválido</label>
-                                <input type="text" class="yor-input yor-form-invalid" id="invalid" value="Valor inválido">
-                                <div class="yor-form-error">Este campo é obrigatório.</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Sizes -->
-                <section id="sizes" class="yor-docs-section">
-                    <h2>Tamanhos</h2>
-                    <p>Classes utilitárias para diferentes tamanhos de inputs.</p>
-
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="small">Input Pequeno</label>
-                                <input type="text" class="yor-input yor-form-sm" id="small" placeholder="Input pequeno">
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="default">Input Padrão</label>
-                                <input type="text" class="yor-input" id="default" placeholder="Input padrão">
-                            </div>
-                            <div class="yor-form-group">
-                                <label class="yor-form-label" for="large">Input Grande</label>
-                                <input type="text" class="yor-input yor-form-lg" id="large" placeholder="Input grande">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Layouts -->
-                <section id="layouts" class="yor-docs-section">
-                    <h2>Layouts</h2>
-                    <p>Classes utilitárias para diferentes layouts de formulário.</p>
-
-                    <h3>Formulário Inline</h3>
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <form class="yor-form yor-form-inline">
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="inline-name">Nome</label>
-                                    <input type="text" class="yor-input" id="inline-name" placeholder="Nome">
-                                </div>
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="inline-email">Email</label>
-                                    <input type="email" class="yor-input" id="inline-email" placeholder="Email">
-                                </div>
-                                <button type="submit" class="yor-btn yor-btn-primary">Enviar</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <h3>Formulário Horizontal</h3>
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-content">
-                            <form class="yor-form yor-form-horizontal">
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="horizontal-name">Nome</label>
-                                    <div>
-                                        <input type="text" class="yor-input" id="horizontal-name" placeholder="Nome">
-                                        <div class="yor-form-help">Seu nome completo.</div>
-                                    </div>
-                                </div>
-                                <div class="yor-form-group">
-                                    <label class="yor-form-label" for="horizontal-email">Email</label>
-                                    <div>
-                                        <input type="email" class="yor-input" id="horizontal-email" placeholder="Email">
-                                        <div class="yor-form-help">Seu email principal.</div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </div>
+        <!-- Table of Contents -->
+        <nav class="yor-docs-toc">
+            <h3 class="yor-docs-toc-title">Nesta página</h3>
+            <ul class="yor-docs-toc-list">
+                <li><a href="#overview" class="yor-docs-toc-link">Visão Geral</a></li>
+                <li><a href="#inputs" class="yor-docs-toc-link">Inputs</a></li>
+                <li><a href="#textarea" class="yor-docs-toc-link">Textarea</a></li>
+                <li><a href="#select" class="yor-docs-toc-link">Select</a></li>
+                <li><a href="#checkbox-radio" class="yor-docs-toc-link">Checkbox & Radio</a></li>
+                <li><a href="#form-group" class="yor-docs-toc-link">Form Group</a></li>
+                <li><a href="#validation" class="yor-docs-toc-link">Validação</a></li>
+                <li><a href="#sizes" class="yor-docs-toc-link">Tamanhos</a></li>
+                <li><a href="#layouts" class="yor-docs-toc-link">Layouts</a></li>
+            </ul>
+        </nav>
+    </main>
 
     <script src="../../assets/js/docs.js"></script>
 </body>

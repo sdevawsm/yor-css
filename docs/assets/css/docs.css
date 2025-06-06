@@ -82,6 +82,12 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-family: var(--yor-docs-font-sans);
     font-size: 16px;
@@ -95,22 +101,24 @@ body {
     color: var(--yor-docs-text);
     background-color: var(--yor-docs-bg);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 /* Layout */
 .yor-docs-layout {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: var(--yor-docs-sidebar-width) 1fr;
+    grid-template-rows: auto 1fr;
     min-height: 100vh;
 }
 
 /* Header */
 .yor-docs-header {
-    position: fixed;
+    grid-area: header;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 100;
     background-color: var(--yor-docs-bg);
     border-bottom: 1px solid var(--yor-docs-border);
@@ -136,17 +144,14 @@ body {
 
 /* Sidebar */
 .yor-docs-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: var(--yor-docs-sidebar-width);
+    grid-area: sidebar;
+    position: sticky;
+    top: calc(4rem + var(--yor-docs-spacing-md));
+    height: calc(100vh - 4rem - var(--yor-docs-spacing-md));
     background-color: var(--yor-docs-bg);
     border-right: 1px solid var(--yor-docs-border);
     padding: var(--yor-docs-spacing-lg) 0;
-    padding-top: calc(4rem + var(--yor-docs-spacing-lg));
     overflow-y: auto;
-    transition: transform 0.3s ease;
     z-index: 99;
 }
 
@@ -193,32 +198,31 @@ body {
     color: #fff;
 }
 
-/* Conteúdo principal */
+/* Main Content */
 .yor-docs-main {
-    flex: 1;
-    margin-left: var(--yor-docs-sidebar-width);
-    padding: calc(4rem + var(--yor-docs-spacing-lg)) var(--yor-docs-spacing-lg) var(--yor-docs-spacing-lg);
-    min-height: 100vh;
-}
-
-.yor-docs-content {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr var(--yor-docs-toc-width);
+    gap: var(--yor-docs-spacing-xl);
+    padding: var(--yor-docs-spacing-xl);
     max-width: var(--yor-docs-content-max-width);
     margin: 0 auto;
 }
 
-/* Tabela de conteúdos */
+.yor-docs-content {
+    min-width: 0; /* Previne overflow em grid items */
+}
+
+/* Table of Contents */
 .yor-docs-toc {
-    position: fixed;
-    top: calc(4rem + var(--yor-docs-spacing-lg));
-    right: var(--yor-docs-spacing-lg);
-    width: var(--yor-docs-toc-width);
-    max-height: calc(100vh - 8rem);
+    position: sticky;
+    top: calc(4rem + var(--yor-docs-spacing-md));
+    height: calc(100vh - 4rem - var(--yor-docs-spacing-md));
     overflow-y: auto;
-    padding: var(--yor-docs-spacing-md);
-    background-color: var(--yor-docs-bg);
+    padding: var(--yor-docs-spacing-lg);
+    background-color: var(--yor-docs-bg-light);
+    border-radius: var(--radius-md);
     border: 1px solid var(--yor-docs-border);
-    border-radius: 0.5rem;
-    box-shadow: var(--yor-docs-shadow);
 }
 
 .yor-docs-toc-title {
@@ -366,43 +370,49 @@ body {
     transform: scale(1.1);
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .yor-docs-main {
+        grid-template-columns: 1fr;
+    }
+
     .yor-docs-toc {
         display: none;
-    }
-    
-    .yor-docs-content {
-        margin-right: 0;
     }
 }
 
 @media (max-width: 900px) {
+    .yor-docs-layout {
+        grid-template-areas:
+            "header"
+            "main";
+        grid-template-columns: 1fr;
+    }
+
     .yor-docs-sidebar {
-        transform: translateX(-100%);
+        display: none;
     }
+
     .yor-docs-sidebar.active {
-        transform: translateX(0);
-        box-shadow: var(--yor-docs-shadow-lg);
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
     }
+
     .yor-docs-main {
-        margin-left: 0;
-        padding-left: var(--yor-docs-spacing-md);
-        padding-right: var(--yor-docs-spacing-md);
+        padding: var(--yor-docs-spacing-lg);
     }
+
     .yor-docs-header-content {
         padding: 0 var(--yor-docs-spacing-md);
     }
+
     .yor-docs-menu-toggle {
-        display: flex;
-    }
-    .yor-docs-sidebar-header {
-        padding-bottom: var(--yor-docs-spacing-md);
-        margin-bottom: var(--yor-docs-spacing-md);
-    }
-    .yor-docs-sidebar .yor-docs-nav-link {
-        font-size: var(--yor-docs-text-base);
-        padding: var(--yor-docs-spacing-sm) var(--yor-docs-spacing-md);
+        display: block;
     }
 }
 
