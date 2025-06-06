@@ -12,6 +12,10 @@
   --color-text-muted: var(--color-gray-400);
   /* Cores de borda */
   --border-color: var(--color-gray-700);
+  --border-color-primary: var(--color-primary);
+  --border-color-success: var(--color-success);
+  --border-color-warning: var(--color-warning);
+  --border-color-error: var(--color-error);
   /* Ajustes de sombra para melhor visibilidade no tema escuro */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -27,6 +31,7 @@
   /* Ajustes para elementos neutros */
   /* Ajustes para textos neutros */
   /* Ajustes para bordas neutras */
+  /* Ajustes para bordas semânticas */
   /* Ajustes para elementos de destaque - usando opacidade para manter as cores semânticas */
 }
 [data-theme=dark] body {
@@ -105,6 +110,18 @@
 [data-theme=dark] .border-gray-200,
 [data-theme=dark] .border-gray-300 {
   border-color: var(--border-color) !important;
+}
+[data-theme=dark] .border-primary {
+  border-color: var(--border-color-primary) !important;
+}
+[data-theme=dark] .border-success {
+  border-color: var(--border-color-success) !important;
+}
+[data-theme=dark] .border-warning {
+  border-color: var(--border-color-warning) !important;
+}
+[data-theme=dark] .border-error {
+  border-color: var(--border-color-error) !important;
 }
 [data-theme=dark] .bg-primary-light {
   background-color: color-mix(in srgb, var(--color-primary) 20%, var(--color-surface)) !important;
