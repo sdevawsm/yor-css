@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Form Groups</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Form Groups</h1>
+    
+    <h2>Básico</h2>
+    <div class="form-group">
+      <label class="form-group__label">Nome</label>
+      <input class="input" type="text" placeholder="Digite seu nome">
+      <span class="form-group__help">Digite seu nome completo</span>
+    </div>
+    
+    <h2>Campo Obrigatório</h2>
+    <div class="form-group">
+      <label class="form-group__label form-group__label--required">Email</label>
+      <input class="input" type="email" placeholder="Digite seu email">
+      <span class="form-group__help">Digite um email válido</span>
+    </div>
+    
+    <h2>Layout Horizontal</h2>
+    <div class="form-group form-group--horizontal">
+      <label class="form-group__label">Telefone</label>
+      <div class="form-group__content">
+        <input class="input" type="tel" placeholder="(00) 00000-0000">
+        <span class="form-group__help">Digite seu número com DDD</span>
+      </div>
+    </div>
+    
+    <h2>Tamanhos</h2>
+    <div class="form-group form-group--sm">
+      <label class="form-group__label">Input pequeno</label>
+      <input class="input input--sm" type="text" placeholder="Digite algo">
+      <span class="form-group__help">Texto de ajuda pequeno</span>
+    </div>
+    
+    <div class="form-group form-group--lg">
+      <label class="form-group__label">Input grande</label>
+      <input class="input input--lg" type="text" placeholder="Digite algo">
+      <span class="form-group__help">Texto de ajuda grande</span>
+    </div>
+    
+    <h2>Estados</h2>
+    <div class="form-group is-invalid">
+      <label class="form-group__label">Campo com erro</label>
+      <input class="input" type="text" placeholder="Digite algo">
+      <span class="form-group__error">Este campo é obrigatório</span>
+    </div>
+    
+    <div class="form-group is-valid">
+      <label class="form-group__label">Campo válido</label>
+      <input class="input" type="text" placeholder="Digite algo">
+      <span class="form-group__help">Campo preenchido corretamente</span>
+    </div>
+    
+    <div class="form-group is-disabled">
+      <label class="form-group__label">Campo desabilitado</label>
+      <input class="input" type="text" placeholder="Digite algo" disabled>
+      <span class="form-group__help">Este campo está desabilitado</span>
+    </div>
+    
+    <h2>Exemplo Completo</h2>
+    <form>
+      <div class="form-group">
+        <label class="form-group__label form-group__label--required">Nome completo</label>
+        <input class="input" type="text" placeholder="Digite seu nome completo">
+        <span class="form-group__help">Digite seu nome completo como aparece no documento</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label form-group__label--required">Email</label>
+        <input class="input" type="email" placeholder="seu@email.com">
+        <span class="form-group__help">Digite um email válido para contato</span>
+      </div>
+      
+      <div class="form-group form-group--horizontal">
+        <label class="form-group__label">Telefone</label>
+        <div class="form-group__content">
+          <input class="input" type="tel" placeholder="(00) 00000-0000">
+          <span class="form-group__help">Digite seu número com DDD</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label">Mensagem</label>
+        <textarea class="textarea" placeholder="Digite sua mensagem..."></textarea>
+        <span class="form-group__help">Digite sua mensagem com detalhes</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="checkbox">
+          <input type="checkbox" class="checkbox__input">
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">Concordo com os termos</span>
+        </label>
+      </div>
+    </form>
+  </div>
+</body>
+</html> 

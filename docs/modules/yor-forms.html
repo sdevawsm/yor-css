@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Forms - Documentação</title>
+    
+    <!-- Tokens primeiro, pois outros módulos dependem dele -->
+    <link rel="stylesheet" href="../../packages/yor-tokens/dist/yor-tokens.css">
+    
+    <!-- Módulos CSS -->
+    <link rel="stylesheet" href="../../packages/yor-colors/dist/yor-colors.css">
+    <link rel="stylesheet" href="../../packages/yor-spacing/dist/yor-spacing.css">
+    <link rel="stylesheet" href="../../packages/yor-typography/dist/yor-typography.css">
+    <link rel="stylesheet" href="../../packages/yor-forms/dist/yor-forms.css">
+    <link rel="stylesheet" href="../../packages/yor-buttons/dist/yor-buttons.css">
+    <link rel="stylesheet" href="../../packages/yor-cards/dist/yor-cards.css">
+    <link rel="stylesheet" href="../../packages/yor-containers/dist/yor-containers.css">
+    <link rel="stylesheet" href="../../packages/yor-navigation/dist/yor-navigation.css">
+    <link rel="stylesheet" href="../../packages/yor-layout/dist/yor-layout.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="../../themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="../../themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="../../themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="../../themes/dark/dist/dark-theme.css">
+    
+    <style>
+        :root {
+            --sidebar-width: 300px;
+            --header-height: 60px;
+            --primary-color: #3490dc;
+            --secondary-color: #ffed4a;
+            --danger-color: #e3342f;
+            --text-color: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --bg-color: #fff;
+            --bg-secondary: #f7fafc;
+            --code-bg: #f8fafc;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+        
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--bg-color);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        .main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+        }
+        
+        .header {
+            height: var(--header-height);
+            background: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--sidebar-width);
+            z-index: 100;
+        }
+        
+        .content {
+            margin-top: var(--header-height);
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 0.25rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+        
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        .search {
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.1);
+        }
+        
+        .version {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.875rem;
+        }
+        
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .example {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .example-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .example-code {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .alert-info {
+            background: #ebf8ff;
+            border: 1px solid #bee3f8;
+            color: #2b6cb0;
+        }
+        
+        .alert-warning {
+            background: #fffaf0;
+            border: 1px solid #feebc8;
+            color: #c05621;
+        }
+        
+        .alert-danger {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            color: #c53030;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="search-input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#componentes" class="nav-link">Componentes</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#inputs" class="nav-link">Inputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#checkboxes" class="nav-link">Checkboxes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#radios" class="nav-link">Radio Buttons</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#selects" class="nav-link">Selects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#textareas" class="nav-link">Textareas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#form-groups" class="nav-link">Form Groups</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#validacao" class="nav-link">Validação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Forms</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-forms fornece componentes de formulário estilizados e acessíveis para melhorar a experiência de entrada de dados em suas aplicações.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Todos os componentes de formulário são totalmente responsivos e seguem as melhores práticas de acessibilidade.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-forms, você pode usar npm:</p>
+                    
+                    <pre><code>npm install @yor-css/forms</code></pre>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/forms.css"&gt;</code></pre>
+                </section>
+                
+                <section id="componentes">
+                    <h2>Componentes</h2>
+                    
+                    <section id="inputs">
+                        <h3>Inputs</h3>
+                        <p>Inputs são campos de texto básicos que podem ser usados para coletar dados do usuário.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Input Básico</div>
+                            <div class="form-group">
+                                <label class="form-group__label">Nome</label>
+                                <input class="input" type="text" placeholder="Digite seu nome">
+                            </div>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;div class="form-group"&gt;
+    &lt;label class="form-group__label"&gt;Nome&lt;/label&gt;
+    &lt;input class="input" type="text" placeholder="Digite seu nome"&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Nota:</strong> Sempre use o componente form-group para envolver seus inputs, pois ele fornece o espaçamento e alinhamento corretos.
+                        </div>
+                    </section>
+                    
+                    <section id="checkboxes">
+                        <h3>Checkboxes</h3>
+                        <p>Checkboxes permitem que os usuários selecionem uma ou mais opções de uma lista.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Checkbox Básico</div>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input">
+                                <span class="checkbox__box"></span>
+                                <span class="checkbox__label">Aceito os termos</span>
+                            </label>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;label class="checkbox"&gt;
+    &lt;input type="checkbox" class="checkbox__input"&gt;
+    &lt;span class="checkbox__box"&gt;&lt;/span&gt;
+    &lt;span class="checkbox__label"&gt;Aceito os termos&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="radios">
+                        <h3>Radio Buttons</h3>
+                        <p>Radio buttons permitem que os usuários selecionem uma única opção de um conjunto de opções mutuamente exclusivas.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Radio Button Básico</div>
+                            <label class="radio">
+                                <input type="radio" name="option" class="radio__input">
+                                <span class="radio__box"></span>
+                                <span class="radio__label">Opção 1</span>
+                            </label>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;label class="radio"&gt;
+    &lt;input type="radio" name="option" class="radio__input"&gt;
+    &lt;span class="radio__box"&gt;&lt;/span&gt;
+    &lt;span class="radio__label"&gt;Opção 1&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="selects">
+                        <h3>Selects</h3>
+                        <p>Selects permitem que os usuários escolham uma opção de uma lista suspensa.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Select Básico</div>
+                            <div class="form-group">
+                                <label class="form-group__label">País</label>
+                                <div class="select">
+                                    <select class="select__native">
+                                        <option value="">Selecione um país</option>
+                                        <option value="br">Brasil</option>
+                                        <option value="pt">Portugal</option>
+                                        <option value="es">Espanha</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;div class="form-group"&gt;
+    &lt;label class="form-group__label"&gt;País&lt;/label&gt;
+    &lt;div class="select"&gt;
+        &lt;select class="select__native"&gt;
+            &lt;option value=""&gt;Selecione um país&lt;/option&gt;
+            &lt;option value="br"&gt;Brasil&lt;/option&gt;
+            &lt;option value="pt"&gt;Portugal&lt;/option&gt;
+            &lt;option value="es"&gt;Espanha&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="textareas">
+                        <h3>Textareas</h3>
+                        <p>Textareas são campos de texto multilinha para entrada de texto mais longa.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Textarea Básico</div>
+                            <div class="form-group">
+                                <label class="form-group__label">Mensagem</label>
+                                <textarea class="textarea" placeholder="Digite sua mensagem..."></textarea>
+                            </div>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;div class="form-group"&gt;
+    &lt;label class="form-group__label"&gt;Mensagem&lt;/label&gt;
+    &lt;textarea class="textarea" placeholder="Digite sua mensagem..."&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="form-groups">
+                        <h3>Form Groups</h3>
+                        <p>Form groups são containers que agrupam labels, inputs e mensagens de ajuda/erro.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Form Group Completo</div>
+                            <div class="form-group">
+                                <label class="form-group__label form-group__label--required">Email</label>
+                                <input class="input" type="email" placeholder="seu@email.com">
+                                <span class="form-group__help">Digite um email válido</span>
+                            </div>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;div class="form-group"&gt;
+    &lt;label class="form-group__label form-group__label--required"&gt;Email&lt;/label&gt;
+    &lt;input class="input" type="email" placeholder="seu@email.com"&gt;
+    &lt;span class="form-group__help"&gt;Digite um email válido&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="validacao">
+                    <h2>Validação</h2>
+                    <p>O módulo yor-forms fornece classes e estilos para validação de formulários.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Input com Erro</div>
+                        <div class="form-group">
+                            <label class="form-group__label">Email</label>
+                            <input class="input is-invalid" type="email" placeholder="seu@email.com">
+                            <span class="form-group__error">Digite um email válido</span>
+                        </div>
+                        
+                        <div class="example-code">
+                            <pre><code>&lt;div class="form-group"&gt;
+    &lt;label class="form-group__label"&gt;Email&lt;/label&gt;
+    &lt;input class="input is-invalid" type="email" placeholder="seu@email.com"&gt;
+    &lt;span class="form-group__error"&gt;Digite um email válido&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Todos os componentes de formulário seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Labels associados corretamente aos inputs</li>
+                        <li>Estados de foco visíveis</li>
+                        <li>Mensagens de erro claras e associadas aos campos</li>
+                        <li>Suporte a navegação por teclado</li>
+                        <li>Contraste adequado</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Sempre use labels descritivos e forneça mensagens de erro claras para melhorar a acessibilidade.
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Validação</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Validação</h1>
+    
+    <h2>Estados de Validação</h2>
+    <div class="form-group">
+      <label class="form-group__label">Campo com erro</label>
+      <input class="input is-invalid" type="text" placeholder="Digite algo">
+      <span class="validation-message validation-message--error">Este campo é obrigatório</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Campo válido</label>
+      <input class="input is-valid" type="text" placeholder="Digite algo">
+      <span class="validation-message validation-message--success">Campo preenchido corretamente</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Campo com aviso</label>
+      <input class="input" type="text" placeholder="Digite algo">
+      <span class="validation-message validation-message--warning">Este campo é opcional</span>
+    </div>
+    
+    <h2>Feedback de Validação</h2>
+    <div class="validation-feedback validation-feedback--error">
+      <span class="validation-feedback__icon">⚠️</span>
+      <span class="validation-feedback__message">Existem erros no formulário. Por favor, corrija-os antes de continuar.</span>
+    </div>
+    
+    <div class="validation-feedback validation-feedback--success">
+      <span class="validation-feedback__icon">✅</span>
+      <span class="validation-feedback__message">Formulário enviado com sucesso!</span>
+    </div>
+    
+    <div class="validation-feedback validation-feedback--warning">
+      <span class="validation-feedback__icon">ℹ️</span>
+      <span class="validation-feedback__message">Alguns campos são opcionais.</span>
+    </div>
+    
+    <h2>Campos Obrigatórios</h2>
+    <div class="form-group">
+      <label class="form-group__label required-field">Nome</label>
+      <input class="input" type="text" placeholder="Digite seu nome">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label required-field">Email</label>
+      <input class="input" type="email" placeholder="seu@email.com">
+    </div>
+    
+    <h2>Exemplo de Formulário com Validação</h2>
+    <form>
+      <div class="validation-feedback validation-feedback--error">
+        <span class="validation-feedback__icon">⚠️</span>
+        <span class="validation-feedback__message">Por favor, corrija os erros abaixo.</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label required-field">Nome completo</label>
+        <input class="input is-invalid" type="text" placeholder="Digite seu nome">
+        <span class="validation-message validation-message--error">Este campo é obrigatório</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label required-field">Email</label>
+        <input class="input is-invalid" type="email" placeholder="seu@email.com">
+        <span class="validation-message validation-message--error">Digite um email válido</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label">Telefone</label>
+        <input class="input" type="tel" placeholder="(00) 00000-0000">
+        <span class="validation-message validation-message--warning">Este campo é opcional</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-group__label required-field">Mensagem</label>
+        <textarea class="textarea is-invalid" placeholder="Digite sua mensagem..."></textarea>
+        <span class="validation-message validation-message--error">Este campo é obrigatório</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="checkbox is-invalid">
+          <input type="checkbox" class="checkbox__input">
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">Concordo com os termos</span>
+        </label>
+        <span class="validation-message validation-message--error">Você precisa concordar com os termos</span>
+      </div>
+    </form>
+  </div>
+</body>
+</html> 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Textareas</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Textareas</h1>
+    
+    <h2>Básico</h2>
+    <div class="form-group">
+      <label class="form-group__label">Textarea padrão</label>
+      <textarea class="textarea" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <h2>Tamanhos</h2>
+    <div class="form-group">
+      <label class="form-group__label">Textarea pequeno</label>
+      <textarea class="textarea textarea--sm" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea grande</label>
+      <textarea class="textarea textarea--lg" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <h2>Variantes</h2>
+    <div class="form-group">
+      <label class="form-group__label">Textarea outline</label>
+      <textarea class="textarea textarea--outline" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea filled</label>
+      <textarea class="textarea textarea--filled" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <h2>Estados</h2>
+    <div class="form-group">
+      <label class="form-group__label">Textarea com erro</label>
+      <textarea class="textarea is-invalid" placeholder="Digite sua mensagem..."></textarea>
+      <span class="form-group__error">Campo obrigatório</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea válido</label>
+      <textarea class="textarea is-valid" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea desabilitado</label>
+      <textarea class="textarea" placeholder="Digite sua mensagem..." disabled></textarea>
+    </div>
+    
+    <h2>Funcionalidades</h2>
+    <div class="form-group">
+      <label class="form-group__label">Textarea com contador</label>
+      <textarea class="textarea textarea--with-counter" placeholder="Digite sua mensagem..." data-max="100" data-count="0"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea redimensionável</label>
+      <textarea class="textarea textarea--resizable" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Textarea com tamanho fixo</label>
+      <textarea class="textarea textarea--fixed" placeholder="Digite sua mensagem..."></textarea>
+    </div>
+  </div>
+  
+  <script>
+    // Exemplo de contador de caracteres
+    document.querySelector('.textarea--with-counter').addEventListener('input', function(e) {
+      this.setAttribute('data-count', this.value.length);
+    });
+  </script>
+</body>
+</html> 
