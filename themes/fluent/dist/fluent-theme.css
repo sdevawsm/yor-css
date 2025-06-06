@@ -44,6 +44,7 @@
 }
 [data-theme-system=fluent] .btn--primary {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-on-primary);
 }
 [data-theme-system=fluent] .btn--rounded {
   border-radius: var(--radius-lg);
@@ -53,6 +54,12 @@
 }
 [data-theme-system=fluent] .card {
   border-radius: var(--radius-lg);
+}
+
+[data-theme=dark][data-theme-system=fluent] .btn--primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /*# sourceMappingURL=fluent-theme.css.map */
