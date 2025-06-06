@@ -1,0 +1,115 @@
+// Display
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.inline-grid {
+  display: inline-grid;
+}
+
+.table {
+  display: table;
+}
+
+.inline-table {
+  display: inline-table;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.contents {
+  display: contents;
+}
+
+.hidden {
+  display: none;
+}
+
+// Responsivo
+@each $breakpoint, $width in (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+) {
+  @media (min-width: $width) {
+    .#{$breakpoint}\:block {
+      display: block;
+    }
+
+    .#{$breakpoint}\:inline-block {
+      display: inline-block;
+    }
+
+    .#{$breakpoint}\:inline {
+      display: inline;
+    }
+
+    .#{$breakpoint}\:flex {
+      display: flex;
+    }
+
+    .#{$breakpoint}\:inline-flex {
+      display: inline-flex;
+    }
+
+    .#{$breakpoint}\:grid {
+      display: grid;
+    }
+
+    .#{$breakpoint}\:inline-grid {
+      display: inline-grid;
+    }
+
+    .#{$breakpoint}\:table {
+      display: table;
+    }
+
+    .#{$breakpoint}\:inline-table {
+      display: inline-table;
+    }
+
+    .#{$breakpoint}\:table-row {
+      display: table-row;
+    }
+
+    .#{$breakpoint}\:table-cell {
+      display: table-cell;
+    }
+
+    .#{$breakpoint}\:contents {
+      display: contents;
+    }
+
+    .#{$breakpoint}\:hidden {
+      display: none;
+    }
+  }
+} 

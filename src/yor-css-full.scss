@@ -12,4 +12,6 @@
 @import '../packages/yor-forms/src/yor-forms';
 
 // 3. Tema padrão (opcional - pode ser sobrescrito)
-// @import '../themes/material/material-theme';
+@import '../themes/fluent/fluent-theme';
+@import '../themes/material/material-theme';
+@import '../themes/cupertino/cupertino-theme';

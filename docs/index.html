@@ -9,7 +9,6 @@
     <!-- Tokens primeiro, pois outros módulos dependem dele -->
     <link rel="stylesheet" href="../packages/yor-tokens/dist/yor-tokens.css">
     
-
     <!-- Módulos CSS -->
     <link rel="stylesheet" href="../packages/yor-colors/dist/yor-colors.css">
     <link rel="stylesheet" href="../packages/yor-spacing/dist/yor-spacing.css">
@@ -18,146 +17,227 @@
     <link rel="stylesheet" href="../packages/yor-buttons/dist/yor-buttons.css">
     <link rel="stylesheet" href="../packages/yor-cards/dist/yor-cards.css">
     <link rel="stylesheet" href="../packages/yor-containers/dist/yor-containers.css">
+    <link rel="stylesheet" href="../packages/yor-navigation/dist/yor-navigation.css">
+    <link rel="stylesheet" href="../packages/yor-layout/dist/yor-layout.css">
+    <link rel="stylesheet" href="../themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="../themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="../themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="../themes/dark/dist/dark-theme.css">
+
 </head>
-<body>
-    <div class="yor-docs-layout">
-        <header class="yor-docs-header">
-            <div class="yor-docs-header-content">
-                <a href="/" class="yor-docs-logo">Yor CSS</a>
+<body class="bg-white">
+    <div class="container">
+        <header class="border-b border-gray-200 py-4">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="/" class="navbar__brand">Yor CSS</a>
+                    <button class="navbar__toggle" aria-label="Menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <ul class="navbar__nav">
+                        <li><a href="#theme-controls" class="navbar__link">Temas</a></li>
+                        <li><a href="#modules" class="navbar__link">Módulos</a></li>
+                        <li><a href="#documentation" class="navbar__link">Documentação</a></li>
+                    </ul>
+                </nav>
             </div>
         </header>
 
-        <aside class="yor-docs-sidebar">
-            <div class="yor-docs-sidebar-header">
-                <h1 class="yor-docs-sidebar-title">Yor CSS</h1>
-            </div>
-            <nav class="yor-docs-nav" aria-label="Navegação principal">
-                <ul>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/forms" class="yor-docs-nav-link">Formulários</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/buttons" class="yor-docs-nav-link">Botões</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/cards" class="yor-docs-nav-link">Cards</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/containers" class="yor-docs-nav-link">Containers</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/spacing" class="yor-docs-nav-link">Espaçamento</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/typography" class="yor-docs-nav-link">Tipografia</a></li>
-                    <li class="yor-docs-nav-item"><a href="/docs/modules/colors" class="yor-docs-nav-link">Cores</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <main class="yor-docs-main">
-            <div class="yor-docs-content">
-                <section class="yor-docs-section" id="introduction">
-                    <h1 class="yor-docs-section-title">Yor CSS</h1>
-                    <p class="yor-docs-text-large yor-docs-mb-4">
-                        Um framework CSS modular e moderno para desenvolvimento web.
-                    </p>
-                    <p class="yor-docs-mb-4">
-                        O Yor CSS é um framework CSS modular que permite que você use apenas os componentes que precisa,
-                        mantendo seu projeto leve e eficiente. Cada módulo é independente e pode ser usado separadamente.
-                    </p>
-                </section>
-
-                <section class="yor-docs-section" id="features">
-                    <h2 class="yor-docs-section-subtitle">Características</h2>
-                    <ul class="yor-docs-mb-4">
-                        <li>Modular - Use apenas o que você precisa</li>
-                        <li>Leve - Sem dependências desnecessárias</li>
-                        <li>Moderno - Suporte a recursos CSS modernos</li>
-                        <li>Responsivo - Design adaptável a qualquer dispositivo</li>
-                        <li>Customizável - Fácil de personalizar e estender</li>
+        <div class="grid grid-cols-12 gap-6">
+            <aside class="col-span-3 border-r border-[var(--border-color)] py-6">
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900">Yor CSS</h1>
+                </div>
+                <nav aria-label="Navegação principal">
+                    <ul class="space-y-2">
+                        <li><a href="#theme-controls" class="text-gray-600 hover:text-primary">Controles de Tema</a></li>
+                        <li><a href="#modules" class="text-gray-600 hover:text-primary">Módulos</a></li>
+                        <li><a href="#documentation" class="text-gray-600 hover:text-primary">Documentação</a></li>
                     </ul>
-                </section>
+                </nav>
+            </aside>
 
-                <section class="yor-docs-section" id="modules">
-                    <h2 class="yor-docs-section-subtitle">Módulos Disponíveis</h2>
-                    <div class="yor-docs-grid">
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Formulários</h3>
-                            <p class="yor-docs-card-text">
-                                Componentes de formulário estilizados e responsivos.
-                            </p>
-                            <a href="/docs/modules/forms" class="yor-docs-card-link">Ver documentação</a>
+            <main class="col-span-9 py-6">
+                <div class="prose max-w-none">
+                    <section id="theme-controls" class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Controles de Tema</h2>
+                        <div class="card mb-4">
+                            <div class="card__body">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">Modo de Tema</h3>
+                                <div class="flex gap-4 mb-4">
+                                    <button class="btn btn--primary" onclick="setThemeMode('light')">Modo Claro</button>
+                                    <button class="btn btn--primary" onclick="setThemeMode('dark')">Modo Escuro</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Botões</h3>
-                            <p class="yor-docs-card-text">
-                                Botões e grupos de botões com variantes e estados.
-                            </p>
-                            <a href="/docs/modules/buttons" class="yor-docs-card-link">Ver documentação</a>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">Design System</h3>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--primary" onclick="setThemeSystem('fluent')">Fluent</button>
+                                    <button class="btn btn--primary" onclick="setThemeSystem('material')">Material</button>
+                                    <button class="btn btn--primary" onclick="setThemeSystem('cupertino')">Cupertino</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Cards</h3>
-                            <p class="yor-docs-card-text">
-                                Cards flexíveis para exibição de conteúdo.
-                            </p>
-                            <a href="/docs/modules/cards" class="yor-docs-card-link">Ver documentação</a>
-                        </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Containers</h3>
-                            <p class="yor-docs-card-text">
-                                Containers responsivos para layout e estrutura.
-                            </p>
-                            <a href="/docs/modules/containers" class="yor-docs-card-link">Ver documentação</a>
-                        </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Espaçamento</h3>
-                            <p class="yor-docs-card-text">
-                                Utilitários para controle de margens e padding.
-                            </p>
-                            <a href="/docs/modules/spacing" class="yor-docs-card-link">Ver documentação</a>
-                        </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Tipografia</h3>
-                            <p class="yor-docs-card-text">
-                                Estilos e utilitários para texto e tipografia.
-                            </p>
-                            <a href="/docs/modules/typography" class="yor-docs-card-link">Ver documentação</a>
-                        </div>
-                        <div class="yor-docs-card">
-                            <h3 class="yor-docs-card-title">Cores</h3>
-                            <p class="yor-docs-card-text">
-                                Sistema de cores e utilitários para cores.
-                            </p>
-                            <a href="/docs/modules/colors" class="yor-docs-card-link">Ver documentação</a>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section class="yor-docs-section" id="getting-started">
-                    <h2 class="yor-docs-section-subtitle">Começando</h2>
-                    <p class="yor-docs-mb-4">
-                        Para começar a usar o Yor CSS, você pode instalar os módulos via npm:
-                    </p>
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-preview">
-                            <pre><code>npm install @yor-css/forms @yor-css/buttons @yor-css/cards</code></pre>
+                    <section id="modules" class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Módulos</h2>
+                        <div class="row gap-4" style="margin-left: 0; margin-right: 0;">
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-tokens</h3>
+                                        <p class="text-gray-600 mb-4">Sistema de tokens de design</p>
+                                        <a href="modules/tokens.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-buttons</h3>
+                                        <p class="text-gray-600 mb-4">Componentes de botões</p>
+                                        <a href="modules/buttons.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-cards</h3>
+                                        <p class="text-gray-600 mb-4">Componentes de cards</p>
+                                        <a href="modules/cards.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-containers</h3>
+                                        <p class="text-gray-600 mb-4">Componentes de containers</p>
+                                        <a href="modules/containers.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-spacing</h3>
+                                        <p class="text-gray-600 mb-4">Sistema de espaçamento</p>
+                                        <a href="modules/spacing.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-typography</h3>
+                                        <p class="text-gray-600 mb-4">Sistema tipográfico</p>
+                                        <a href="modules/typography.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-colors</h3>
+                                        <p class="text-gray-600 mb-4">Sistema de cores</p>
+                                        <a href="modules/colors.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-forms</h3>
+                                        <p class="text-gray-600 mb-4">Componentes de formulário</p>
+                                        <a href="modules/forms.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-navigation</h3>
+                                        <p class="text-gray-600 mb-4">Componentes de navegação</p>
+                                        <a href="modules/navigation.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <div class="card__body">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">yor-layout</h3>
+                                        <p class="text-gray-600 mb-4">Utilitários para layout e posicionamento</p>
+                                        <a href="modules/layout.html" class="btn btn--primary">Ver Documentação</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <p class="yor-docs-mb-4">
-                        Ou incluir os arquivos CSS diretamente via CDN:
-                    </p>
-                    <div class="yor-docs-example">
-                        <div class="yor-docs-example-preview">
-                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/forms.css"&gt;
+                    </section>
+
+                    <section id="documentation" class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Documentação</h2>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">Começando</h3>
+                                <p class="text-gray-600 mb-4">
+                                    Para começar a usar o Yor CSS, você pode instalar os módulos via npm:
+                                </p>
+                                <div class="card bg-gray-50 mb-4">
+                                    <div class="card__body">
+                                        <pre class="text-sm"><code>npm install @yor-css/forms @yor-css/buttons @yor-css/cards</code></pre>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-4">
+                                    Ou incluir os arquivos CSS diretamente via CDN:
+                                </p>
+                                <div class="card bg-gray-50">
+                                    <div class="card__body">
+                                        <pre class="text-sm"><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/forms.css"&gt;
 &lt;link rel="stylesheet" href="https://cdn.yor-css.com/buttons.css"&gt;
 &lt;link rel="stylesheet" href="https://cdn.yor-css.com/cards.css"&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </section>
-            </div>
-
-            <nav class="yor-docs-toc">
-                <h3 class="yor-docs-toc-title">Nesta página</h3>
-                <ul class="yor-docs-toc-list">
-                    <li><a href="#introduction" class="yor-docs-toc-link">Introdução</a></li>
-                    <li><a href="#features" class="yor-docs-toc-link">Características</a></li>
-                    <li><a href="#modules" class="yor-docs-toc-link">Módulos Disponíveis</a></li>
-                    <li><a href="#getting-started" class="yor-docs-toc-link">Começando</a></li>
-                </ul>
-            </nav>
-        </main>
+                    </section>
+                </div>
+            </main>
+        </div>
     </div>
 
-    <script src="assets/js/docs.js"></script>
+    <script>
+        // Funções para controle de tema
+        function setThemeMode(mode) {
+            document.documentElement.setAttribute('data-theme', mode);
+            localStorage.setItem('theme-mode', mode);
+        }
+
+        function setThemeSystem(system) {
+            document.documentElement.setAttribute('data-theme-system', system);
+            localStorage.setItem('theme-system', system);
+        }
+
+        // Inicialização do tema
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('theme-mode') || 'light';
+            const savedSystem = localStorage.getItem('theme-system') || 'fluent';
+            
+            setThemeMode(savedMode);
+            setThemeSystem(savedSystem);
+        });
+
+        // Toggle do menu mobile
+        document.querySelector('.navbar__toggle').addEventListener('click', () => {
+            document.querySelector('.navbar__nav').classList.toggle('is-open');
+        });
+    </script>
 </body>
 </html> 

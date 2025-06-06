@@ -1,0 +1,173 @@
+// Variáveis
+$grid-columns: 12;
+$grid-gap: var(--space-4);
+$grid-breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Container
+.container {
+  width: 100%;
+  padding-right: var(--space-4);
+  padding-left: var(--space-4);
+  margin-right: auto;
+  margin-left: auto;
+
+  @each $breakpoint, $width in $grid-breakpoints {
+    @media (min-width: $width) {
+      max-width: $width;
+    }
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: var(--space-4);
+  padding-left: var(--space-4);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Row
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc($grid-gap * -0.5);
+  margin-left: calc($grid-gap * -0.5);
+
+  &--no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+// Colunas
+.col {
+  flex: 1 0 0%;
+  padding-right: calc($grid-gap * 0.5);
+  padding-left: calc($grid-gap * 0.5);
+}
+
+// Colunas fixas
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex: 0 0 auto;
+    width: percentage($i / $grid-columns);
+    padding-right: calc($grid-gap * 0.5);
+    padding-left: calc($grid-gap * 0.5);
+  }
+}
+
+// Colunas responsivas
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 auto;
+        width: percentage($i / $grid-columns);
+      }
+    }
+
+    .col-#{$breakpoint} {
+      flex: 1 0 0%;
+    }
+
+    .col-#{$breakpoint}-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+}
+
+// Gaps
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    .gap-#{$breakpoint}-0 {
+      gap: 0;
+    }
+
+    .gap-#{$breakpoint}-1 {
+      gap: var(--space-1);
+    }
+
+    .gap-#{$breakpoint}-2 {
+      gap: var(--space-2);
+    }
+
+    .gap-#{$breakpoint}-3 {
+      gap: var(--space-3);
+    }
+
+    .gap-#{$breakpoint}-4 {
+      gap: var(--space-4);
+    }
+
+    .gap-#{$breakpoint}-5 {
+      gap: var(--space-5);
+    }
+
+    .gap-#{$breakpoint}-6 {
+      gap: var(--space-6);
+    }
+  }
+}
+
+// Alinhamento
+.row-align-start {
+  align-items: flex-start;
+}
+
+.row-align-center {
+  align-items: center;
+}
+
+.row-align-end {
+  align-items: flex-end;
+}
+
+.row-justify-start {
+  justify-content: flex-start;
+}
+
+.row-justify-center {
+  justify-content: center;
+}
+
+.row-justify-end {
+  justify-content: flex-end;
+}
+
+.row-justify-between {
+  justify-content: space-between;
+}
+
+.row-justify-around {
+  justify-content: space-around;
+}
+
+// Ordem
+@for $i from 1 through $grid-columns {
+  .order-#{$i} {
+    order: $i;
+  }
+}
+
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 1 through $grid-columns {
+      .order-#{$breakpoint}-#{$i} {
+        order: $i;
+      }
+    }
+  }
+} 

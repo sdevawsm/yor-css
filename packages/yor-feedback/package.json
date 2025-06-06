@@ -1,0 +1,16 @@
+{
+  "name": "@yor-css/feedback",
+  "version": "0.1.0",
+  "description": "Componentes de feedback visual para o Yor CSS",
+  "main": "dist/yor-feedback.css",
+  "scripts": {
+    "build": "sass src/yor-feedback.scss dist/yor-feedback.css",
+    "watch": "sass src/yor-feedback.scss dist/yor-feedback.css --watch"
+  },
+  "dependencies": {
+    "@yor-css/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  }
+} 

@@ -1,0 +1,8 @@
+// ===== NAVIGATION - Refatorado (sem prefixo yor-) =====
+
+// Importações
+@forward 'navbar/navbar';
+@forward 'tabs/tabs';
+@forward 'breadcrumbs/breadcrumbs';
+@forward 'pagination/pagination';
+@forward 'dropdown/dropdown'; 

@@ -1,0 +1,158 @@
+// Position
+.static {
+  position: static;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+}
+
+// Top, Right, Bottom, Left
+@for $i from 0 through 12 {
+  .top-#{$i} {
+    top: var(--space-#{$i});
+  }
+
+  .right-#{$i} {
+    right: var(--space-#{$i});
+  }
+
+  .bottom-#{$i} {
+    bottom: var(--space-#{$i});
+  }
+
+  .left-#{$i} {
+    left: var(--space-#{$i});
+  }
+}
+
+// Insets
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.inset-auto {
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.inset-x-0 {
+  left: 0;
+  right: 0;
+}
+
+.inset-y-0 {
+  top: 0;
+  bottom: 0;
+}
+
+// Z-index
+@for $i from 0 through 10 {
+  .z-#{$i} {
+    z-index: $i;
+  }
+}
+
+.z-auto {
+  z-index: auto;
+}
+
+// Responsivo
+@each $breakpoint, $width in (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+) {
+  @media (min-width: $width) {
+    .#{$breakpoint}\:static {
+      position: static;
+    }
+
+    .#{$breakpoint}\:fixed {
+      position: fixed;
+    }
+
+    .#{$breakpoint}\:absolute {
+      position: absolute;
+    }
+
+    .#{$breakpoint}\:relative {
+      position: relative;
+    }
+
+    .#{$breakpoint}\:sticky {
+      position: sticky;
+    }
+
+    @for $i from 0 through 12 {
+      .#{$breakpoint}\:top-#{$i} {
+        top: var(--space-#{$i});
+      }
+
+      .#{$breakpoint}\:right-#{$i} {
+        right: var(--space-#{$i});
+      }
+
+      .#{$breakpoint}\:bottom-#{$i} {
+        bottom: var(--space-#{$i});
+      }
+
+      .#{$breakpoint}\:left-#{$i} {
+        left: var(--space-#{$i});
+      }
+    }
+
+    .#{$breakpoint}\:inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .#{$breakpoint}\:inset-auto {
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+    }
+
+    .#{$breakpoint}\:inset-x-0 {
+      left: 0;
+      right: 0;
+    }
+
+    .#{$breakpoint}\:inset-y-0 {
+      top: 0;
+      bottom: 0;
+    }
+
+    @for $i from 0 through 10 {
+      .#{$breakpoint}\:z-#{$i} {
+        z-index: $i;
+      }
+    }
+
+    .#{$breakpoint}\:z-auto {
+      z-index: auto;
+    }
+  }
+} 

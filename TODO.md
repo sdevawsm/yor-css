@@ -251,3 +251,36 @@ Utilitários para acessibilidade.
 - Manter o bundle size otimizado
 - Documentar todas as APIs e variantes
 - Fornecer exemplos de uso para cada componente 
+
+
+
+
+Exemplo de pacotes
+
+packages/
+  ├── yor-layout/
+  │   ├── grid/
+  │   ├── header/
+  │   ├── sidebar/
+  │   └── toc/
+  ├── yor-navigation/
+  │   ├── menu/
+  │   ├── breadcrumb/
+  │   └── pagination/
+  ├── yor-typography/
+  │   ├── heading/
+  │   ├── text/
+  │   └── code/
+  ├── yor-spacing/
+  │   ├── margin/
+  │   ├── padding/
+  │   └── gap/
+  ├── yor-border/
+  │   ├── border/
+  │   ├── radius/
+  │   └── shadow/
+  └── yor-utilities/
+      ├── animation/
+      ├── scrollbar/
+      ├── focus/
+      └── selection/

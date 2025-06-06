@@ -1,0 +1,112 @@
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  &__box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-right: var(--space-2);
+    transition: all var(--transition-fast);
+    background-color: var(--color-surface);
+
+    &::after {
+      content: '';
+      width: 4px;
+      height: 8px;
+      border: solid var(--color-surface);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+  }
+
+  &__label {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text-body);
+  }
+
+  // Estados
+  input:checked ~ &__box {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  input:disabled ~ &__box {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-300);
+    cursor: not-allowed;
+  }
+
+  input:disabled ~ &__label {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+
+  // Variantes
+  &--error {
+    .checkbox__box {
+      border-color: var(--color-error);
+    }
+
+    input:checked ~ .checkbox__box {
+      background-color: var(--color-error);
+      border-color: var(--color-error);
+    }
+  }
+
+  &--success {
+    .checkbox__box {
+      border-color: var(--color-success);
+    }
+
+    input:checked ~ .checkbox__box {
+      background-color: var(--color-success);
+      border-color: var(--color-success);
+    }
+  }
+
+  // Tamanhos
+  &--sm {
+    .checkbox__box {
+      width: 14px;
+      height: 14px;
+    }
+
+    .checkbox__label {
+      font-size: var(--text-sm);
+    }
+  }
+
+  &--lg {
+    .checkbox__box {
+      width: 18px;
+      height: 18px;
+    }
+
+    .checkbox__label {
+      font-size: var(--text-lg);
+    }
+  }
+} 
