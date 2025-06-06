@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Container - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .container-preview {
+            background: var(--color-surface-variant);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#containers" class="nav-link">Containers</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#containers-basicos" class="nav-link">Containers Básicos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#containers-fluid" class="nav-link">Containers Fluid</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#containers-nested" class="nav-link">Containers Aninhados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#containers-responsive" class="nav-link">Containers Responsivos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#grid" class="nav-link">Grid System</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Container</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-container fornece um sistema flexível de containers para estruturar o layout de suas páginas.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Os containers são responsivos e se adaptam automaticamente a diferentes tamanhos de tela.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-container, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/container</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/container.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="containers">
+                    <h2>Containers</h2>
+                    
+                    <section id="containers-basicos">
+                        <h3>Containers Básicos</h3>
+                        <p>O container básico centraliza o conteúdo e define uma largura máxima.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Container Padrão</div>
+                            <div class="container-preview">
+                                <div class="container">
+                                    <p>Este é um container padrão com largura máxima e centralizado.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="container"&gt;
+    &lt;p&gt;Este é um container padrão com largura máxima e centralizado.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="containers-fluid">
+                        <h3>Containers Fluid</h3>
+                        <p>O container fluid ocupa 100% da largura disponível.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Container Fluid</div>
+                            <div class="container-preview">
+                                <div class="container container--fluid">
+                                    <p>Este é um container fluid que ocupa toda a largura disponível.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="container container--fluid"&gt;
+    &lt;p&gt;Este é um container fluid que ocupa toda a largura disponível.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="containers-nested">
+                        <h3>Containers Aninhados</h3>
+                        <p>Containers podem ser aninhados para criar layouts mais complexos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Containers Aninhados</div>
+                            <div class="container-preview">
+                                <div class="container">
+                                    <p>Container principal</p>
+                                    <div class="container container--nested">
+                                        <p>Container aninhado</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="container"&gt;
+    &lt;p&gt;Container principal&lt;/p&gt;
+    &lt;div class="container container--nested"&gt;
+        &lt;p&gt;Container aninhado&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="containers-responsive">
+                        <h3>Containers Responsivos</h3>
+                        <p>Containers podem ter diferentes larguras máximas em diferentes breakpoints.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Container Responsivo</div>
+                            <div class="container-preview">
+                                <div class="container container--responsive">
+                                    <p>Este container se adapta a diferentes tamanhos de tela.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="container container--responsive"&gt;
+    &lt;p&gt;Este container se adapta a diferentes tamanhos de tela.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>/* Breakpoints do container responsivo */
+.container--responsive {
+    max-width: 100%;
+    padding: 0 var(--space-4);
+}
+
+@media (min-width: 640px) {
+    .container--responsive {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container--responsive {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container--responsive {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container--responsive {
+        max-width: 1280px;
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="grid">
+                    <h2>Grid System</h2>
+                    <p>O sistema de grid trabalha em conjunto com os containers para criar layouts flexíveis.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Grid Básico</div>
+                        <div class="container-preview">
+                            <div class="container">
+                                <div class="grid">
+                                    <div class="grid__col">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;div class="container"&gt;
+    &lt;div class="grid"&gt;
+        &lt;div class="grid__col"&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card__body"&gt;
+                    &lt;p&gt;Coluna 1&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="grid__col"&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card__body"&gt;
+                    &lt;p&gt;Coluna 2&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="grid__col"&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card__body"&gt;
+                    &lt;p&gt;Coluna 3&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Os containers seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Estrutura semântica</li>
+                        <li>Suporte a navegação por teclado</li>
+                        <li>Compatibilidade com leitores de tela</li>
+                        <li>Ordem de leitura lógica</li>
+                        <li>Suporte a zoom e redimensionamento</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
