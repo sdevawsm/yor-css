@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Tokens - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .token-preview {
+            background: var(--color-surface-variant);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .token-box {
+            background: var(--color-surface);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .token-item {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .token-name {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .token-value {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cores" class="nav-link">Cores</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#cores-primarias" class="nav-link">Cores Primárias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cores-secundarias" class="nav-link">Cores Secundárias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cores-semanticas" class="nav-link">Cores Semânticas</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tipografia" class="nav-link">Tipografia</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#fontes" class="nav-link">Fontes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tamanhos" class="nav-link">Tamanhos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#pesos" class="nav-link">Pesos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#espacamento" class="nav-link">Espaçamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#bordas" class="nav-link">Bordas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sombras" class="nav-link">Sombras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#transicoes" class="nav-link">Transições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Tokens</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-tokens fornece um sistema completo de tokens de design para criar interfaces consistentes e acessíveis.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Os tokens são variáveis CSS que podem ser facilmente customizadas para diferentes temas e sistemas de design.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-tokens, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/tokens</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/tokens.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="cores">
+                    <h2>Cores</h2>
+                    
+                    <section id="cores-primarias">
+                        <h3>Cores Primárias</h3>
+                        <p>As cores primárias são usadas para elementos principais da interface.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Cores Primárias</div>
+                            <div class="token-grid">
+                                <div class="token-item" style="background: var(--color-primary)">
+                                    <div class="token-name">--color-primary</div>
+                                    <div class="token-value">Cor Primária</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-primary-variant)">
+                                    <div class="token-name">--color-primary-variant</div>
+                                    <div class="token-value">Variação Primária</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-on-primary); color: var(--color-primary)">
+                                    <div class="token-name">--color-on-primary</div>
+                                    <div class="token-value">Cor sobre Primária</div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --color-primary: #6200ee;
+    --color-primary-variant: #3700b3;
+    --color-on-primary: #ffffff;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cores-secundarias">
+                        <h3>Cores Secundárias</h3>
+                        <p>As cores secundárias complementam as cores primárias.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Cores Secundárias</div>
+                            <div class="token-grid">
+                                <div class="token-item" style="background: var(--color-secondary)">
+                                    <div class="token-name">--color-secondary</div>
+                                    <div class="token-value">Cor Secundária</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-secondary-variant)">
+                                    <div class="token-name">--color-secondary-variant</div>
+                                    <div class="token-value">Variação Secundária</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-on-secondary); color: var(--color-secondary)">
+                                    <div class="token-name">--color-on-secondary</div>
+                                    <div class="token-value">Cor sobre Secundária</div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --color-secondary: #03dac6;
+    --color-secondary-variant: #018786;
+    --color-on-secondary: #000000;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cores-semanticas">
+                        <h3>Cores Semânticas</h3>
+                        <p>Cores com significado específico para feedback e estados.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Cores Semânticas</div>
+                            <div class="token-grid">
+                                <div class="token-item" style="background: var(--color-success)">
+                                    <div class="token-name">--color-success</div>
+                                    <div class="token-value">Sucesso</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-error)">
+                                    <div class="token-name">--color-error</div>
+                                    <div class="token-value">Erro</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-warning)">
+                                    <div class="token-name">--color-warning</div>
+                                    <div class="token-value">Alerta</div>
+                                </div>
+                                <div class="token-item" style="background: var(--color-info)">
+                                    <div class="token-name">--color-info</div>
+                                    <div class="token-value">Informação</div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --color-success: #4caf50;
+    --color-error: #f44336;
+    --color-warning: #ff9800;
+    --color-info: #2196f3;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="tipografia">
+                    <h2>Tipografia</h2>
+                    
+                    <section id="fontes">
+                        <h3>Fontes</h3>
+                        <p>Famílias de fontes e suas variações.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Fontes</div>
+                            <div class="token-preview">
+                                <div class="token-box" style="font-family: var(--font-sans)">
+                                    <div class="token-name">--font-sans</div>
+                                    <p>Texto em fonte sans-serif</p>
+                                </div>
+                                <div class="token-box" style="font-family: var(--font-serif)">
+                                    <div class="token-name">--font-serif</div>
+                                    <p>Texto em fonte serif</p>
+                                </div>
+                                <div class="token-box" style="font-family: var(--font-mono)">
+                                    <div class="token-name">--font-mono</div>
+                                    <p>Texto em fonte monoespaçada</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --font-sans: system-ui, -apple-system, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: 'SF Mono', monospace;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="tamanhos">
+                        <h3>Tamanhos</h3>
+                        <p>Escala de tamanhos de fonte.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Tamanhos de Fonte</div>
+                            <div class="token-preview">
+                                <div class="token-box">
+                                    <p style="font-size: var(--text-xs)">Texto XS</p>
+                                    <p style="font-size: var(--text-sm)">Texto SM</p>
+                                    <p style="font-size: var(--text-base)">Texto Base</p>
+                                    <p style="font-size: var(--text-lg)">Texto LG</p>
+                                    <p style="font-size: var(--text-xl)">Texto XL</p>
+                                    <p style="font-size: var(--text-2xl)">Texto 2XL</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="pesos">
+                        <h3>Pesos</h3>
+                        <p>Pesos de fonte disponíveis.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Pesos de Fonte</div>
+                            <div class="token-preview">
+                                <div class="token-box">
+                                    <p style="font-weight: var(--font-light)">Texto Light</p>
+                                    <p style="font-weight: var(--font-normal)">Texto Normal</p>
+                                    <p style="font-weight: var(--font-medium)">Texto Medium</p>
+                                    <p style="font-weight: var(--font-semibold)">Texto Semibold</p>
+                                    <p style="font-weight: var(--font-bold)">Texto Bold</p>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>:root {
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="espacamento">
+                    <h2>Espaçamento</h2>
+                    <p>Sistema de espaçamento baseado em múltiplos de 4px.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Escala de Espaçamento</div>
+                        <div class="token-preview">
+                            <div class="token-grid">
+                                <div class="token-item">
+                                    <div class="token-name">--space-1</div>
+                                    <div class="token-value">4px</div>
+                                </div>
+                                <div class="token-item">
+                                    <div class="token-name">--space-2</div>
+                                    <div class="token-value">8px</div>
+                                </div>
+                                <div class="token-item">
+                                    <div class="token-name">--space-3</div>
+                                    <div class="token-value">12px</div>
+                                </div>
+                                <div class="token-item">
+                                    <div class="token-name">--space-4</div>
+                                    <div class="token-value">16px</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>:root {
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="bordas">
+                    <h2>Bordas</h2>
+                    <p>Sistema de raios de borda e espessuras.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Raios de Borda</div>
+                        <div class="token-preview">
+                            <div class="token-grid">
+                                <div class="token-item" style="border-radius: var(--radius-sm)">
+                                    <div class="token-name">--radius-sm</div>
+                                    <div class="token-value">4px</div>
+                                </div>
+                                <div class="token-item" style="border-radius: var(--radius-md)">
+                                    <div class="token-name">--radius-md</div>
+                                    <div class="token-value">8px</div>
+                                </div>
+                                <div class="token-item" style="border-radius: var(--radius-lg)">
+                                    <div class="token-name">--radius-lg</div>
+                                    <div class="token-value">16px</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>:root {
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="sombras">
+                    <h2>Sombras</h2>
+                    <p>Sistema de elevação e sombras.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Níveis de Sombra</div>
+                        <div class="token-preview">
+                            <div class="token-grid">
+                                <div class="token-item" style="box-shadow: var(--shadow-sm)">
+                                    <div class="token-name">--shadow-sm</div>
+                                    <div class="token-value">Sombra Pequena</div>
+                                </div>
+                                <div class="token-item" style="box-shadow: var(--shadow-md)">
+                                    <div class="token-name">--shadow-md</div>
+                                    <div class="token-value">Sombra Média</div>
+                                </div>
+                                <div class="token-item" style="box-shadow: var(--shadow-lg)">
+                                    <div class="token-name">--shadow-lg</div>
+                                    <div class="token-value">Sombra Grande</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>:root {
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="transicoes">
+                    <h2>Transições</h2>
+                    <p>Sistema de duração e timing de transições.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Durações de Transição</div>
+                        <div class="token-preview">
+                            <div class="token-grid">
+                                <div class="token-item">
+                                    <div class="token-name">--transition-fast</div>
+                                    <div class="token-value">150ms</div>
+                                </div>
+                                <div class="token-item">
+                                    <div class="token-name">--transition-normal</div>
+                                    <div class="token-value">250ms</div>
+                                </div>
+                                <div class="token-item">
+                                    <div class="token-name">--transition-slow</div>
+                                    <div class="token-value">350ms</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>:root {
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-slow: 350ms;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Os tokens de design seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Contraste adequado entre cores</li>
+                        <li>Tamanhos de fonte legíveis</li>
+                        <li>Espaçamento consistente</li>
+                        <li>Suporte a zoom</li>
+                        <li>Compatibilidade com leitores de tela</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 

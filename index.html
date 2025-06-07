@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor CSS - Framework CSS Moderno</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#modulos" class="nav-link">Módulos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#temas" class="nav-link">Temas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contribuindo" class="nav-link">Contribuindo</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Documentação</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>Yor CSS é um framework CSS moderno e modular, projetado para criar interfaces bonitas e responsivas com facilidade.</p>
+                </section>
+                
+                <section id="modulos">
+                    <h2>Módulos</h2>
+                    
+                    <div class="modules-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-buttons</h3>
+                                <p class="card__text">Componentes de botões com variantes e estados.</p>
+                                <a href="modules/yor-buttons.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-cards</h3>
+                                <p class="card__text">Componentes de cards para exibição de conteúdo.</p>
+                                <a href="modules/yor-cards.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-colors</h3>
+                                <p class="card__text">Sistema de cores e paletas.</p>
+                                <a href="modules/yor-colors.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-containers</h3>
+                                <p class="card__text">Componentes de containers para layout.</p>
+                                <a href="modules/yor-container.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-feedback</h3>
+                                <p class="card__text">Componentes para feedback visual ao usuário.</p>
+                                <a href="modules/yor-feedback.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-forms</h3>
+                                <p class="card__text">Componentes de formulário para melhorar a experiência de entrada de dados.</p>
+                                <a href="modules/yor-forms.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-layout</h3>
+                                <p class="card__text">Utilitários para layout e posicionamento.</p>
+                                <a href="modules/yor-layout.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-navigation</h3>
+                                <p class="card__text">Componentes de navegação para estruturar a interface do usuário.</p>
+                                <a href="modules/yor-navigation.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-spacing</h3>
+                                <p class="card__text">Sistema de espaçamento e margens.</p>
+                                <a href="modules/yor-spacing.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-tokens</h3>
+                                <p class="card__text">Sistema de tokens de design.</p>
+                                <a href="modules/yor-tokens.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">yor-typography</h3>
+                                <p class="card__text">Sistema tipográfico e estilos de texto.</p>
+                                <a href="modules/yor-typography.html" class="btn btn--primary">Ver Documentação</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 

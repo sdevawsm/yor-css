@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Layout - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .layout-preview {
+            background: var(--color-surface-variant);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .layout-preview > * {
+            background: var(--color-surface);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-2);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#grid" class="nav-link">Grid System</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#grid-basico" class="nav-link">Grid Básico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#grid-responsivo" class="nav-link">Grid Responsivo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#grid-gaps" class="nav-link">Grid com Gaps</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#flexbox" class="nav-link">Flexbox</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#flex-container" class="nav-link">Flex Container</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#flex-items" class="nav-link">Flex Items</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#flex-order" class="nav-link">Flex Order</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#position" class="nav-link">Position</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#display" class="nav-link">Display</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Layout</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-layout fornece um conjunto completo de utilitários para criar layouts flexíveis e responsivos.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Os utilitários de layout são projetados para trabalhar em conjunto com o sistema de grid e flexbox.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-layout, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/layout</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/layout.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="grid">
+                    <h2>Grid System</h2>
+                    
+                    <section id="grid-basico">
+                        <h3>Grid Básico</h3>
+                        <p>O sistema de grid básico usa 12 colunas para criar layouts flexíveis.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Grid de 12 Colunas</div>
+                            <div class="layout-preview">
+                                <div class="grid">
+                                    <div class="grid__col grid__col--4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna 4</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col grid__col--8">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna 8</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="grid"&gt;
+    &lt;div class="grid__col grid__col--4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Coluna 4&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="grid__col grid__col--8"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Coluna 8&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="grid-responsivo">
+                        <h3>Grid Responsivo</h3>
+                        <p>O grid responsivo se adapta a diferentes tamanhos de tela.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Grid Responsivo</div>
+                            <div class="layout-preview">
+                                <div class="grid">
+                                    <div class="grid__col grid__col--12 grid__col--md-6 grid__col--lg-4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna Responsiva</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col grid__col--12 grid__col--md-6 grid__col--lg-4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna Responsiva</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col grid__col--12 grid__col--md-6 grid__col--lg-4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna Responsiva</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="grid"&gt;
+    &lt;div class="grid__col grid__col--12 grid__col--md-6 grid__col--lg-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Coluna Responsiva&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Repita para outras colunas --&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="grid-gaps">
+                        <h3>Grid com Gaps</h3>
+                        <p>Adicione espaçamento entre as colunas do grid.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Grid com Gaps</div>
+                            <div class="layout-preview">
+                                <div class="grid grid--gap-4">
+                                    <div class="grid__col grid__col--4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna com Gap</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col grid__col--4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna com Gap</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid__col grid__col--4">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Coluna com Gap</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="grid grid--gap-4"&gt;
+    &lt;div class="grid__col grid__col--4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Coluna com Gap&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Repita para outras colunas --&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="flexbox">
+                    <h2>Flexbox</h2>
+                    
+                    <section id="flex-container">
+                        <h3>Flex Container</h3>
+                        <p>Utilitários para criar containers flexbox.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Flex Container</div>
+                            <div class="layout-preview">
+                                <div class="flex flex--justify-between flex--align-center">
+                                    <div class="card">
+                                        <div class="card__body">
+                                            <p>Item Flex 1</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card__body">
+                                            <p>Item Flex 2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="flex flex--justify-between flex--align-center"&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;p&gt;Item Flex 1&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card__body"&gt;
+            &lt;p&gt;Item Flex 2&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="flex-items">
+                        <h3>Flex Items</h3>
+                        <p>Utilitários para controlar o comportamento dos itens flex.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Flex Items</div>
+                            <div class="layout-preview">
+                                <div class="flex">
+                                    <div class="flex__item flex__item--grow">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Item Flexível</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex__item">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Item Fixo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="flex"&gt;
+    &lt;div class="flex__item flex__item--grow"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Item Flexível&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="flex__item"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Item Fixo&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="flex-order">
+                        <h3>Flex Order</h3>
+                        <p>Controle a ordem dos itens flex.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Flex Order</div>
+                            <div class="layout-preview">
+                                <div class="flex">
+                                    <div class="flex__item flex__item--order-2">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Item 1 (Ordem 2)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex__item flex__item--order-1">
+                                        <div class="card">
+                                            <div class="card__body">
+                                                <p>Item 2 (Ordem 1)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;div class="flex"&gt;
+    &lt;div class="flex__item flex__item--order-2"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Item 1 (Ordem 2)&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="flex__item flex__item--order-1"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Item 2 (Ordem 1)&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="position">
+                    <h2>Position</h2>
+                    <p>Utilitários para controlar o posicionamento dos elementos.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Position Utilities</div>
+                        <div class="layout-preview">
+                            <div class="position-relative" style="height: 200px;">
+                                <div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                    <div class="card">
+                                        <div class="card__body">
+                                            <p>Elemento Centralizado</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;div class="position-relative" style="height: 200px;"&gt;
+    &lt;div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Elemento Centralizado&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="display">
+                    <h2>Display</h2>
+                    <p>Utilitários para controlar o tipo de exibição dos elementos.</p>
+                    
+                    <div class="example">
+                        <div class="example-title">Display Utilities</div>
+                        <div class="layout-preview">
+                            <div class="d-flex">
+                                <div class="d-none d-md-block">
+                                    <div class="card">
+                                        <div class="card__body">
+                                            <p>Visível em MD+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-block d-md-none">
+                                    <div class="card">
+                                        <div class="card__body">
+                                            <p>Visível em Mobile</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-code">
+                            <pre><code>&lt;div class="d-flex"&gt;
+    &lt;div class="d-none d-md-block"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Visível em MD+&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="d-block d-md-none"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card__body"&gt;
+                &lt;p&gt;Visível em Mobile&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Os utilitários de layout seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Estrutura semântica</li>
+                        <li>Ordem de leitura lógica</li>
+                        <li>Suporte a zoom e redimensionamento</li>
+                        <li>Compatibilidade com leitores de tela</li>
+                        <li>Navegação por teclado</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 

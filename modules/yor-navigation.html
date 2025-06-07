@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Navigation - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+        }
+
+        .alert-info {
+            background: var(--color-info-light);
+            color: var(--color-info-dark);
+            border: 1px solid var(--color-info);
+        }
+
+        .alert-warning {
+            background: var(--color-warning-light);
+            color: var(--color-warning-dark);
+            border: 1px solid var(--color-warning);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#componentes" class="nav-link">Componentes</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#navbar" class="nav-link">Navbar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tabs" class="nav-link">Tabs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#breadcrumbs" class="nav-link">Breadcrumbs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#pagination" class="nav-link">Paginação</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#dropdown" class="nav-link">Dropdown</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#responsividade" class="nav-link">Responsividade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Navigation</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-navigation fornece componentes de navegação estilizados e acessíveis para estruturar a interface do usuário de forma intuitiva e responsiva.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Todos os componentes de navegação são totalmente responsivos e seguem as melhores práticas de acessibilidade.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-navigation, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/navigation</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/navigation.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="componentes">
+                    <h2>Componentes</h2>
+                    
+                    <section id="navbar">
+                        <h3>Navbar</h3>
+                        <p>A navbar é um componente de navegação principal que geralmente fica no topo da página. Ela pode incluir logo, links de navegação, busca e outros elementos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Navbar Básica</div>
+                            <nav class="navbar">
+                                <div class="navbar__brand">
+                                    <a href="#" class="navbar__logo">Logo</a>
+                                </div>
+                                <ul class="navbar__nav">
+                                    <li class="navbar__item">
+                                        <a href="#" class="navbar__link active">Início</a>
+                                    </li>
+                                    <li class="navbar__item">
+                                        <a href="#" class="navbar__link">Sobre</a>
+                                    </li>
+                                    <li class="navbar__item">
+                                        <a href="#" class="navbar__link">Contato</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            
+                            <div class="example-code">
+                                <pre><code>&lt;nav class="navbar"&gt;
+    &lt;div class="navbar__brand"&gt;
+        &lt;a href="#" class="navbar__logo"&gt;Logo&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;ul class="navbar__nav"&gt;
+        &lt;li class="navbar__item"&gt;
+            &lt;a href="#" class="navbar__link active"&gt;Início&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="navbar__item"&gt;
+            &lt;a href="#" class="navbar__link"&gt;Sobre&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="navbar__item"&gt;
+            &lt;a href="#" class="navbar__link"&gt;Contato&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="example">
+                            <div class="example-title">Navbar com Busca e Dropdown</div>
+                            <nav class="navbar">
+                                <div class="navbar__brand">
+                                    <a href="#" class="navbar__logo">Logo</a>
+                                </div>
+                                <div class="navbar__search">
+                                    <input type="search" class="input" placeholder="Buscar...">
+                                </div>
+                                <ul class="navbar__nav">
+                                    <li class="navbar__item">
+                                        <a href="#" class="navbar__link">Início</a>
+                                    </li>
+                                    <li class="navbar__item dropdown">
+                                        <button class="dropdown__trigger">Menu</button>
+                                        <div class="dropdown__menu">
+                                            <a href="#" class="dropdown__item">Opção 1</a>
+                                            <a href="#" class="dropdown__item">Opção 2</a>
+                                            <a href="#" class="dropdown__item">Opção 3</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                    
+                    <section id="tabs">
+                        <h3>Tabs</h3>
+                        <p>Tabs permitem organizar conteúdo em seções acessíveis através de abas. Podem ser horizontais ou verticais.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Tabs Horizontais</div>
+                            <div class="tabs tabs--underline">
+                                <button class="tab active">Aba 1</button>
+                                <button class="tab">Aba 2</button>
+                                <button class="tab">Aba 3</button>
+                            </div>
+                        </div>
+                        <div class="tab__content active">Conteúdo da Aba 1</div>
+                        <div class="tab__content">Conteúdo da Aba 2</div>
+                        <div class="tab__content">Conteúdo da Aba 3</div>
+
+                        <div class="example">
+                            <div class="example-title">Tabs Verticais</div>
+                            <div class="tabs tabs--vertical">
+                                <button class="tab active">Aba 1</button>
+                                <button class="tab">Aba 2</button>
+                                <button class="tab">Aba 3</button>
+                            </div>
+                        </div>
+                        <div class="tab__content active">Conteúdo da Aba 1</div>
+                        <div class="tab__content">Conteúdo da Aba 2</div>
+                        <div class="tab__content">Conteúdo da Aba 3</div>
+                    </section>
+                    
+                    <section id="breadcrumbs">
+                        <h3>Breadcrumbs</h3>
+                        <p>Breadcrumbs mostram a localização atual do usuário na hierarquia do site. Podem ter separadores customizados e suportam truncamento em telas pequenas.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Breadcrumbs Básicos</div>
+                            <nav class="breadcrumbs">
+                                <a href="#" class="breadcrumb-item__home">Início</a>
+                                <div class="breadcrumb-item">
+                                    <a href="#">Produtos</a>
+                                </div>
+                                <div class="breadcrumb-item active">
+                                    <span class="breadcrumb-item__text">Detalhes</span>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <div class="example">
+                            <div class="example-title">Breadcrumbs com Separador Customizado</div>
+                            <nav class="breadcrumbs breadcrumbs--custom-separator">
+                                <a href="#" class="breadcrumb-item__home" data-separator=">">Início</a>
+                                <div class="breadcrumb-item" data-separator=">">
+                                    <a href="#">Produtos</a>
+                                </div>
+                                <div class="breadcrumb-item active">
+                                    <span class="breadcrumb-item__text">Detalhes</span>
+                                </div>
+                            </nav>
+                        </div>
+                    </section>
+                    
+                    <section id="pagination">
+                        <h3>Paginação</h3>
+                        <p>A paginação permite navegar entre páginas de conteúdo. Suporta diferentes tamanhos e estilos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Paginação Básica</div>
+                            <nav class="pagination pagination--centered">
+                                <a href="#" class="page-item disabled">
+                                    <span class="page-item__icon">←</span>
+                                    Anterior
+                                </a>
+                                <a href="#" class="page-item">1</a>
+                                <a href="#" class="page-item active">2</a>
+                                <a href="#" class="page-item">3</a>
+                                <span class="page-item__ellipsis">...</span>
+                                <a href="#" class="page-item">10</a>
+                                <a href="#" class="page-item">
+                                    Próximo
+                                    <span class="page-item__icon">→</span>
+                                </a>
+                            </nav>
+                        </div>
+
+                        <div class="example">
+                            <div class="example-title">Paginação com Tamanhos</div>
+                            <nav class="pagination pagination--sm pagination--centered">
+                                <a href="#" class="page-item">1</a>
+                                <a href="#" class="page-item active">2</a>
+                                <a href="#" class="page-item">3</a>
+                            </nav>
+                            <nav class="pagination pagination--lg pagination--centered">
+                                <a href="#" class="page-item">1</a>
+                                <a href="#" class="page-item active">2</a>
+                                <a href="#" class="page-item">3</a>
+                            </nav>
+                        </div>
+                    </section>
+                    
+                    <section id="dropdown">
+                        <h3>Dropdown</h3>
+                        <p>Dropdowns são menus suspensos que exibem uma lista de opções. Podem ter submenus e suportam diferentes posicionamentos.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Dropdown Básico</div>
+                            <div class="dropdown dropdown--bottom-start">
+                                <button class="dropdown-toggle">Menu</button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Opção 1</a>
+                                    <a href="#" class="dropdown-item">Opção 2</a>
+                                    <a href="#" class="dropdown-item">Opção 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example">
+                            <div class="example-title">Dropdown com Submenu</div>
+                            <div class="dropdown dropdown--bottom-start">
+                                <button class="dropdown-toggle">Menu</button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Opção 1</a>
+                                    <div class="dropdown-submenu">
+                                        <a href="#" class="dropdown-item">Submenu 1</a>
+                                        <a href="#" class="dropdown-item">Submenu 2</a>
+                                    </div>
+                                    <a href="#" class="dropdown-item">Opção 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="responsividade">
+                    <h2>Responsividade</h2>
+                    <p>O módulo yor-navigation fornece comportamentos responsivos para todos os componentes:</p>
+                    
+                    <ul>
+                        <li>Navbar colapsa em menu hamburguer em telas menores</li>
+                        <li>Tabs se adaptam ao tamanho da tela</li>
+                        <li>Breadcrumbs podem ser truncados em telas pequenas</li>
+                        <li>Paginação se ajusta ao espaço disponível</li>
+                        <li>Dropdowns se posicionam automaticamente</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Use as classes de breakpoint para personalizar o comportamento responsivo dos componentes.
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Todos os componentes de navegação seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Navegação por teclado</li>
+                        <li>ARIA roles e labels</li>
+                        <li>Foco visível</li>
+                        <li>Contraste adequado</li>
+                        <li>Estrutura semântica</li>
+                    </ul>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Nota:</strong> Sempre forneça textos alternativos para ícones e elementos visuais.
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+
+        // Controle de Dropdown
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const dropdown = toggle.closest('.dropdown');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                // Fechar outros dropdowns
+                document.querySelectorAll('.dropdown-menu.show').forEach(m => {
+                    if (m !== menu) m.classList.remove('show');
+                });
+                
+                // Toggle do dropdown atual
+                menu.classList.toggle('show');
+                toggle.classList.toggle('active');
+            });
+        });
+
+        // Fechar dropdowns ao clicar fora
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                menu.classList.remove('show');
+            });
+            document.querySelectorAll('.dropdown-toggle.active').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+        });
+
+        // Controle de Tabs
+        const tabGroups = document.querySelectorAll('.tabs');
+        
+        tabGroups.forEach(group => {
+            const tabs = group.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab__content');
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remover classes ativas de todas as tabs e conteúdos
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Adicionar classe ativa na tab clicada e seu conteúdo
+                    tab.classList.add('active');
+                    contents[index].classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

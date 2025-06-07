@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Selects</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Selects</h1>
+    
+    <h2>Básico</h2>
+    <div class="form-group">
+      <label class="form-group__label">Select padrão</label>
+      <div class="select">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+          <option value="3">Opção 3</option>
+        </select>
+      </div>
+    </div>
+    
+    <h2>Tamanhos</h2>
+    <div class="form-group">
+      <label class="form-group__label">Select pequeno</label>
+      <div class="select select--sm">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Select grande</label>
+      <div class="select select--lg">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <h2>Variantes</h2>
+    <div class="form-group">
+      <label class="form-group__label">Select outline</label>
+      <div class="select select--outline">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Select filled</label>
+      <div class="select select--filled">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <h2>Estados</h2>
+    <div class="form-group">
+      <label class="form-group__label">Select com erro</label>
+      <div class="select is-invalid">
+        <select class="select__native">
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+      <span class="form-group__error">Campo obrigatório</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Select válido</label>
+      <div class="select is-valid">
+        <select class="select__native">
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Select desabilitado</label>
+      <div class="select">
+        <select class="select__native" disabled>
+          <option value="">Selecione uma opção</option>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      </div>
+    </div>
+    
+    <h2>Select Múltiplo</h2>
+    <div class="form-group">
+      <label class="form-group__label">Select com seleção múltipla</label>
+      <div class="select select--multiple">
+        <select class="select__native" multiple>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+          <option value="3">Opção 3</option>
+          <option value="4">Opção 4</option>
+          <option value="5">Opção 5</option>
+        </select>
+      </div>
+      <span class="form-group__help">Segure Ctrl (ou Cmd) para selecionar múltiplas opções</span>
+    </div>
+  </div>
+</body>
+</html> 

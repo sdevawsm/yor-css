@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Feedback - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#componentes" class="nav-link">Componentes</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#alertas" class="nav-link">Alertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#progress-bars" class="nav-link">Progress Bars</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#spinners" class="nav-link">Spinners</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tooltips" class="nav-link">Tooltips</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#modais" class="nav-link">Modais</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#animacoes" class="nav-link">Animações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Feedback</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-feedback fornece componentes para feedback visual ao usuário, como alertas, barras de progresso, spinners, tooltips e modais.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Todos os componentes de feedback são totalmente responsivos e seguem as melhores práticas de acessibilidade.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-feedback, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/feedback</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/feedback.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="componentes">
+                    <h2>Componentes</h2>
+                    
+                    <section id="alertas">
+                        <h3>Alertas</h3>
+                        <p>Alertas são usados para exibir mensagens importantes ao usuário. Podem ter diferentes variantes e suportam ícones e ações.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Alertas</div>
+                            <div class="alert alert--success">
+                                <div class="alert__icon">✓</div>
+                                <div class="alert__content">
+                                    <div class="alert__title">Sucesso!</div>
+                                    <div class="alert__message">Operação realizada com sucesso.</div>
+                                </div>
+                                <button class="alert__close">×</button>
+                            </div>
+
+                            <div class="alert alert--error">
+                                <div class="alert__icon">!</div>
+                                <div class="alert__content">
+                                    <div class="alert__title">Erro!</div>
+                                    <div class="alert__message">Ocorreu um erro ao processar sua solicitação.</div>
+                                </div>
+                                <button class="alert__close">×</button>
+                            </div>
+
+                            <div class="alert alert--warning">
+                                <div class="alert__icon">!</div>
+                                <div class="alert__content">
+                                    <div class="alert__title">Atenção!</div>
+                                    <div class="alert__message">Esta ação não pode ser desfeita.</div>
+                                </div>
+                                <button class="alert__close">×</button>
+                            </div>
+
+                            <div class="alert alert--info">
+                                <div class="alert__icon">i</div>
+                                <div class="alert__content">
+                                    <div class="alert__title">Informação</div>
+                                    <div class="alert__message">Sistema em manutenção programada.</div>
+                                </div>
+                                <button class="alert__close">×</button>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;!-- Alerta de Sucesso --&gt;
+&lt;div class="alert alert--success"&gt;
+    &lt;div class="alert__icon"&gt;✓&lt;/div&gt;
+    &lt;div class="alert__content"&gt;
+        &lt;div class="alert__title"&gt;Sucesso!&lt;/div&gt;
+        &lt;div class="alert__message"&gt;Operação realizada com sucesso.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__close"&gt;×&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Alerta de Erro --&gt;
+&lt;div class="alert alert--error"&gt;
+    &lt;div class="alert__icon"&gt;!&lt;/div&gt;
+    &lt;div class="alert__content"&gt;
+        &lt;div class="alert__title"&gt;Erro!&lt;/div&gt;
+        &lt;div class="alert__message"&gt;Ocorreu um erro ao processar sua solicitação.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__close"&gt;×&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Alerta de Aviso --&gt;
+&lt;div class="alert alert--warning"&gt;
+    &lt;div class="alert__icon"&gt;!&lt;/div&gt;
+    &lt;div class="alert__content"&gt;
+        &lt;div class="alert__title"&gt;Atenção!&lt;/div&gt;
+        &lt;div class="alert__message"&gt;Esta ação não pode ser desfeita.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__close"&gt;×&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Alerta de Informação --&gt;
+&lt;div class="alert alert--info"&gt;
+    &lt;div class="alert__icon"&gt;i&lt;/div&gt;
+    &lt;div class="alert__content"&gt;
+        &lt;div class="alert__title"&gt;Informação&lt;/div&gt;
+        &lt;div class="alert__message"&gt;Sistema em manutenção programada.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="alert__close"&gt;×&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="progress-bars">
+                        <h3>Barras de Progresso</h3>
+                        <p>Barras de progresso são usadas para mostrar o progresso de uma operação.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Barras de Progresso</div>
+                            <div class="progress">
+                                <div class="progress__bar" style="width: 75%"></div>
+                            </div>
+
+                            <div class="progress progress--striped">
+                                <div class="progress__bar" style="width: 50%"></div>
+                            </div>
+
+                            <div class="progress progress--animated">
+                                <div class="progress__bar"></div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;!-- Barra de Progresso Básica --&gt;
+&lt;div class="progress"&gt;
+    &lt;div class="progress__bar" style="width: 75%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Barra de Progresso Listrada --&gt;
+&lt;div class="progress progress--striped"&gt;
+    &lt;div class="progress__bar" style="width: 50%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Barra de Progresso Animada --&gt;
+&lt;div class="progress progress--animated"&gt;
+    &lt;div class="progress__bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="spinners">
+                        <h3>Spinners</h3>
+                        <p>Spinners são usados para indicar carregamento.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Spinners</div>
+                            <div class="spinner"></div>
+                            <div class="spinner spinner--primary"></div>
+                            <div class="spinner spinner--secondary"></div>
+                            <div class="spinner spinner--success"></div>
+                            <div class="spinner spinner--error"></div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;!-- Spinner Padrão --&gt;
+&lt;div class="spinner"&gt;&lt;/div&gt;
+
+&lt;!-- Spinner Primário --&gt;
+&lt;div class="spinner spinner--primary"&gt;&lt;/div&gt;
+
+&lt;!-- Spinner Secundário --&gt;
+&lt;div class="spinner spinner--secondary"&gt;&lt;/div&gt;
+
+&lt;!-- Spinner de Sucesso --&gt;
+&lt;div class="spinner spinner--success"&gt;&lt;/div&gt;
+
+&lt;!-- Spinner de Erro --&gt;
+&lt;div class="spinner spinner--error"&gt;&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="tooltips">
+                        <h3>Tooltips</h3>
+                        <p>Tooltips são usados para mostrar informações adicionais.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Tooltips</div>
+                            <div class="tooltip">
+                                <button class="btn">Hover me</button>
+                                <div class="tooltip__content">Tooltip básico</div>
+                            </div>
+
+                            <div class="tooltip" data-tooltip-position="bottom">
+                                <button class="btn">Hover me</button>
+                                <div class="tooltip__content">Tooltip abaixo</div>
+                            </div>
+
+                            <div class="tooltip" data-tooltip-position="left">
+                                <button class="btn">Hover me</button>
+                                <div class="tooltip__content">Tooltip à esquerda</div>
+                            </div>
+
+                            <div class="tooltip" data-tooltip-position="right">
+                                <button class="btn">Hover me</button>
+                                <div class="tooltip__content">Tooltip à direita</div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;!-- Tooltip Básico --&gt;
+&lt;div class="tooltip"&gt;
+    &lt;button class="btn"&gt;Hover me&lt;/button&gt;
+    &lt;div class="tooltip__content"&gt;Tooltip básico&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tooltip Abaixo --&gt;
+&lt;div class="tooltip" data-tooltip-position="bottom"&gt;
+    &lt;button class="btn"&gt;Hover me&lt;/button&gt;
+    &lt;div class="tooltip__content"&gt;Tooltip abaixo&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tooltip à Esquerda --&gt;
+&lt;div class="tooltip" data-tooltip-position="left"&gt;
+    &lt;button class="btn"&gt;Hover me&lt;/button&gt;
+    &lt;div class="tooltip__content"&gt;Tooltip à esquerda&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tooltip à Direita --&gt;
+&lt;div class="tooltip" data-tooltip-position="right"&gt;
+    &lt;button class="btn"&gt;Hover me&lt;/button&gt;
+    &lt;div class="tooltip__content"&gt;Tooltip à direita&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="modais">
+                        <h3>Modais</h3>
+                        <p>Modais são usados para mostrar conteúdo em uma camada sobreposta.</p>
+                        
+                        <div class="example">
+                            <div class="example-title">Modais</div>
+                            <button class="btn" data-modal="modal1">Abrir Modal Básico</button>
+                            <button class="btn" data-modal="modal2">Abrir Modal Grande</button>
+                            <button class="btn" data-modal="modal3">Abrir Modal Extra Grande</button>
+
+                            <div class="modal" id="modal1">
+                                <div class="modal__backdrop"></div>
+                                <div class="modal__content">
+                                    <div class="modal__header">
+                                        <h3 class="modal__title">Modal Básico</h3>
+                                        <button class="modal__close">×</button>
+                                    </div>
+                                    <div class="modal__body">
+                                        <p>Conteúdo do modal básico.</p>
+                                    </div>
+                                    <div class="modal__footer">
+                                        <button class="btn">Cancelar</button>
+                                        <button class="btn btn--primary">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--lg" id="modal2">
+                                <div class="modal__backdrop"></div>
+                                <div class="modal__content">
+                                    <div class="modal__header">
+                                        <h3 class="modal__title">Modal Grande</h3>
+                                        <button class="modal__close">×</button>
+                                    </div>
+                                    <div class="modal__body">
+                                        <p>Conteúdo do modal grande.</p>
+                                    </div>
+                                    <div class="modal__footer">
+                                        <button class="btn">Cancelar</button>
+                                        <button class="btn btn--primary">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal modal--xl" id="modal3">
+                                <div class="modal__backdrop"></div>
+                                <div class="modal__content">
+                                    <div class="modal__header">
+                                        <h3 class="modal__title">Modal Extra Grande</h3>
+                                        <button class="modal__close">×</button>
+                                    </div>
+                                    <div class="modal__body">
+                                        <p>Conteúdo do modal extra grande.</p>
+                                    </div>
+                                    <div class="modal__footer">
+                                        <button class="btn">Cancelar</button>
+                                        <button class="btn btn--primary">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>&lt;!-- Botões para abrir modais --&gt;
+&lt;button class="btn" data-modal="modal1"&gt;Abrir Modal Básico&lt;/button&gt;
+&lt;button class="btn" data-modal="modal2"&gt;Abrir Modal Grande&lt;/button&gt;
+&lt;button class="btn" data-modal="modal3"&gt;Abrir Modal Extra Grande&lt;/button&gt;
+
+&lt;!-- Modal Básico --&gt;
+&lt;div class="modal" id="modal1"&gt;
+    &lt;div class="modal__backdrop"&gt;&lt;/div&gt;
+    &lt;div class="modal__content"&gt;
+        &lt;div class="modal__header"&gt;
+            &lt;h3 class="modal__title"&gt;Modal Básico&lt;/h3&gt;
+            &lt;button class="modal__close"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__body"&gt;
+            &lt;p&gt;Conteúdo do modal básico.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__footer"&gt;
+            &lt;button class="btn"&gt;Cancelar&lt;/button&gt;
+            &lt;button class="btn btn--primary"&gt;Confirmar&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal Grande --&gt;
+&lt;div class="modal modal--lg" id="modal2"&gt;
+    &lt;div class="modal__backdrop"&gt;&lt;/div&gt;
+    &lt;div class="modal__content"&gt;
+        &lt;div class="modal__header"&gt;
+            &lt;h3 class="modal__title"&gt;Modal Grande&lt;/h3&gt;
+            &lt;button class="modal__close"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__body"&gt;
+            &lt;p&gt;Conteúdo do modal grande.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__footer"&gt;
+            &lt;button class="btn"&gt;Cancelar&lt;/button&gt;
+            &lt;button class="btn btn--primary"&gt;Confirmar&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal Extra Grande --&gt;
+&lt;div class="modal modal--xl" id="modal3"&gt;
+    &lt;div class="modal__backdrop"&gt;&lt;/div&gt;
+    &lt;div class="modal__content"&gt;
+        &lt;div class="modal__header"&gt;
+            &lt;h3 class="modal__title"&gt;Modal Extra Grande&lt;/h3&gt;
+            &lt;button class="modal__close"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__body"&gt;
+            &lt;p&gt;Conteúdo do modal extra grande.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="modal__footer"&gt;
+            &lt;button class="btn"&gt;Cancelar&lt;/button&gt;
+            &lt;button class="btn btn--primary"&gt;Confirmar&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="animacoes">
+                    <h2>Animações</h2>
+                    <p>O módulo yor-feedback inclui animações suaves para todos os componentes:</p>
+                    
+                    <ul>
+                        <li>Alertas com fade in/out</li>
+                        <li>Progress bars com transições suaves</li>
+                        <li>Spinners com rotação contínua</li>
+                        <li>Tooltips com fade in/out</li>
+                        <li>Modais com slide in/out</li>
+                    </ul>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>Todos os componentes de feedback seguem as melhores práticas de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>ARIA roles e labels</li>
+                        <li>Foco visível</li>
+                        <li>Contraste adequado</li>
+                        <li>Suporte a leitores de tela</li>
+                        <li>Navegação por teclado</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+
+        // Controle de Alertas
+        const alertCloseBtns = document.querySelectorAll('.alert__close');
+        
+        alertCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const alert = btn.closest('.alert');
+                alert.classList.add('alert--closing');
+                setTimeout(() => alert.remove(), 300);
+            });
+        });
+
+        // Controle de Tooltips
+        const tooltipElements = document.querySelectorAll('.tooltip');
+        
+        tooltipElements.forEach(tooltip => {
+            const trigger = tooltip.querySelector('button');
+            const content = tooltip.querySelector('.tooltip__content');
+            
+            trigger.addEventListener('mouseenter', () => {
+                content.style.opacity = '1';
+                content.style.visibility = 'visible';
+            });
+            
+            trigger.addEventListener('mouseleave', () => {
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+            });
+        });
+
+        // Controle de Modais
+        const modalTriggers = document.querySelectorAll('[data-modal]');
+        
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.dataset.modal;
+                const modal = document.getElementById(modalId);
+                modal.classList.add('modal--open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        const modalCloseBtns = document.querySelectorAll('.modal__close');
+        
+        modalCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal');
+                modal.classList.remove('modal--open');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Fechar modal ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal__backdrop')) {
+                const modal = e.target.closest('.modal');
+                modal.classList.remove('modal--open');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html> 

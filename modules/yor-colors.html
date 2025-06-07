@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yor Colors - Documentação</title>
+    
+    <!-- Arquivo único com todos os módulos -->
+    <link rel="stylesheet" href="/dist/yor-css.css">
+    
+    <!-- Temas -->
+    <link rel="stylesheet" href="/themes/material/dist/material-theme.css">
+    <link rel="stylesheet" href="/themes/fluent/dist/fluent-theme.css">
+    <link rel="stylesheet" href="/themes/cupertino/dist/cupertino-theme.css">
+    <link rel="stylesheet" href="/themes/dark/dist/dark-theme.css">
+
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-4);
+            height: 100vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        .main {
+            padding: var(--space-4);
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .version {
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-4);
+        }
+
+        .search {
+            margin-bottom: var(--space-4);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: var(--space-2);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-body);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .theme-controls {
+            position: fixed;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            background: var(--color-surface);
+            padding: var(--space-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: var(--space-2);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            color: var(--color-text-body);
+        }
+
+        .theme-btn:hover {
+            background: var(--color-surface-variant);
+        }
+
+        .theme-btn.active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .example {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .example-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text-body);
+        }
+
+        .example-code {
+            background: var(--color-surface-variant);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .example-code code {
+            color: var(--color-text-body);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .color-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .color-preview {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-medium);
+        }
+
+        .color-info {
+            padding: var(--space-3);
+            background: var(--color-surface);
+        }
+
+        .color-name {
+            font-weight: var(--font-medium);
+            margin-bottom: var(--space-1);
+        }
+
+        .color-value {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/" class="logo">Yor CSS</a>
+            <div class="version">v1.0.0</div>
+            
+            <div class="search">
+                <input type="search" class="input" placeholder="Buscar na documentação...">
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#introducao" class="nav-link active">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalacao" class="nav-link">Instalação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cores" class="nav-link">Cores</a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#cores-primarias" class="nav-link">Cores Primárias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cores-secundarias" class="nav-link">Cores Secundárias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cores-semanticas" class="nav-link">Cores Semânticas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cores-neutras" class="nav-link">Cores Neutras</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#temas" class="nav-link">Temas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#acessibilidade" class="nav-link">Acessibilidade</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Yor Colors</h1>
+            </header>
+            
+            <div class="content">
+                <section id="introducao">
+                    <h2>Introdução</h2>
+                    <p>O módulo yor-colors fornece um sistema de cores consistente e flexível para seus projetos.</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> O sistema de cores é totalmente customizável e suporta temas claro e escuro.
+                    </div>
+                </section>
+                
+                <section id="instalacao">
+                    <h2>Instalação</h2>
+                    <p>Para instalar o módulo yor-colors, você pode usar npm:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>npm install @yor-css/colors</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>Ou incluir via CDN:</p>
+                    
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.yor-css.com/colors.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="cores">
+                    <h2>Cores</h2>
+                    
+                    <section id="cores-primarias">
+                        <h3>Cores Primárias</h3>
+                        <p>As cores primárias são as principais cores da sua interface.</p>
+                        
+                        <div class="example">
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-primary)">
+                                        Primary
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Primary</div>
+                                        <div class="color-value">var(--color-primary)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-primary-variant)">
+                                        Primary Variant
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Primary Variant</div>
+                                        <div class="color-value">var(--color-primary-variant)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-on-primary)">
+                                        On Primary
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">On Primary</div>
+                                        <div class="color-value">var(--color-on-primary)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>/* Uso das cores primárias */
+.element {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.element-variant {
+    background-color: var(--color-primary-variant);
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cores-secundarias">
+                        <h3>Cores Secundárias</h3>
+                        <p>As cores secundárias complementam as cores primárias.</p>
+                        
+                        <div class="example">
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-secondary)">
+                                        Secondary
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Secondary</div>
+                                        <div class="color-value">var(--color-secondary)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-secondary-variant)">
+                                        Secondary Variant
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Secondary Variant</div>
+                                        <div class="color-value">var(--color-secondary-variant)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-on-secondary)">
+                                        On Secondary
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">On Secondary</div>
+                                        <div class="color-value">var(--color-on-secondary)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>/* Uso das cores secundárias */
+.element {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+}
+
+.element-variant {
+    background-color: var(--color-secondary-variant);
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cores-semanticas">
+                        <h3>Cores Semânticas</h3>
+                        <p>Cores semânticas são usadas para transmitir significado específico.</p>
+                        
+                        <div class="example">
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-success)">
+                                        Success
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Success</div>
+                                        <div class="color-value">var(--color-success)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-error)">
+                                        Error
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Error</div>
+                                        <div class="color-value">var(--color-error)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-warning)">
+                                        Warning
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Warning</div>
+                                        <div class="color-value">var(--color-warning)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-info)">
+                                        Info
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Info</div>
+                                        <div class="color-value">var(--color-info)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>/* Uso das cores semânticas */
+.success-message {
+    background-color: var(--color-success);
+    color: var(--color-on-success);
+}
+
+.error-message {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+}
+
+.warning-message {
+    background-color: var(--color-warning);
+    color: var(--color-on-warning);
+}
+
+.info-message {
+    background-color: var(--color-info);
+    color: var(--color-on-info);
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="cores-neutras">
+                        <h3>Cores Neutras</h3>
+                        <p>Cores neutras são usadas para elementos de interface e texto.</p>
+                        
+                        <div class="example">
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-surface)">
+                                        Surface
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Surface</div>
+                                        <div class="color-value">var(--color-surface)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-surface-variant)">
+                                        Surface Variant
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Surface Variant</div>
+                                        <div class="color-value">var(--color-surface-variant)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-background)">
+                                        Background
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Background</div>
+                                        <div class="color-value">var(--color-background)</div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-preview" style="background: var(--color-text-body)">
+                                        Text Body
+                                    </div>
+                                    <div class="color-info">
+                                        <div class="color-name">Text Body</div>
+                                        <div class="color-value">var(--color-text-body)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="example-code">
+                                <pre><code>/* Uso das cores neutras */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-body);
+}
+
+.card {
+    background-color: var(--color-surface);
+}
+
+.card-variant {
+    background-color: var(--color-surface-variant);
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section id="temas">
+                    <h2>Temas</h2>
+                    <p>O sistema de cores suporta diferentes temas e sistemas de design:</p>
+                    
+                    <ul>
+                        <li>Material Design</li>
+                        <li>Fluent Design</li>
+                        <li>Cupertino</li>
+                        <li>Tema Claro</li>
+                        <li>Tema Escuro</li>
+                    </ul>
+
+                    <div class="example">
+                        <div class="example-code">
+                            <pre><code>/* Aplicar tema */
+:root {
+    /* Tema claro */
+    --color-background: #ffffff;
+    --color-surface: #f5f5f5;
+    --color-text-body: #333333;
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+    --color-background: #121212;
+    --color-surface: #1e1e1e;
+    --color-text-body: #ffffff;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="acessibilidade">
+                    <h2>Acessibilidade</h2>
+                    <p>O sistema de cores segue as diretrizes de acessibilidade:</p>
+                    
+                    <ul>
+                        <li>Contraste mínimo de 4.5:1 para texto normal</li>
+                        <li>Contraste mínimo de 3:1 para texto grande</li>
+                        <li>Suporte a modo de alto contraste</li>
+                        <li>Cores não são o único meio de transmitir informação</li>
+                        <li>Testes de daltonismo</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="theme-controls">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme-system="material">🎨</button>
+        <button class="theme-btn" data-theme-system="fluent">💠</button>
+        <button class="theme-btn" data-theme-system="cupertino">🍎</button>
+    </div>
+
+    <script>
+        // Controle de tema
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                const themeSystem = btn.dataset.themeSystem;
+                
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                }
+                
+                if (themeSystem) {
+                    document.documentElement.setAttribute('data-theme-system', themeSystem);
+                    localStorage.setItem('themeSystem', themeSystem);
+                }
+                
+                // Atualizar botões ativos
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        const savedThemeSystem = localStorage.getItem('themeSystem');
+        
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        }
+        
+        if (savedThemeSystem) {
+            document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
+            document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+        }
+    </script>
+</body>
+</html> 

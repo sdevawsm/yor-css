@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Checkboxes</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Checkboxes</h1>
+    
+    <h2>Básico</h2>
+    <div class="form-group">
+      <label class="checkbox">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__box"></span>
+        <span class="checkbox__label">Checkbox padrão</span>
+      </label>
+    </div>
+    
+    <h2>Tamanhos</h2>
+    <div class="form-group">
+      <label class="checkbox checkbox--sm">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__box"></span>
+        <span class="checkbox__label">Checkbox pequeno</span>
+      </label>
+    </div>
+    
+    <div class="form-group">
+      <label class="checkbox checkbox--lg">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__box"></span>
+        <span class="checkbox__label">Checkbox grande</span>
+      </label>
+    </div>
+    
+    <h2>Estados</h2>
+    <div class="form-group">
+      <label class="checkbox is-invalid">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__box"></span>
+        <span class="checkbox__label">Checkbox com erro</span>
+      </label>
+      <span class="form-group__error">Campo obrigatório</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="checkbox">
+        <input type="checkbox" class="checkbox__input" disabled>
+        <span class="checkbox__box"></span>
+        <span class="checkbox__label">Checkbox desabilitado</span>
+      </label>
+    </div>
+    
+    <h2>Grupo de Checkboxes</h2>
+    <div class="form-group">
+      <label class="form-group__label">Preferências</label>
+      <div>
+        <label class="checkbox">
+          <input type="checkbox" class="checkbox__input" name="preferences" value="email">
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">Receber emails</span>
+        </label>
+      </div>
+      <div>
+        <label class="checkbox">
+          <input type="checkbox" class="checkbox__input" name="preferences" value="sms">
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">Receber SMS</span>
+        </label>
+      </div>
+      <div>
+        <label class="checkbox">
+          <input type="checkbox" class="checkbox__input" name="preferences" value="push">
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">Receber notificações push</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

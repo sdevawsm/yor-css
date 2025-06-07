@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yor Forms - Inputs</title>
+  
+  <!-- Tokens primeiro, pois outros módulos dependem dele -->
+  <link rel="stylesheet" href="../../../../packages/yor-tokens/dist/yor-tokens.css">
+  
+  <!-- Módulos CSS -->
+  <link rel="stylesheet" href="../../../../packages/yor-colors/dist/yor-colors.css">
+  <link rel="stylesheet" href="../../../../packages/yor-spacing/dist/yor-spacing.css">
+  <link rel="stylesheet" href="../../../../packages/yor-typography/dist/yor-typography.css">
+  <link rel="stylesheet" href="../../../../packages/yor-forms/dist/yor-forms.css">
+  <link rel="stylesheet" href="../../../../packages/yor-buttons/dist/yor-buttons.css">
+  <link rel="stylesheet" href="../../../../packages/yor-cards/dist/yor-cards.css">
+  <link rel="stylesheet" href="../../../../packages/yor-containers/dist/yor-containers.css">
+  <link rel="stylesheet" href="../../../../packages/yor-navigation/dist/yor-navigation.css">
+  <link rel="stylesheet" href="../../../../packages/yor-layout/dist/yor-layout.css">
+  
+  <!-- Temas -->
+  <link rel="stylesheet" href="../../../../themes/material/dist/material-theme.css">
+  <link rel="stylesheet" href="../../../../themes/fluent/dist/fluent-theme.css">
+  <link rel="stylesheet" href="../../../../themes/cupertino/dist/cupertino-theme.css">
+  <link rel="stylesheet" href="../../../../themes/dark/dist/dark-theme.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Inputs</h1>
+    
+    <h2>Básico</h2>
+    <div class="form-group">
+      <label class="form-group__label">Input padrão</label>
+      <input class="input" type="text" placeholder="Digite algo...">
+    </div>
+    
+    <h2>Tamanhos</h2>
+    <div class="form-group">
+      <label class="form-group__label">Input pequeno</label>
+      <input class="input input--sm" type="text" placeholder="Input pequeno">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Input grande</label>
+      <input class="input input--lg" type="text" placeholder="Input grande">
+    </div>
+    
+    <h2>Variantes</h2>
+    <div class="form-group">
+      <label class="form-group__label">Input outline</label>
+      <input class="input input--outline" type="text" placeholder="Input outline">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Input filled</label>
+      <input class="input input--filled" type="text" placeholder="Input filled">
+    </div>
+    
+    <h2>Estados</h2>
+    <div class="form-group">
+      <label class="form-group__label">Input com erro</label>
+      <input class="input is-invalid" type="text" placeholder="Input com erro">
+      <span class="form-group__error">Campo obrigatório</span>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Input válido</label>
+      <input class="input is-valid" type="text" placeholder="Input válido">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Input desabilitado</label>
+      <input class="input" type="text" placeholder="Input desabilitado" disabled>
+    </div>
+    
+    <h2>Tipos</h2>
+    <div class="form-group">
+      <label class="form-group__label">Email</label>
+      <input class="input" type="email" placeholder="seu@email.com">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Senha</label>
+      <input class="input" type="password" placeholder="Digite sua senha">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Número</label>
+      <input class="input" type="number" placeholder="Digite um número">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Data</label>
+      <input class="input" type="date">
+    </div>
+    
+    <div class="form-group">
+      <label class="form-group__label">Busca</label>
+      <input class="input" type="search" placeholder="Buscar...">
+    </div>
+  </div>
+</body>
+</html> 
