@@ -6,7 +6,8 @@
     <title>Yor CSS - Framework CSS Moderno</title>
     
     <!-- Arquivo único com todos os módulos -->
-    <link rel="stylesheet" href="assets/css/yor-css.css">
+    <link rel="stylesheet" href="assets/css/yor.css">
+    
     
     <style>
         .layout {
@@ -300,14 +301,24 @@
                 const theme = btn.dataset.theme;
                 const themeSystem = btn.dataset.themeSystem;
                 
+                console.log('Botão clicado:', {
+                    elemento: btn,
+                    tema: theme,
+                    temaSistema: themeSystem
+                });
+                
                 if (theme) {
+                    console.log('Aplicando tema:', theme);
                     document.documentElement.setAttribute('data-theme', theme);
                     localStorage.setItem('theme', theme);
+                    console.log('Atributo data-theme atual:', document.documentElement.getAttribute('data-theme'));
                 }
                 
                 if (themeSystem) {
+                    console.log('Aplicando tema do sistema:', themeSystem);
                     document.documentElement.setAttribute('data-theme-system', themeSystem);
                     localStorage.setItem('themeSystem', themeSystem);
+                    console.log('Atributo data-theme-system atual:', document.documentElement.getAttribute('data-theme-system'));
                 }
                 
                 // Atualizar botões ativos
@@ -320,14 +331,23 @@
         const savedTheme = localStorage.getItem('theme');
         const savedThemeSystem = localStorage.getItem('themeSystem');
         
+        console.log('Temas salvos:', {
+            tema: savedTheme,
+            temaSistema: savedThemeSystem
+        });
+        
         if (savedTheme) {
+            console.log('Aplicando tema salvo:', savedTheme);
             document.documentElement.setAttribute('data-theme', savedTheme);
             document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+            console.log('Atributo data-theme após carregar:', document.documentElement.getAttribute('data-theme'));
         }
         
         if (savedThemeSystem) {
+            console.log('Aplicando tema do sistema salvo:', savedThemeSystem);
             document.documentElement.setAttribute('data-theme-system', savedThemeSystem);
             document.querySelector(`[data-theme-system="${savedThemeSystem}"]`)?.classList.add('active');
+            console.log('Atributo data-theme-system após carregar:', document.documentElement.getAttribute('data-theme-system'));
         }
     </script>
 </body>
