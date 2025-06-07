@@ -14,6 +14,7 @@
 @import '../packages/yor-feedback/src/yor-feedback';
 
 // 3. Tema padrão (opcional - pode ser sobrescrito)
-@import '../themes/fluent/fluent-theme';
 @import '../themes/material/material-theme';
 @import '../themes/cupertino/cupertino-theme';
+@import '../themes/fluent/fluent-theme';
+@import '../themes/dark/src/dark-theme';
