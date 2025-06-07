@@ -7,7 +7,7 @@ mkdir -p docs/assets/css
 mkdir -p docs/assets/css/themes/dist
 
 # Copiar arquivo principal
-cp dist/yor-css.css docs/assets/css/yor.css
+cp dist/yor.css docs/assets/css/yor.css
 
 # Copiar temas
 cp themes/material/dist/material-theme.css docs/assets/css/themes/dist/
