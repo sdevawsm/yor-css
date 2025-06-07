@@ -1,4 +1,5 @@
 {
+  "homepage": "https://sdevawsm.github.io/yor-css",
   "name": "yor-css",
   "version": "2.0.0",
   "description": "Modular CSS Design System - Refactored without yor- prefix",
@@ -8,44 +9,30 @@
     "build:packages": "npm run build:tokens && npm run build:buttons && npm run build:cards && npm run build:containers && npm run build:spacing && npm run build:typography && npm run build:colors && npm run build:forms && npm run build:navigation",
     "build:themes": "npm run build:material && npm run build:fluent && npm run build:cupertino && npm run build:dark",
     "build:dist": "npm run build:full && npm run build:minified",
-    
     "build:tokens": "sass packages/yor-tokens/src/yor-tokens.scss packages/yor-tokens/dist/yor-tokens.css --style=expanded && sass packages/yor-tokens/src/yor-tokens.scss packages/yor-tokens/dist/yor-tokens.min.css --style=compressed",
-    
     "build:buttons": "sass packages/yor-buttons/src/yor-buttons.scss packages/yor-buttons/dist/yor-buttons.css --style=expanded && sass packages/yor-buttons/src/yor-buttons.scss packages/yor-buttons/dist/yor-buttons.min.css --style=compressed",
-    
     "build:cards": "sass packages/yor-cards/src/yor-cards.scss packages/yor-cards/dist/yor-cards.css --style=expanded && sass packages/yor-cards/src/yor-cards.scss packages/yor-cards/dist/yor-cards.min.css --style=compressed",
-    
     "build:containers": "sass packages/yor-containers/src/yor-containers.scss packages/yor-containers/dist/yor-containers.css --style=expanded && sass packages/yor-containers/src/yor-containers.scss packages/yor-containers/dist/yor-containers.min.css --style=compressed",
-    
     "build:spacing": "sass packages/yor-spacing/src/yor-spacing.scss packages/yor-spacing/dist/yor-spacing.css --style=expanded && sass packages/yor-spacing/src/yor-spacing.scss packages/yor-spacing/dist/yor-spacing.min.css --style=compressed",
-    
     "build:typography": "sass packages/yor-typography/src/yor-typography.scss packages/yor-typography/dist/yor-typography.css --style=expanded && sass packages/yor-typography/src/yor-typography.scss packages/yor-typography/dist/yor-typography.min.css --style=compressed",
-    
     "build:colors": "sass packages/yor-colors/src/yor-colors.scss packages/yor-colors/dist/yor-colors.css --style=expanded && sass packages/yor-colors/src/yor-colors.scss packages/yor-colors/dist/yor-colors.min.css --style=compressed",
-    
     "build:material": "sass themes/material/material-theme.scss themes/material/dist/material-theme.css --style=expanded && sass themes/material/material-theme.scss themes/material/dist/material-theme.min.css --style=compressed",
-    
     "build:fluent": "sass themes/fluent/fluent-theme.scss themes/fluent/dist/fluent-theme.css --style=expanded && sass themes/fluent/fluent-theme.scss themes/fluent/dist/fluent-theme.min.css --style=compressed",
-    
     "build:cupertino": "sass themes/cupertino/cupertino-theme.scss themes/cupertino/dist/cupertino-theme.css --style=expanded && sass themes/cupertino/cupertino-theme.scss themes/cupertino/dist/cupertino-theme.min.css --style=compressed",
-    
     "build:dark": "sass themes/dark/src/dark-theme.scss themes/dark/dist/dark-theme.css --style=expanded && sass themes/dark/src/dark-theme.scss themes/dark/dist/dark-theme.min.css --style=compressed",
-    
     "build:forms": "sass packages/yor-forms/src/yor-forms.scss packages/yor-forms/dist/yor-forms.css --style=expanded && sass packages/yor-forms/src/yor-forms.scss packages/yor-forms/dist/yor-forms.min.css --style=compressed",
-    
     "build:navigation": "sass packages/yor-navigation/src/yor-navigation.scss packages/yor-navigation/dist/yor-navigation.css --style=expanded && sass packages/yor-navigation/src/yor-navigation.scss packages/yor-navigation/dist/yor-navigation.min.css --style=compressed",
-    
     "build:full": "sass src/yor-css-full.scss dist/yor-css.css --style=expanded",
     "build:minified": "sass src/yor-css-full.scss dist/yor-css.min.css --style=compressed",
-    
     "watch": "npm run watch:packages & npm run watch:themes",
     "watch:packages": "sass --watch packages/yor-tokens/src:packages/yor-tokens/dist packages/yor-buttons/src:packages/yor-buttons/dist packages/yor-cards/src:packages/yor-cards/dist packages/yor-containers/src:packages/yor-containers/dist packages/yor-spacing/src:packages/yor-spacing/dist packages/yor-typography/src:packages/yor-typography/dist packages/yor-colors/src:packages/yor-colors/dist packages/yor-forms/src:packages/yor-forms/dist packages/yor-navigation/src:packages/yor-navigation/dist",
     "watch:themes": "sass --watch themes/material:themes/material/dist themes/fluent:themes/fluent/dist themes/cupertino:themes/cupertino/dist themes/dark:themes/dark/dist",
-    
     "dev": "npm run watch",
-    "clean": "rm -rf packages/*/dist themes/*/dist dist/*"
+    "clean": "rm -rf packages/*/dist themes/*/dist dist/*",
+    "deploy": "gh-pages -d docs"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.69.0"
   },
   "keywords": [
