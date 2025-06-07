@@ -23,6 +23,9 @@ npm run build:themes
 echo "📄 Building distribution files..."
 npm run build:dist
 
+echo "📁 Copiando arquivos para a pasta docs..."
+./copy-to-docs.sh
+
 echo "✅ Build completed!"
 echo ""
 echo "📋 Usage examples:"
